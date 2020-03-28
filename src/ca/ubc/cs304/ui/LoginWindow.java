@@ -33,7 +33,7 @@ public class LoginWindow extends JFrame implements ActionListener {
 	// components of the login window
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	
+	//
 	// delegate
 	private LoginWindowDelegate delegate;
 
