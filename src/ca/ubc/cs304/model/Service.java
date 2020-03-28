@@ -3,38 +3,33 @@ package ca.ubc.cs304.model;
 /**
  * The intent for this class is to update/store information about a single branch
  */
-public class BranchModel {
-	private final String address;
-	private final String city;
-	private final int id;
-	private final String name;	
-	private final int phoneNumber;
-	
-	public BranchModel(String address, String city, int id, String name, int phoneNumber) {
-		this.address = address;
-		this.city = city;
-		this.id = id;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
+public class Service {
+	private final char[] service_id;
+	private final char[] min_tier_level;
+	private final int cost;
+	private final char[] hotel_address;
+
+	public Service(char[] service_id, char[] min_tier_level, int cost, char[] hotel_address) {
+		this.service_id = service_id;
+		this.min_tier_level = min_tier_level;
+		this.cost = cost;
+		this.hotel_address = hotel_address;
 	}
 
-	public String getAddress() {
-		return address;
+	public char[] getServiceID() {
+		return service_id;
 	}
 
-	public String getCity() {
-		return city;
+	public char[] getMinTierLevel() {
+		return min_tier_level;
 	}
 
-	public int getId() {
-		return id;
+	public int getCost() {
+		return cost;
 	}
 
-	public String getName() {
-		return name;
+	public char[] getHotelAddress() {
+		return hotel_address;
 	}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
 }

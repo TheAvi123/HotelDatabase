@@ -3,33 +3,26 @@ package ca.ubc.cs304.model;
 /**
  * The intent for this class is to update/store information about a single branch
  */
-public class Service {
-	private final char[] service_id;
-	private final char[] min_tier_level;
-	private final int cost;
-	private final char[] hotel_address;
+public class Cleaned_By {
+	private final char[] janitorStaffID;
+	private final int roomFloor;
+	private final int roomNumber;
 
-	public Service(char[] service_id, char[] min_tier_level, int cost, char[] hotel_address) {
-		this.service_id = service_id;
-		this.min_tier_level = min_tier_level;
-		this.cost = cost;
-		this.hotel_address = hotel_address;
+	public Cleaned_By(char[] janitorStaffID, int roomFloor, int roomNumber) {
+		this.janitorStaffID = janitorStaffID;
+		this.roomFloor = roomFloor;
+		this.roomNumber = roomNumber;
 	}
 
-	public char[] getServiceID() {
-		return service_id;
+	public char[] getJanitorStaffID() {
+		return janitorStaffID;
 	}
 
-	public char[] getMinTierLevel() {
-		return min_tier_level;
+	public int getRoomFloor() {
+		return roomFloor;
 	}
 
-	public int getCost() {
-		return cost;
+	public int getRoomNumber() {
+		return roomNumber;
 	}
-
-	public char[] getHotelAddress() {
-		return hotel_address;
-	}
-
 }
