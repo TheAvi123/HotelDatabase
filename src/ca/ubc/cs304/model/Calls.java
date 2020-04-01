@@ -1,9 +1,7 @@
 package ca.ubc.cs304.model;
 
-/**
- * The intent for this class is to update/store information about a single branch
- */
 public class Calls {
+
 	private final char[] receptionist_staff_id;
 	private final char[] customer_id;
 

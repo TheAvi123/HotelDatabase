@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.Room;
 
 /**
  * This class handles all database related transactions
@@ -58,6 +59,25 @@ public class DatabaseConnectionHandler {
 			rollbackConnection();
 		}
 	}
+
+	public void deleteRoom(int roomNumber, int roomFloor) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("DELETE FROM room WHERE (room_number, room_floor) = (?,?)");
+			ps.setInt(1, roomNumber);
+			ps.setInt(2, roomFloor);
+			int rowCount = ps.executeUpdate();
+			if (rowCount == 0) {
+				System.out.println(WARNING_TAG + " Room " + roomNumber + "or" + roomFloor + " does not exist!");
+			}
+
+			connection.commit();
+
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+	}
 	
 	public void insertBranch(BranchModel model) {
 		try {
@@ -71,6 +91,26 @@ public class DatabaseConnectionHandler {
 			} else {
 				ps.setInt(5, model.getPhoneNumber());
 			}
+
+			ps.executeUpdate();
+			connection.commit();
+
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+	}
+
+	public void insertRoom(Room model) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?)");
+			ps.setInt(1, model.getRoomNumber());
+			ps.setInt(2, model.getRoomFloor());
+			ps.setString(3, model.getRoomType());
+			ps.setString(4, model.getNeedsCleaning());
+			ps.setInt(5, model.getNumberOfBeds());
+			ps.setString(6, model.getHotelAddress());
 
 			ps.executeUpdate();
 			connection.commit();
@@ -117,7 +157,34 @@ public class DatabaseConnectionHandler {
 		
 		return result.toArray(new BranchModel[result.size()]);
 	}
-	
+
+	public Room[] getRoomInfo() {
+		ArrayList<Room> result = new ArrayList<Room>();
+
+		try {
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM room");
+			while(rs.next()) {
+				Room model = new Room(rs.getInt("room_number"),
+						rs.getInt("room_floor"),
+						rs.getString("room_type"),
+						rs.getString("needs_cleaning"),
+						rs.getInt("number_of_beds"),
+						rs.getString("hotel_address"));
+				result.add(model);
+			}
+
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+
+		return result.toArray(new Room[result.size()]);
+	}
+
+
+
 	public void updateBranch(int id, String name) {
 		try {
 		  PreparedStatement ps = connection.prepareStatement("UPDATE branch SET branch_name = ? WHERE branch_id = ?");
@@ -137,7 +204,28 @@ public class DatabaseConnectionHandler {
 			rollbackConnection();
 		}	
 	}
-	
+
+	// Room(int roomNumber, int roomFloor, char[] roomType, char[] needsCleaning, int numberOfBeds, char[] hotelAddress)
+	public void updateRoom(int roomNumber, int roomFloor, String type) {
+		try {
+			PreparedStatement ps = connection.prepareStatement("UPDATE room SET branch_name = ? WHERE (room_number, room_floor) = (?,?)");
+			ps.setString(1, type);
+			ps.setInt(2, roomNumber);
+			ps.setInt(3, roomFloor);
+			int rowCount = ps.executeUpdate();
+			if (rowCount == 0) {
+				System.out.println(WARNING_TAG + " Room " + roomNumber + "or" + roomFloor + " does not exist!");
+			}
+
+			connection.commit();
+
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
+	}
+
 	public boolean login(String username, String password) {
 		try {
 			if (connection != null) {

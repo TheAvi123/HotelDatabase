@@ -3,7 +3,9 @@ package ca.ubc.cs304.controller;
 import ca.ubc.cs304.database.DatabaseConnectionHandler;
 import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
+import ca.ubc.cs304.model.Assists;
 import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.Room;
 import ca.ubc.cs304.ui.LoginWindow;
 import ca.ubc.cs304.ui.TerminalTransactions;
 
@@ -50,61 +52,118 @@ public class Bank implements LoginWindowDelegate, TerminalTransactionsDelegate {
 	
 	/**
 	 * TermainalTransactionsDelegate Implementation
-	 * 
-	 * Insert a branch with the given info
+	 *
+	 * Insert a room with the given info
 	 */
-    public void insertBranch(BranchModel model) {
-    	dbHandler.insertBranch(model);
+    public void insertRoom(Room model) {
+    	dbHandler.insertRoom(model);
     }
 
     /**
 	 * TermainalTransactionsDelegate Implementation
 	 * 
-	 * Delete branch with given branch ID.
+	 * Delete room with given room number and room floor.
 	 */ 
-    public void deleteBranch(int branchId) {
-    	dbHandler.deleteBranch(branchId);
+    public void deleteRoom(int roomNumber, int roomFloor) {
+    	dbHandler.deleteRoom(roomNumber, roomFloor);
     }
     
     /**
 	 * TermainalTransactionsDelegate Implementation
 	 * 
-	 * Update the branch name for a specific ID
+	 * Update the room type for a specific room
 	 */
 
-    public void updateBranch(int branchId, String name) {
-    	dbHandler.updateBranch(branchId, name);
+    public void updateRoom(int roomNumber, int roomFloor, String type) {
+    	dbHandler.updateRoom(roomNumber, roomFloor, type);
     }
 
     /**
 	 * TermainalTransactionsDelegate Implementation
 	 * 
-	 * Displays information about varies bank branches.
+	 * Displays information about various rooms.
 	 */
-    public void showBranch() {
-    	BranchModel[] models = dbHandler.getBranchInfo();
+    public void showRoom() {
+    	Room[] models = dbHandler.getRoomInfo();
     	
     	for (int i = 0; i < models.length; i++) {
-    		BranchModel model = models[i];
-    		
-    		// simplified output formatting; truncation may occur
-    		System.out.printf("%-10.10s", model.getId());
-    		System.out.printf("%-20.20s", model.getName());
-    		if (model.getAddress() == null) {
+    		Room model = models[i];
+    		// Room(int roomNumber, int roomFloor, String roomType, String needsCleaning, int numberOfBeds, String hotelAddress)
+    		System.out.printf("%-10.10s", model.getRoomNumber());
+    		System.out.printf("%-20.20s", model.getRoomFloor());
+    		if (model.getRoomType() == null) {
     			System.out.printf("%-20.20s", " ");
     		} else {
-    			System.out.printf("%-20.20s", model.getAddress());
+    			System.out.printf("%-20.20s", model.getRoomType());
     		}
-    		System.out.printf("%-15.15s", model.getCity());
-    		if (model.getPhoneNumber() == 0) {
-    			System.out.printf("%-15.15s", " ");
-    		} else {
-    			System.out.printf("%-15.15s", model.getPhoneNumber());
-    		}
-    		
-    		System.out.println();
+    		if (model.getNeedsCleaning() == null) {
+				System.out.printf("%-15.15s", " ");
+			} else {
+				System.out.printf("%-15.15s", model.getNeedsCleaning());
+			}
+    		System.out.printf("%-15.15s", model.getNumberOfBeds());
+			System.out.printf("%-20.20s", model.getHotelAddress());
+			System.out.println();
     	}
     }
+
+	/**
+	 * TermainalTransactionsDelegate Implementation
+	 *
+	 * Insert a branch with the given info
+	 */
+	public void insertBranch(BranchModel model) {
+		dbHandler.insertBranch(model);
+	}
+
+	/**
+	 * TermainalTransactionsDelegate Implementation
+	 *
+	 * Delete branch with given branch ID.
+	 */
+	public void deleteBranch(int branchId) {
+		dbHandler.deleteBranch(branchId);
+	}
+
+	/**
+	 * TermainalTransactionsDelegate Implementation
+	 *
+	 * Update the branch name for a specific ID
+	 */
+
+	public void updateBranch(int branchId, String name) {
+		dbHandler.updateBranch(branchId, name);
+	}
+
+	/**
+	 * TermainalTransactionsDelegate Implementation
+	 *
+	 * Displays information about varies bank branches.
+	 */
+	public void showBranch() {
+		BranchModel[] models = dbHandler.getBranchInfo();
+
+		for (int i = 0; i < models.length; i++) {
+			BranchModel model = models[i];
+
+			// simplified output formatting; truncation may occur
+			System.out.printf("%-10.10s", model.getId());
+			System.out.printf("%-20.20s", model.getName());
+			if (model.getAddress() == null) {
+				System.out.printf("%-20.20s", " ");
+			} else {
+				System.out.printf("%-20.20s", model.getAddress());
+			}
+			System.out.printf("%-15.15s", model.getCity());
+			if (model.getPhoneNumber() == 0) {
+				System.out.printf("%-15.15s", " ");
+			} else {
+				System.out.printf("%-15.15s", model.getPhoneNumber());
+			}
+
+			System.out.println();
+		}
+	}
 	
     /**
 	 * TerminalTransactionsDelegate Implementation

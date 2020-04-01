@@ -1,6 +1,7 @@
 package ca.ubc.cs304.model;
 
 public class Manager {
+
 	private final char[] staffID;
 	private final char[] managerName;
 	private final char[] hotelAddress;

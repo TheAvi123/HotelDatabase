@@ -1,12 +1,7 @@
 package ca.ubc.cs304.model;
 
-/**
- * The intent for this class is to update/store information about a single branch
- *
- */
-
-
 public class RoomCost {
+
 	private final int roomFloor;
 	private final int roomNumber;
 	private final double cost;

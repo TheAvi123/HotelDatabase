@@ -1,6 +1,7 @@
 package ca.ubc.cs304.model;
 
 public class Employee {
+
 	private final char[] staffID;
 	private final char[] name;
 	private final int payrollAccountNumber;

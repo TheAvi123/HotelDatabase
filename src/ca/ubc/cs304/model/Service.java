@@ -1,9 +1,7 @@
 package ca.ubc.cs304.model;
 
-/**
- * The intent for this class is to update/store information about a single branch
- */
 public class Service {
+
 	private final char[] service_id;
 	private final char[] min_tier_level;
 	private final int cost;

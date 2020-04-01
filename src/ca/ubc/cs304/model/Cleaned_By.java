@@ -1,9 +1,7 @@
 package ca.ubc.cs304.model;
 
-/**
- * The intent for this class is to update/store information about a single branch
- */
 public class Cleaned_By {
+
 	private final char[] janitorStaffID;
 	private final int roomFloor;
 	private final int roomNumber;

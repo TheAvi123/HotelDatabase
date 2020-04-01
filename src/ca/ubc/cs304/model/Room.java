@@ -1,22 +1,15 @@
 package ca.ubc.cs304.model;
 
-import oracle.sql.DATE;
-
-/**
- * The intent for this class is to update/store information about a single branch
- *
-
- */
-
 public class Room {
+
 	private final int roomNumber;
 	private final int roomFloor;
-	private final char[] roomType;
-	private final char[] needsCleaning;
+	private final String roomType;
+	private final String needsCleaning;
 	private final int numberOfBeds;
-	private final char[] hotelAddress;
+	private final String hotelAddress;
 
-	public Room(int roomNumber, int roomFloor, char[] roomType, char[] needsCleaning, int numberOfBeds, char[] hotelAddress) {
+	public Room(int roomNumber, int roomFloor, String roomType, String needsCleaning, int numberOfBeds, String hotelAddress) {
 		this.roomType = roomType;
 		this.needsCleaning = needsCleaning;
 		this.numberOfBeds = numberOfBeds;
@@ -25,11 +18,11 @@ public class Room {
 		this.hotelAddress = hotelAddress;
 	}
 
-	public char[] getRoomType() {
+	public String getRoomType() {
 		return roomType;
 	}
 
-	public char[] getNeedsCleaning() {
+	public String getNeedsCleaning() {
 		return needsCleaning;
 	}
 
@@ -45,7 +38,7 @@ public class Room {
 		return roomNumber;
 	}
 
-	public char[] getHotelAddress() {
+	public String getHotelAddress() {
 		return hotelAddress;
 	}
 }

@@ -2,12 +2,8 @@ package ca.ubc.cs304.model;
 
 import oracle.sql.DATE;
 
-/**
- * The intent for this class is to update/store information about a single branch
- *
- */
-
 public class Booking {
+
 	private final char[] bookingNumber;
 	private final DATE startDate;
 	private final DATE endDate;

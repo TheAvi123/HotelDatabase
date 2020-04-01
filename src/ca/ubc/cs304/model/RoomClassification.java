@@ -1,6 +1,7 @@
 package ca.ubc.cs304.model;
 
 public class RoomClassification {
+
 	private final char[] roomType;
 	private final char[] tierLevel;
 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/controller/Bank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/database/DatabaseConnectionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/delegates/LoginWindowDelegate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/model/BranchModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/ui/LoginWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/ui/LoginWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ca/ubc/cs304/ui/TerminalTransactions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/controller/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/controller/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/database/DatabaseConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/database/DatabaseConnectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/model/BranchModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/model/BranchModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CPSC304-JavaDemo/ca/ubc/cs304/ui/TerminalTransactions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Assists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Assists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Calls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Calls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Cleaned_By.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Cleaned_By.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/SecondaryGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/SecondaryGuest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ValetDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ValetDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZvIR00fPFCUnsVKu8EfcfrFBur" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.Bank" />
+      <module name="CPSC304-JavaDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Bank" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a6be9584-e2bc-4bb9-b9be-b1b7b08f42ae" name="Default Changelist" comment="" />
+      <created>1585713128468</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585713128468</updated>
+      <workItem from="1585713130450" duration="366000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1585713741104">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585713741104" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585713615668">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585713615668" />
+  </component>
+</project>

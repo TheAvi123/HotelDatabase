@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.Room;
 
 /**
  * The class is only responsible for handling terminal text inputs. 
@@ -36,9 +37,12 @@ public class TerminalTransactions {
 			System.out.println("1. Insert branch");
 			System.out.println("2. Delete branch");
 			System.out.println("3. Update branch name");
-			System.out.println("4. Show branch");
-			System.out.println("5. Quit");
-			System.out.print("Please choose one of the above 5 options: ");
+			System.out.println("4. Insert room");
+			System.out.println("5. Delete room");
+			System.out.println("6. Update room type");
+			System.out.println("7. Show room");
+			System.out.println("8. Quit");
+			System.out.print("Please choose one of the options above: ");
 
 			choice = readInteger(false);
 
@@ -55,10 +59,19 @@ public class TerminalTransactions {
 				case 3: 
 					handleUpdateOption();
 					break;
-				case 4:  
-					delegate.showBranch(); 
+				case 4:
+					handleInsertRoomOption();
 					break;
 				case 5:
+					handleDeleteRoomOption();
+					break;
+				case 6:
+					handleUpdateRoomOption();
+					break;
+				case 7:
+					delegate.showBranch(); 
+					break;
+				case 8:
 					handleQuitOption();
 					break;
 				default:
@@ -76,6 +89,22 @@ public class TerminalTransactions {
 			branchId = readInteger(false);
 			if (branchId != INVALID_INPUT) {
 				delegate.deleteBranch(branchId);
+			}
+		}
+	}
+
+	private void handleDeleteRoomOption() {
+		int roomNumber = INVALID_INPUT;
+		int roomFloor = INVALID_INPUT;
+		while (roomNumber == INVALID_INPUT) {
+			System.out.print("Please enter the room number you wish to delete: ");
+			roomNumber = readInteger(false);
+			while (roomFloor == INVALID_INPUT) {
+				System.out.print("Please enter the room floor you wish to delete: ");
+				roomFloor = readInteger(false);
+				if (roomNumber != INVALID_INPUT && roomFloor != INVALID_INPUT) {
+					delegate.deleteRoom(roomNumber, roomFloor);
+				}
 			}
 		}
 	}
@@ -119,6 +148,49 @@ public class TerminalTransactions {
 											phoneNumber);
 		delegate.insertBranch(model);
 	}
+
+	private void handleInsertRoomOption() {
+		int roomNumber = INVALID_INPUT;
+		while (roomNumber == INVALID_INPUT) {
+			System.out.print("Please enter the room number you wish to insert: ");
+			roomNumber = readInteger(false);
+		}
+
+		int roomFloor = INVALID_INPUT;
+		while (roomFloor == INVALID_INPUT) {
+			System.out.print("Please enter the room floor you wish to insert: ");
+			roomFloor = readInteger(false);
+		}
+
+		String hotelAddress = null;
+		while (hotelAddress == null || hotelAddress.length() <= 0) {
+			System.out.print("Please enter the hotel address you wish to insert: ");
+			hotelAddress = readLine().trim();
+		}
+
+		// roomType, needsCleaning, numberOfBeds is allowed to be null so we don't need to repeatedly ask for it
+		System.out.print("Please enter the room type you wish to insert: ");
+		String roomType = readLine().trim();
+		if (roomType.length() == 0) {
+			roomType = null;
+		}
+		System.out.print("Please enter if the room needs cleaning; say True or False: ");
+		String needsCleaning = readLine().trim();
+		if (needsCleaning.length() == 0) {
+			needsCleaning = null;
+		}
+
+		System.out.print("Please enter the number of beds: ");
+		int numberOfBeds = readInteger(true);
+
+		Room model = new Room(roomNumber,
+				roomFloor,
+				roomType,
+				needsCleaning,
+				numberOfBeds,
+				hotelAddress);
+		delegate.insertRoom(model);
+	}
 	
 	private void handleQuitOption() {
 		System.out.println("Good Bye!");
@@ -149,6 +221,29 @@ public class TerminalTransactions {
 
 		delegate.updateBranch(id, name);
 	}
+
+
+	// Room(int roomNumber, int roomFloor, String roomType, String needsCleaning, int numberOfBeds, String hotelAddress)
+	private void handleUpdateRoomOption() {
+		int roomNumber = INVALID_INPUT;
+		int roomFloor = INVALID_INPUT;
+		while (roomNumber == INVALID_INPUT) {
+			System.out.print("Please enter the room number you wish to update: ");
+			roomNumber = readInteger(false);
+		}
+		while (roomFloor == INVALID_INPUT) {
+			System.out.print("Please enter the room floor you wish to update: ");
+			roomFloor = readInteger(false);
+		}
+		String roomType = null;
+		while (roomType == null || roomType.length() <= 0) {
+			System.out.print("Please enter the room type you wish to update: ");
+			roomType = readLine().trim();
+		}
+
+		delegate.updateRoom(roomNumber, roomFloor, roomType);
+	}
+
 	
 	private int readInteger(boolean allowEmpty) {
 		String line = null;

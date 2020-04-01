@@ -1,6 +1,7 @@
 package ca.ubc.cs304.model;
 
 public class Hotel {
+
 	private final char[] address;
 	private final char[] name;
 	private final int capacity;
