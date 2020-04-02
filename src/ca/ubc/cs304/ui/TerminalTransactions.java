@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.model.BranchModelHelper;
 import ca.ubc.cs304.model.Room;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * The class is only responsible for handling terminal text inputs. 
@@ -19,9 +22,6 @@ public class TerminalTransactions {
 	
 	private BufferedReader bufferedReader = null;
 	private TerminalTransactionsDelegate delegate = null;
-
-	public TerminalTransactions() {
-	}
 
 	/**
 	 * Displays simple text interface
@@ -37,11 +37,12 @@ public class TerminalTransactions {
 			System.out.println("1. Insert branch");
 			System.out.println("2. Delete branch");
 			System.out.println("3. Update branch name");
-			System.out.println("4. Insert room");
-			System.out.println("5. Delete room");
-			System.out.println("6. Update room type");
-			System.out.println("7. Show room");
-			System.out.println("8. Quit");
+			System.out.println("4. Show branch");
+			System.out.println("5. Insert room");
+			System.out.println("6. Delete room");
+			System.out.println("7. Update room type");
+			System.out.println("8. Show room");
+			System.out.println("9. Quit");
 			System.out.print("Please choose one of the options above: ");
 
 			choice = readInteger(false);
@@ -60,18 +61,21 @@ public class TerminalTransactions {
 					handleUpdateOption();
 					break;
 				case 4:
-					handleInsertRoomOption();
+					delegate.showBranch();
 					break;
 				case 5:
-					handleDeleteRoomOption();
+					handleInsertRoomOption();
 					break;
 				case 6:
-					handleUpdateRoomOption();
+					handleDeleteRoomOption();
 					break;
 				case 7:
-					delegate.showBranch(); 
+					handleUpdateRoomOption();
 					break;
 				case 8:
+					delegate.showRoom();
+					break;
+				case 9:
 					handleQuitOption();
 					break;
 				default:
@@ -81,72 +85,46 @@ public class TerminalTransactions {
 			}
 		}		
 	}
-	
-	private void handleDeleteOption() {
-		int branchId = INVALID_INPUT;
-		while (branchId == INVALID_INPUT) {
-			System.out.print("Please enter the branch ID you wish to delete: ");
-			branchId = readInteger(false);
-			if (branchId != INVALID_INPUT) {
-				delegate.deleteBranch(branchId);
-			}
-		}
-	}
 
-	private void handleDeleteRoomOption() {
-		int roomNumber = INVALID_INPUT;
-		int roomFloor = INVALID_INPUT;
-		while (roomNumber == INVALID_INPUT) {
-			System.out.print("Please enter the room number you wish to delete: ");
-			roomNumber = readInteger(false);
-			while (roomFloor == INVALID_INPUT) {
-				System.out.print("Please enter the room floor you wish to delete: ");
-				roomFloor = readInteger(false);
-				if (roomNumber != INVALID_INPUT && roomFloor != INVALID_INPUT) {
-					delegate.deleteRoom(roomNumber, roomFloor);
-				}
-			}
-		}
-	}
-	
 	private void handleInsertOption() {
 		int id = INVALID_INPUT;
 		while (id == INVALID_INPUT) {
 			System.out.print("Please enter the branch ID you wish to insert: ");
 			id = readInteger(false);
 		}
-		
+
 		String name = null;
 		while (name == null || name.length() <= 0) {
 			System.out.print("Please enter the branch name you wish to insert: ");
 			name = readLine().trim();
 		}
-		
+
 		// branch address is allowed to be null so we don't need to repeatedly ask for the address
 		System.out.print("Please enter the branch address you wish to insert: ");
 		String address = readLine().trim();
 		if (address.length() == 0) {
 			address = null;
 		}
-		
+
 		String city = null;
 		while (city == null || city.length() <= 0) {
 			System.out.print("Please enter the branch city you wish to insert: ");
 			city = readLine().trim();
 		}
-		
+
 		int phoneNumber = INVALID_INPUT;
 		while (phoneNumber == INVALID_INPUT) {
 			System.out.print("Please enter the branch phone number you wish to insert: ");
 			phoneNumber = readInteger(true);
 		}
-		
+
 		BranchModel model = new BranchModel(address,
-											city,
-											id,
-											name,
-											phoneNumber);
-		delegate.insertBranch(model);
+				city,
+				id,
+				name,
+				phoneNumber);
+		//delegate.insertBranch(model);
+		delegate.insertTable(model);
 	}
 
 	private void handleInsertRoomOption() {
@@ -189,23 +167,54 @@ public class TerminalTransactions {
 				needsCleaning,
 				numberOfBeds,
 				hotelAddress);
-		delegate.insertRoom(model);
+		//delegate.insertRoom(model);
+		delegate.insertTable(model);
 	}
 	
-	private void handleQuitOption() {
-		System.out.println("Good Bye!");
-		
-		if (bufferedReader != null) {
-			try {
-				bufferedReader.close();
-			} catch (IOException e) {
-				System.out.println("IOException!");
+	private void handleDeleteOption() {
+		int branchId = INVALID_INPUT;
+		while (branchId == INVALID_INPUT) {
+			System.out.print("Please enter the branch ID you wish to delete: ");
+			branchId = readInteger(false);
+			if (branchId != INVALID_INPUT) {
+				//delegate.deleteBranch(branchId);
+				BranchModelHelper modelHelper = new BranchModelHelper();
+				JSONObject keys = new JSONObject();
+				try {
+					keys.put("branch_id", branchId);
+				} catch (JSONException e) {
+					System.out.println(e.getMessage());
+				}
+				delegate.deleteTable(modelHelper, keys);
 			}
 		}
-		
-		delegate.terminalTransactionsFinished();
 	}
-	
+
+	private void handleDeleteRoomOption() {
+		int roomNumber = INVALID_INPUT;
+		int roomFloor = INVALID_INPUT;
+		while (roomNumber == INVALID_INPUT) {
+			System.out.print("Please enter the room number you wish to delete: ");
+			roomNumber = readInteger(false);
+			while (roomFloor == INVALID_INPUT) {
+				System.out.print("Please enter the room floor you wish to delete: ");
+				roomFloor = readInteger(false);
+				if (roomNumber != INVALID_INPUT && roomFloor != INVALID_INPUT) {
+					//delegate.deleteRoom(roomNumber, roomFloor);
+					BranchModelHelper modelHelper = new BranchModelHelper();
+					JSONObject keys = new JSONObject();
+					try {
+						keys.put("room_number", roomNumber);
+						keys.put("room_floor", roomFloor);
+					} catch (JSONException e) {
+						System.out.println(e.getMessage());
+					}
+					delegate.deleteTable(modelHelper, keys);
+				}
+			}
+		}
+	}
+
 	private void handleUpdateOption() {
 		int id = INVALID_INPUT;
 		while (id == INVALID_INPUT) {
@@ -222,8 +231,6 @@ public class TerminalTransactions {
 		delegate.updateBranch(id, name);
 	}
 
-
-	// Room(int roomNumber, int roomFloor, String roomType, String needsCleaning, int numberOfBeds, String hotelAddress)
 	private void handleUpdateRoomOption() {
 		int roomNumber = INVALID_INPUT;
 		int roomFloor = INVALID_INPUT;
@@ -244,7 +251,6 @@ public class TerminalTransactions {
 		delegate.updateRoom(roomNumber, roomFloor, roomType);
 	}
 
-	
 	private int readInteger(boolean allowEmpty) {
 		String line = null;
 		int input = INVALID_INPUT;
@@ -271,5 +277,19 @@ public class TerminalTransactions {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 		return result;
+	}
+
+	private void handleQuitOption() {
+		System.out.println("Good Bye!");
+
+		if (bufferedReader != null) {
+			try {
+				bufferedReader.close();
+			} catch (IOException e) {
+				System.out.println("IOException!");
+			}
+		}
+
+		delegate.terminalTransactionsFinished();
 	}
 }

@@ -114,7 +114,7 @@ public class LoginWindow extends JFrame implements ActionListener {
 		this.setLocation( (d.width - r.width)/2, (d.height - r.height)/2 );
 
 		// make the window visible
-		 this.setVisible(true);
+		this.setVisible(true);
 
 		// place the cursor in the text field for the username
 		usernameField.requestFocus();
