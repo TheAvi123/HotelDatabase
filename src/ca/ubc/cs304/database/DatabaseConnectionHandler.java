@@ -4,8 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.Room;
-import ca.ubc.cs304.modelInterface.Table;
+import ca.ubc.cs304.modelInterface.Entity;
 import ca.ubc.cs304.modelInterface.TableHelper;
+import javafx.embed.swt.SWTFXUtils;
 import org.json.JSONObject;
 
 /**
@@ -64,7 +65,7 @@ public class DatabaseConnectionHandler {
 	}
 
 	//SQL INSERT COMMAND ROUTER
-	public void insertTable(Table table) {
+	public void insertTable(Entity table) {
 		try {
 			StringBuilder sqlCommand = new StringBuilder("INSERT INTO branch VALUES (");
 			for (int i = 0; i < table.getAttributeCount() - 1; i++) {
@@ -72,7 +73,7 @@ public class DatabaseConnectionHandler {
 			}
 			sqlCommand.append("?)");
 			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
-			table.setAllStatementParameters(ps);
+			table.setTupleParametersToStatement(ps);
 			ps.executeUpdate();
 			connection.commit();
 			ps.close();
@@ -143,12 +144,10 @@ public class DatabaseConnectionHandler {
 				}
 				sqlCommand.append("?)");
 			}
-
-			//PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
-			PreparedStatement ps = connection.prepareStatement("DELETE FROM branch WHERE branch_id = ?");
-			//tableHelper.setPrimaryStatementParameters(ps, primaryKey);
-			ps.setInt(1, 6);
-
+			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
+			for (int i = 1; i <= keyNames.length; i++) {
+				tableHelper.setStatementParameter(ps, i, keyNames[i - 1], primaryKey);
+			}
 			int rowCount = ps.executeUpdate();
 			if (rowCount == 0) {
 				System.out.println(WARNING_TAG + " " + tableHelper.getTableName() + " " + primaryKey.toString() + " does not exist!");
@@ -200,8 +199,44 @@ public class DatabaseConnectionHandler {
 	}
 
 	//SQL UPDATE COMMAND ROUTER
-	public void updateTable(Table table) {
-
+	public void updateTable(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys) {
+		try {
+			StringBuilder sqlCommand = new StringBuilder("UPDATE " + tableHelper.getTableName() + " SET ");
+			String[] setKeyNames = JSONObject.getNames(setKeys);
+			if (setKeyNames.length == 1) {
+				sqlCommand.append(setKeyNames[0]).append(" = ? WHERE ");
+			} else {
+				for (int i = 0; i < setKeyNames.length - 1; i++) {
+					sqlCommand.append(setKeyNames[i]).append(" = ?, ");
+				}
+				sqlCommand.append(setKeyNames[setKeyNames.length - 1]).append(" = ? WHERE ");
+			}
+			String[] whereKeyNames = JSONObject.getNames(whereKeys);
+			if (whereKeyNames.length == 1) {
+				sqlCommand.append(whereKeyNames[0]).append(" = ?");
+			} else {
+				for (int i = 0; i < whereKeyNames.length - 1; i++) {
+					sqlCommand.append(whereKeyNames[i]).append(" = ?, ");
+				}
+				sqlCommand.append(whereKeyNames[whereKeyNames.length - 1]).append(" = ?");
+			}
+			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
+			for (int i = 1; i <= setKeyNames.length; i++) {
+				tableHelper.setStatementParameter(ps, i, setKeyNames[i - 1], setKeys);
+			}
+			for (int i = 1; i <= whereKeyNames.length; i++) {
+				tableHelper.setStatementParameter(ps, i + setKeyNames.length, whereKeyNames[i - 1], whereKeys);
+			}
+			int rowCount = ps.executeUpdate();
+			if (rowCount == 0) {
+				System.out.println(WARNING_TAG + " " + tableHelper.getTableName() + " specified does not exist!");
+			}
+			connection.commit();
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			rollbackConnection();
+		}
 	}
 
 	public void updateBranch(int id, String name) {
@@ -245,9 +280,40 @@ public class DatabaseConnectionHandler {
 	}
 
 	//SQL SHOW COMMAND ROUTER
-	public Table[] getTableInfo(Table table) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
-		return tuples.toArray(new Table[tuples.size()]);
+	public Entity[] getTableInfo(String tableName) {
+		ArrayList<Entity> tuples = new ArrayList<Entity>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
+			while(resultSet.next()) {
+				Entity tuple = createEntityTuple(tableName, resultSet);
+				tuples.add(tuple);
+			}
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return tuples.toArray(new Entity[tuples.size()]);
+	}
+
+	private Entity createEntityTuple(String tableName, ResultSet rs) {
+		try {
+			switch (tableName) {
+				case "branch":
+					BranchModel tuple = new BranchModel(rs.getString("branch_addr"),
+							rs.getString("branch_city"),
+							rs.getInt("branch_id"),
+							rs.getString("branch_name"),
+							rs.getInt("branch_phone"));
+					return tuple;
+				default:
+					System.out.println("Invalid Table Name. Please try again.");
+					System.out.println("");
+					throw new Error("Invalid Table Name");
+			}
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return null;
 	}
 	
 	public BranchModel[] getBranchInfo() {
@@ -256,18 +322,6 @@ public class DatabaseConnectionHandler {
 		try {
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM branch");
-		
-//    		// get info on ResultSet
-//    		ResultSetMetaData rsmd = rs.getMetaData();
-//
-//    		System.out.println(" ");
-//
-//    		// display column names;
-//    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
-//    			// get column name and print it
-//    			System.out.printf("%-15s", rsmd.getColumnName(i + 1));
-//    		}
-			
 			while(rs.next()) {
 				BranchModel model = new BranchModel(rs.getString("branch_addr"),
 													rs.getString("branch_city"),
@@ -276,19 +330,16 @@ public class DatabaseConnectionHandler {
 													rs.getInt("branch_phone"));
 				result.add(model);
 			}
-
 			rs.close();
 			stmt.close();
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
-		}	
-		
+		}
 		return result.toArray(new BranchModel[result.size()]);
 	}
 
 	public Room[] getRoomInfo() {
 		ArrayList<Room> result = new ArrayList<Room>();
-
 		try {
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM room");
@@ -301,13 +352,11 @@ public class DatabaseConnectionHandler {
 						rs.getString("hotel_address"));
 				result.add(model);
 			}
-
 			rs.close();
 			stmt.close();
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
-
 		return result.toArray(new Room[result.size()]);
 	}
 }

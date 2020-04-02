@@ -61,7 +61,8 @@ public class TerminalTransactions {
 					handleUpdateOption();
 					break;
 				case 4:
-					delegate.showBranch();
+					handleShowOption();
+					//delegate.showBranch();
 					break;
 				case 5:
 					handleInsertRoomOption();
@@ -73,7 +74,8 @@ public class TerminalTransactions {
 					handleUpdateRoomOption();
 					break;
 				case 8:
-					delegate.showRoom();
+					//delegate.showRoom();
+					handleShowOption();
 					break;
 				case 9:
 					handleQuitOption();
@@ -227,8 +229,17 @@ public class TerminalTransactions {
 			System.out.print("Please enter the branch name you wish to update: ");
 			name = readLine().trim();
 		}
-
-		delegate.updateBranch(id, name);
+		//delegate.updateBranch(id, name);
+		BranchModelHelper modelHelper = new BranchModelHelper();
+		JSONObject setKeys = new JSONObject();
+		JSONObject whereKeys = new JSONObject();
+		try {
+			setKeys.put("branch_name", name);
+			whereKeys.put("branch_id", id);
+		} catch (JSONException e) {
+			System.out.println(e.getMessage());
+		}
+		delegate.updateTable(modelHelper, setKeys, whereKeys);
 	}
 
 	private void handleUpdateRoomOption() {
@@ -247,8 +258,16 @@ public class TerminalTransactions {
 			System.out.print("Please enter the room type you wish to update: ");
 			roomType = readLine().trim();
 		}
+		//delegate.updateRoom(roomNumber, roomFloor, roomType);
+	}
 
-		delegate.updateRoom(roomNumber, roomFloor, roomType);
+	private void handleShowOption() {
+		String tableName = null;
+		while (tableName == null) {
+			System.out.print("Please enter the name of the table you wish to display: ");
+			tableName = readLine().trim();
+		}
+		delegate.showTable(tableName);
 	}
 
 	private int readInteger(boolean allowEmpty) {

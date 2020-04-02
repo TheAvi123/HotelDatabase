@@ -1,14 +1,15 @@
 package ca.ubc.cs304.model;
 
-import ca.ubc.cs304.modelInterface.Table;
-import org.json.JSONException;
-import org.json.JSONObject;
+import ca.ubc.cs304.modelInterface.Entity;
+import ca.ubc.cs304.modelInterface.TableHelper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 // TODO DELETE CLASS
-public class BranchModel extends Table {
+public class BranchModel extends Entity {
+
+	private BranchModelHelper helper = null;
 
 	private final String address;
 	private final String city;
@@ -22,6 +23,7 @@ public class BranchModel extends Table {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
+		this.helper = new BranchModelHelper();
 	}
 
 	public String getAddress() {
@@ -49,7 +51,13 @@ public class BranchModel extends Table {
 		return 5;
 	}
 
-	public void setAllStatementParameters(PreparedStatement ps) throws SQLException {
+	@Override
+	public TableHelper getTableHelper() {
+		return this.helper;
+	}
+
+	@Override
+	public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
 		ps.setInt(1, this.getId());
 		ps.setString(2, this.getName());
 		ps.setString(3, this.getAddress());
