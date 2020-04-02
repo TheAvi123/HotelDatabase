@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/java_json.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/java-json.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Table.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CPSC304-JavaDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CPSC304-JavaDemo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Assists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Assists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Calls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Calls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Chef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Cleaned_By.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Cleaned_By.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/SecondaryGuest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/SecondaryGuest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ValetDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ValetDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Oracle - @dbhost.students.cs.ubc.ca" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZvIR00fPFCUnsVKu8EfcfrFBur" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/java-json.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ca.ubc.cs304.model" />
+      <recent name="ca.ubc.cs304.modelInterface" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.HotelDatabase">
+    <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.Bank" />
+      <module name="CPSC304-JavaDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HotelDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.HotelDatabase" />
+      <module name="CPSC304-JavaDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HotelDatabase" />
+        <item itemvalue="Application.Bank" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="" />
+      <created>1585713128468</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585713128468</updated>
+      <workItem from="1585713130450" duration="366000" />
+      <workItem from="1585728567458" duration="10020000" />
+      <workItem from="1585784578426" duration="6889000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="91" key="#SQL_Dialects" timestamp="1585779837423">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="91" key="#SQL_Dialects/0.0.1536.864@0.0.1536.864" timestamp="1585779837423" />
+    <state x="361" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585777762441">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1585777762441" />
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1585791000117">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585791000117" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585713615668">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585713615668" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1585785552702">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585785552702" />
+    <state width="1493" height="463" key="GridCell.Tab.0.bottom" timestamp="1585791505086">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="463" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585791505086" />
+    <state width="1493" height="463" key="GridCell.Tab.0.center" timestamp="1585791505086">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="463" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585791505086" />
+    <state width="1493" height="463" key="GridCell.Tab.0.left" timestamp="1585791505086">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="463" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585791505086" />
+    <state width="1493" height="463" key="GridCell.Tab.0.right" timestamp="1585791505086">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="463" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585791505086" />
+    <state width="1493" height="304" key="GridCell.Tab.1.bottom" timestamp="1585791479445">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="304" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585791479445" />
+    <state width="1493" height="304" key="GridCell.Tab.1.center" timestamp="1585791479444">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="304" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1585791479444" />
+    <state width="1493" height="304" key="GridCell.Tab.1.left" timestamp="1585791479444">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="304" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1585791479444" />
+    <state width="1493" height="304" key="GridCell.Tab.1.right" timestamp="1585791479444">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="304" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1585791479444" />
+    <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1585715015695">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="221" height="457" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1585715015695" />
+    <state x="277" y="14" width="846" height="850" key="SettingsEditor" timestamp="1585785569227">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="14" width="846" height="850" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585785569227" />
+    <state x="667" y="312" width="322" height="239" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1585716984301">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="667" y="312" width="322" height="239" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.864@0.0.1536.864" timestamp="1585716984301" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1585785524178">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1585785524178" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>146</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

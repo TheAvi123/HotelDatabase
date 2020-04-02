@@ -1,6 +1,8 @@
 package ca.ubc.cs304.delegates;
 
-import ca.ubc.cs304.model.BranchModel;
+import ca.ubc.cs304.modelInterface.Table;
+import ca.ubc.cs304.modelInterface.TableHelper;
+import org.json.JSONObject;
 
 /**
  * This interface uses the delegation design pattern where instead of having
@@ -12,10 +14,24 @@ import ca.ubc.cs304.model.BranchModel;
  * Bank is the actual class that will implement the methods.
  */
 public interface TerminalTransactionsDelegate {
-	public void deleteBranch(int branchId);
-	public void insertBranch(BranchModel model);
-	public void showBranch();
-	public void updateBranch(int branchId, String name);
-	
+
 	public void terminalTransactionsFinished();
+
+	//SQL DDL Functions
+	public void insertTable(Table table);
+	public void deleteTable(TableHelper table, JSONObject primaryKey);
+	public void updateTable(Table table);
+	public void showTable(Table table);
+
+	//Branch Functions
+	//public void insertBranch(BranchModel model);
+	public void deleteBranch(int branchId);
+	public void updateBranch(int branchId, String name);
+	public void showBranch();
+
+	//Room Functions
+	//public void insertRoom(Room model);
+	public void deleteRoom(int roomNumber, int roomFloor);
+	public void updateRoom(int roomNumber, int roomFloor, String roomType);
+	public void showRoom();
 }
