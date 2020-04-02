@@ -1,6 +1,6 @@
 package ca.ubc.cs304.delegates;
 
-import ca.ubc.cs304.modelInterface.Table;
+import ca.ubc.cs304.modelInterface.Entity;
 import ca.ubc.cs304.modelInterface.TableHelper;
 import org.json.JSONObject;
 
@@ -18,20 +18,20 @@ public interface TerminalTransactionsDelegate {
 	public void terminalTransactionsFinished();
 
 	//SQL DDL Functions
-	public void insertTable(Table table);
+	public void insertTable(Entity table);
 	public void deleteTable(TableHelper table, JSONObject primaryKey);
-	public void updateTable(Table table);
-	public void showTable(Table table);
+	public void updateTable(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys);
+	public void showTable(String tableName);
 
 	//Branch Functions
 	//public void insertBranch(BranchModel model);
-	public void deleteBranch(int branchId);
-	public void updateBranch(int branchId, String name);
+	//public void deleteBranch(int branchId);
+	//public void updateBranch(int branchId, String name);
 	public void showBranch();
 
 	//Room Functions
 	//public void insertRoom(Room model);
-	public void deleteRoom(int roomNumber, int roomFloor);
-	public void updateRoom(int roomNumber, int roomFloor, String roomType);
+	//public void deleteRoom(int roomNumber, int roomFloor);
+	//public void updateRoom(int roomNumber, int roomFloor, String roomType);
 	public void showRoom();
 }

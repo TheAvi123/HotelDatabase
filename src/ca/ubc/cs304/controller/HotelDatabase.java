@@ -5,7 +5,7 @@ import ca.ubc.cs304.delegates.LoginWindowDelegate;
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.Room;
-import ca.ubc.cs304.modelInterface.Table;
+import ca.ubc.cs304.modelInterface.Entity;
 import ca.ubc.cs304.modelInterface.TableHelper;
 import ca.ubc.cs304.ui.LoginWindow;
 import ca.ubc.cs304.ui.TerminalTransactions;
@@ -70,24 +70,23 @@ public class HotelDatabase implements LoginWindowDelegate, TerminalTransactionsD
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void insertTable(Table table) {
+	public void insertTable(Entity table) {
 		dbHandler.insertTable(table);
 	}
 
-	public void deleteTable(TableHelper th, JSONObject primaryKey) {
-		dbHandler.deleteTable(th, primaryKey);
+	public void deleteTable(TableHelper tableHelper, JSONObject primaryKey) {
+		dbHandler.deleteTable(tableHelper, primaryKey);
 	}
 
-	public void updateTable(Table table) {
-		dbHandler.updateTable(table);
+	public void updateTable(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys) {
+		dbHandler.updateTable(tableHelper, setKeys, whereKeys);
 	}
 
-	public void showTable(Table table) {
-		Table[] tuples = dbHandler.getTableInfo(table);
-
+	public void showTable(String tableName) {
+		Entity[] tuples = dbHandler.getTableInfo(tableName);
 		for (int i = 0; i < tuples.length; i++) {
-			Table tuple = tuples[i];
-			//tuple.printTupleInfo(tuple);
+			Entity tuple = tuples[i];
+			tuple.getTableHelper().printTupleInfo(tuple);
 		}
 	}
 

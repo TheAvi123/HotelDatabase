@@ -1,11 +1,14 @@
 package ca.ubc.cs304.model;
 
-import ca.ubc.cs304.modelInterface.Table;
+import ca.ubc.cs304.modelInterface.Entity;
+import ca.ubc.cs304.modelInterface.TableHelper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Room extends Table {
+public class Room extends Entity {
+
+	//private RoomHelp
 
 	private final int roomNumber;
 	private final int roomFloor;
@@ -53,7 +56,13 @@ public class Room extends Table {
 	}
 
 	@Override
-	public void setAllStatementParameters(PreparedStatement ps) throws SQLException {
+	public TableHelper getTableHelper() {
+		//return this.helper;
+		return null;
+	}
+
+	@Override
+	public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
 		ps.setInt(1, this.getRoomNumber());
 		ps.setInt(2, this.getRoomFloor());
 		ps.setString(3, this.getRoomType());
