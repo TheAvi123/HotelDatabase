@@ -102,15 +102,10 @@ public class DatabaseConnectionHandler {
 			if (keyNames.length == 1) {
 				sqlCommand.append(keyNames[0]).append(" = ?");
 			} else {
-				sqlCommand.append("(");
 				for (int i = 0; i < keyNames.length - 1; i++) {
-					sqlCommand.append(keyNames[i]).append(", ");
+					sqlCommand.append(keyNames[i]).append(" = ? AND ");
 				}
-				sqlCommand.append(keyNames[keyNames.length - 1]).append(") = (");
-				for (int i = 0; i < keyNames.length; i++) {
-					sqlCommand.append("?,");
-				}
-				sqlCommand.append("?)");
+				sqlCommand.append(keyNames[keyNames.length - 1]).append(" = ?");
 			}
 			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
 			for (int i = 1; i <= keyNames.length; i++) {
@@ -146,7 +141,7 @@ public class DatabaseConnectionHandler {
 				sqlCommand.append(whereKeyNames[0]).append(" = ?");
 			} else {
 				for (int i = 0; i < whereKeyNames.length - 1; i++) {
-					sqlCommand.append(whereKeyNames[i]).append(" = ?, ");
+					sqlCommand.append(whereKeyNames[i]).append(" = ? AND ");
 				}
 				sqlCommand.append(whereKeyNames[whereKeyNames.length - 1]).append(" = ?");
 			}
@@ -187,6 +182,7 @@ public class DatabaseConnectionHandler {
 		return tuples;
 	}
 
+	//HELPER METHODS
 	private Table createEntityTuple(String tableName, ResultSet rs) {
 		Table tuple = null;
 		try {
@@ -197,12 +193,14 @@ public class DatabaseConnectionHandler {
 							rs.getInt("branch_id"),
 							rs.getString("branch_name"),
 							rs.getInt("branch_phone"));
+					break;
 				case "room":
 					tuple = new Room(rs.getInt("room_number"),
 							rs.getInt("room_floor"),
 							rs.getString("room_type"),
-							rs.getInt("number_of_beds"),
-							rs.getString("hotel_address"));
+							rs.getInt("room_numberOfBeds"),
+							rs.getString("room_hotelAddress"));
+					break;
 				default:
 					System.out.println("Invalid Table Name. Please try again.");
 					System.out.println("");
@@ -212,27 +210,5 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 		return tuple;
-	}
-
-	//TODO DELETE FUNCTION
-	public ArrayList<Room> setRooms() {
-		ArrayList<Room> result = new ArrayList<Room>();
-		try {
-			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM room");
-			while (rs.next()) {
-				Room model = new Room(rs.getInt("room_number"),
-						rs.getInt("room_floor"),
-						rs.getString("room_type"),
-						rs.getInt("room_numberOfBeds"),
-						rs.getString("room_hotelAddress"));
-				result.add(model);
-			}
-			rs.close();
-			stmt.close();
-		} catch (SQLException e) {
-			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
-		}
-		return result;
 	}
 }

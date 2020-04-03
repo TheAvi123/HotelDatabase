@@ -1,15 +1,16 @@
 package userInterface.showAll;
 
+import model.Table;
 import model.tables.Room;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class RoomTableModel extends AbstractTableModel {
-    private ArrayList<Room> rooms;
+    private ArrayList<Table> rooms;
     private String[] columns ;
 
-    public RoomTableModel(ArrayList<Room> roomArr){
+    public RoomTableModel(ArrayList<Table> roomArr){
         super();
         rooms = roomArr ;
         columns = new String[]{"Room No.", "Room Floor", "Room Type", "No. Of Beds", "Hotel Address"};
@@ -27,7 +28,7 @@ public class RoomTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Room room = rooms.get(row);
+        Room room = (Room) rooms.get(row);
         switch(col) {
             case 0:
                 return room.getNumber();

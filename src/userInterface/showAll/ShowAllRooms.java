@@ -2,8 +2,8 @@ package userInterface.showAll;
 
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
-import model.tables.Room;
-import userInterface.WelcomeScreen;
+import model.Table;
+import userInterface.chooseMenu.ChooseMenuRoom;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +15,7 @@ import javax.swing.table.TableModel;
 public class ShowAllRooms extends JPanel {
     private JLabel showRoomsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Room> rooms;
+    ArrayList<Table> rooms;
     TableModel model;
     JTable table;
 
@@ -24,7 +24,7 @@ public class ShowAllRooms extends JPanel {
     public ShowAllRooms(HotelController controller) {
 
         dbHandler = new DatabaseConnectionHandler(controller);
-        rooms = dbHandler.setRooms();
+        rooms = dbHandler.getTableTuples("room");
         model = new RoomTableModel(rooms);
 
         //construct components
@@ -51,13 +51,13 @@ public class ShowAllRooms extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
+                frame.getContentPane().add (new ChooseMenuRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
     }
-//
+
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("Show all rooms");
 //        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
