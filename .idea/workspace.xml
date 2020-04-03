@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BookingHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/CustomerHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/EmployeeHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/HotelHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ManagerHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassificationHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCostHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ServiceHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/ChooseMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/WelcomeScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/chooseMenu/ChooseMenuRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/delete/DeleteRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/insert/InsertRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/RoomTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/ShowAllRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updatePrompt/UpdatePromptRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updateSelected/UpdateSelectedRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
-    </list>
+    <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +115,7 @@
       <workItem from="1585728567458" duration="10020000" />
       <workItem from="1585784578426" duration="22679000" />
       <workItem from="1585873378061" duration="1609000" />
-      <workItem from="1585877887967" duration="3423000" />
+      <workItem from="1585877887967" duration="3770000" />
     </task>
     <servers />
   </component>
