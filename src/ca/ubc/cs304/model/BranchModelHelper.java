@@ -19,7 +19,6 @@ public class BranchModelHelper extends TableHelper {
 		return new String[] {"branch_id"};
 	}
 
-	@Override
 	public void printTupleInfo(Entity tuple) {
 		BranchModel branchTuple = (BranchModel) tuple;
 		// simplified output formatting; truncation may occur

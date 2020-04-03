@@ -108,12 +108,11 @@ public class DatabaseConnectionHandler {
 	public void insertRoom(Room model) {
 		try {
 			PreparedStatement ps = connection.prepareStatement("INSERT INTO room VALUES (?,?,?,?,?,?)");
-			ps.setInt(1, model.getRoomNumber());
-			ps.setInt(2, model.getRoomFloor());
-			ps.setString(3, model.getRoomType());
-			ps.setString(4, model.getNeedsCleaning());
-			ps.setInt(5, model.getNumberOfBeds());
-			ps.setString(6, model.getHotelAddress());
+			ps.setInt(1, model.getNumber());
+			ps.setInt(2, model.getFloor());
+			ps.setString(3, model.getType());
+			ps.setInt(4, model.getNumberOfBeds());
+			ps.setString(5, model.getHotelAddress());
 
 			ps.executeUpdate();
 			connection.commit();
@@ -346,7 +345,6 @@ public class DatabaseConnectionHandler {
 				Room model = new Room(rs.getInt("room_number"),
 						rs.getInt("room_floor"),
 						rs.getString("room_type"),
-						rs.getString("needs_cleaning"),
 						rs.getInt("number_of_beds"),
 						rs.getString("hotel_address"));
 				result.add(model);

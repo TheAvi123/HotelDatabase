@@ -166,7 +166,6 @@ public class TerminalTransactions {
 		Room model = new Room(roomNumber,
 				roomFloor,
 				roomType,
-				needsCleaning,
 				numberOfBeds,
 				hotelAddress);
 		//delegate.insertRoom(model);

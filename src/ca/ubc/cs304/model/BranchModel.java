@@ -23,6 +23,7 @@ public class BranchModel extends Entity {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
+
 		this.helper = new BranchModelHelper();
 	}
 
