@@ -1,5 +1,6 @@
 package userInterface.updatePrompt;
 
+import controller.HotelController;
 import userInterface.WelcomeScreen;
 import userInterface.updateSelected.UpdateSelectedRoom;
 
@@ -17,7 +18,7 @@ public class UpdatePromptRoom extends JPanel {
     private JPasswordField roomFloorField;
     private JButton submitButton;
 
-    public UpdatePromptRoom() {
+    public UpdatePromptRoom(HotelController controller) {
         //construct components
         whichRoomLabel = new JLabel ("Which ROOM to update?");
         cancelButton = new JButton ("Cancel");
@@ -67,7 +68,7 @@ public class UpdatePromptRoom extends JPanel {
                 // open the update room screen
                 JFrame frame = new JFrame ("Update Room" + roomFloorToUpdate + " on floor " + roomFloorToUpdate);
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedRoom());
+                frame.getContentPane().add (new UpdateSelectedRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -79,7 +80,7 @@ public class UpdatePromptRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen());
+                frame.getContentPane().add (new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

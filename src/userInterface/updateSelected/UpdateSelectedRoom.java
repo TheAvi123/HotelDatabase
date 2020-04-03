@@ -1,5 +1,6 @@
 package userInterface.updateSelected;
 
+import controller.HotelController;
 import userInterface.WelcomeScreen;
 
 import java.awt.*;
@@ -22,7 +23,7 @@ public class UpdateSelectedRoom extends JPanel {
     private JPasswordField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedRoom() {
+    public UpdateSelectedRoom(HotelController controller) {
         //construct preComponents
         String[] needsCleaningFieldItems = {"True", "False"};
 
@@ -103,7 +104,7 @@ public class UpdateSelectedRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new WelcomeScreen());
+                frame.getContentPane().add(new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

@@ -1,5 +1,6 @@
 package userInterface;
 
+import controller.HotelController;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
 import java.awt.*;
@@ -13,9 +14,9 @@ public class WelcomeScreen extends JPanel {
     private JComboBox entityChooser;
     private JButton submitEntityButton;
 
-    public WelcomeScreen() {
+    public WelcomeScreen(HotelController controller) {
         //construct preComponents
-        String[] entityChooserItems = {"Booking", "Customer", "Employee", "Hotel", "Manager", "Room", "RoomClassification", "RoomCost", "Service"};
+        String[] entityChooserItems = {"Booking", "Customer", "Employee", "Hotel", "Manager", "Room", "RoomCost", "Service"};
 
         //construct components
         welcomeLabel = new JLabel ("WELCOME TO THE NOT-SO-GRAND BUDAPEST HOTEL DATABASE");
@@ -45,10 +46,10 @@ public class WelcomeScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String selectedEntity = String.valueOf(entityChooser.getSelectedItem());
                 // TODO: add functionality for other entities once they're implemented in the backend
-                if (selectedEntity == "Room") {
+                if (selectedEntity.equals("Room")) {
                     JFrame frame = new JFrame ("Choose Menu for Room");
                     frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                    frame.getContentPane().add (new ChooseMenuRoom());
+                    frame.getContentPane().add (new ChooseMenuRoom(controller));
                     frame.pack();
                     frame.setVisible (true);
                 }
@@ -56,12 +57,12 @@ public class WelcomeScreen extends JPanel {
         });
     }
 
-//    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Welcome Screen");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new ui.WelcomeScreen());
-//        frame.pack();
-//        frame.setVisible (true);
-//    }
+    public static void main (String[] args) {
+        JFrame frame = new JFrame ("Welcome Screen");
+        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add (new WelcomeScreen(new HotelController()));
+        frame.pack();
+        frame.setVisible (true);
+    }
 }
 

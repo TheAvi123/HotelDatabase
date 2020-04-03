@@ -2,6 +2,8 @@ package database;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import controller.HotelController;
 import model.tables.BranchModel;
 import model.tables.Room;
 import model.Table;
@@ -16,9 +18,11 @@ public class DatabaseConnectionHandler {
 	private static final String EXCEPTION_TAG = "[EXCEPTION]";
 	private static final String WARNING_TAG = "[WARNING]";
 
+	private HotelController controller;
 	private static Connection connection = null;
 
-	public DatabaseConnectionHandler() {
+	public DatabaseConnectionHandler(HotelController controller) {
+		this.controller = controller;
 		try {
 			// Load the Oracle JDBC driver
 			// Note that the path could change for new drivers
@@ -45,6 +49,11 @@ public class DatabaseConnectionHandler {
 		}
 	}
 
+	public void setupDatabase() {
+		DatabaseInitializer initializer = new DatabaseInitializer(controller);
+		initializer.initializeDatabase(connection);
+	}
+
 	private void rollbackConnection() {
 		try  {
 			connection.rollback();
@@ -68,7 +77,8 @@ public class DatabaseConnectionHandler {
 	//SQL INSERT COMMAND ROUTER
 	public void insertTable(Table table) {
 		try {
-			StringBuilder sqlCommand = new StringBuilder("INSERT INTO branch VALUES (");
+			StringBuilder sqlCommand = new StringBuilder("INSERT INTO ");
+			sqlCommand.append(table.getTableHelper().getTableName()).append(" VALUES (");
 			for (int i = 0; i < table.getAttributeCount() - 1; i++) {
 				sqlCommand.append("?,");
 			}
@@ -214,8 +224,8 @@ public class DatabaseConnectionHandler {
 				Room model = new Room(rs.getInt("room_number"),
 						rs.getInt("room_floor"),
 						rs.getString("room_type"),
-						rs.getInt("number_of_beds"),
-						rs.getString("hotel_address"));
+						rs.getInt("room_numberOfBeds"),
+						rs.getString("room_hotelAddress"));
 				result.add(model);
 			}
 			rs.close();

@@ -1,5 +1,6 @@
 package userInterface.showAll;
 
+import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.tables.Room;
 import userInterface.WelcomeScreen;
@@ -14,13 +15,17 @@ import javax.swing.table.TableModel;
 public class ShowAllRooms extends JPanel {
     private JLabel showRoomsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Room> rooms = dbHandler.setRooms();
-    TableModel model = new RoomTableModel(rooms);
+    ArrayList<Room> rooms;
+    TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllRooms() {
+    public ShowAllRooms(HotelController controller) {
+
+        dbHandler = new DatabaseConnectionHandler(controller);
+        rooms = dbHandler.setRooms();
+        model = new RoomTableModel(rooms);
 
         //construct components
         showRoomsLabel = new JLabel ("Showing All Rooms");
@@ -46,7 +51,7 @@ public class ShowAllRooms extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen());
+                frame.getContentPane().add (new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
