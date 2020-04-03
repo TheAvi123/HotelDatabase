@@ -2,36 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BookingHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/CustomerHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/EmployeeHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/HotelHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ManagerHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassificationHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCostHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ServiceHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/ChooseMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/WelcomeScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/chooseMenu/ChooseMenuRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/delete/DeleteRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/insert/InsertRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/RoomTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/ShowAllRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updatePrompt/UpdatePromptRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updateSelected/UpdateSelectedRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/HotelDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DatabaseConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/LoginWindowDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delegates/LoginWindowDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delegates/TransactionsHandlerDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BookingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/BookingHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/BranchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/BranchModelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/CustomerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/CustomerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/EmployeeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/EmployeeHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/HotelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/HotelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ManagerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/ManagerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassificationHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/RoomCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCostHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/RoomCostHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/RoomHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tables/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/tableHelpers/ServiceHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/ChooseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/ChooseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/TransactionsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/WelcomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/WelcomeScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/chooseMenu/ChooseMenuRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/chooseMenu/ChooseMenuRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/delete/DeleteRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/delete/DeleteRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/insert/InsertRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/insert/InsertRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/RoomTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/showAll/RoomTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/showAll/ShowAllRooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/showAll/ShowAllRooms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updatePrompt/UpdatePromptRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/updatePrompt/UpdatePromptRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/updateSelected/UpdateSelectedRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/updateSelected/UpdateSelectedRoom.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +98,11 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\avira\Google Drive\UBC Files\Year 2 Term 2\CPSC 304\Project\Milestone 4 - Implementation\HotelDatabase\src\model\tableHelpers" />
+      <recent name="C:\Users\avira\Google Drive\UBC Files\Year 2 Term 2\CPSC 304\Project\Milestone 4 - Implementation\HotelDatabase\src\model\tables" />
+      <recent name="C:\Users\avira\Google Drive\UBC Files\Year 2 Term 2\CPSC 304\Project\Milestone 4 - Implementation\HotelDatabase\src\entityHelpers" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ca.ubc.cs304.model" />
       <recent name="ca.ubc.cs304.modelInterface" />
@@ -104,7 +118,7 @@
       <module name="CPSC304-JavaDemo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,11 +127,11 @@
       </method>
     </configuration>
     <configuration name="HotelDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.HotelDatabase" />
+      <option name="MAIN_CLASS_NAME" value="controller.HotelDatabase" />
       <module name="CPSC304-JavaDemo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,7 +160,7 @@
       <workItem from="1585728567458" duration="10020000" />
       <workItem from="1585784578426" duration="22679000" />
       <workItem from="1585873378061" duration="1609000" />
-      <workItem from="1585877887967" duration="3423000" />
+      <workItem from="1585877887967" duration="8706000" />
     </task>
     <servers />
   </component>
@@ -162,14 +176,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1585777762441" />
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1585791000117">
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1585907206204">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585791000117" />
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585874053456">
+    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585907206204" />
+    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585908538814">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1585874053456" />
+    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1585908538814" />
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585878153534">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -178,22 +192,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585901914554" />
-    <state width="1493" height="436" key="GridCell.Tab.0.bottom" timestamp="1585902483505">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom" timestamp="1585909222169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585902483505" />
-    <state width="1493" height="436" key="GridCell.Tab.0.center" timestamp="1585902483504">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585909222169" />
+    <state width="1493" height="436" key="GridCell.Tab.0.center" timestamp="1585909222169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585902483504" />
-    <state width="1493" height="436" key="GridCell.Tab.0.left" timestamp="1585902483504">
+    <state width="1493" height="436" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585909222169" />
+    <state width="1493" height="436" key="GridCell.Tab.0.left" timestamp="1585909222166">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585902483504" />
-    <state width="1493" height="436" key="GridCell.Tab.0.right" timestamp="1585902483505">
+    <state width="1493" height="436" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585909222166" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right" timestamp="1585909222169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585902483505" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585909222169" />
     <state width="1493" height="413" key="GridCell.Tab.1.bottom" timestamp="1585902352544">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -222,6 +236,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="667" y="312" width="322" height="239" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.864@0.0.1536.864" timestamp="1585716984301" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1585908353021">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1585908353021" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1585785524178">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
