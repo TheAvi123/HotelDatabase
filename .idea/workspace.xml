@@ -1,45 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="" />
+    <list default="true" id="4f3bdb30-a302-459e-bf0d-eae35922e7ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="209" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Oracle - @dbhost.students.cs.ubc.ca" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1ZvIR00fPFCUnsVKu8EfcfrFBur" />
+  <component name="ProjectId" id="1a1iLAbeEfbnIhiYNhyP7YttR7C" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -47,158 +20,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/resources" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ca/ubc/cs304/ui" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ca.ubc.cs304.model" />
-      <recent name="ca.ubc.cs304.modelInterface" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\avira\Google Drive\UBC Files\Year 2 Term 2\CPSC 304\Project\Milestone 4 - Implementation\HotelDatabase\src\ca\ubc\cs304\ui" />
-      <recent name="C:\Users\avira\Google Drive\UBC Files\Year 2 Term 2\CPSC 304\Project\Milestone 4 - Implementation\HotelDatabase\src\ca\ubc\cs304\model" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.HotelDatabase">
-    <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.Bank" />
-      <module name="CPSC304-JavaDemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HotelDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.ubc.cs304.controller.HotelDatabase" />
-      <module name="CPSC304-JavaDemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ca.ubc.cs304.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.HotelDatabase" />
-        <item itemvalue="Application.Bank" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="" />
-      <created>1585713128468</created>
+      <changelist id="4f3bdb30-a302-459e-bf0d-eae35922e7ed" name="Default Changelist" comment="" />
+      <created>1585909366801</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585713128468</updated>
-      <workItem from="1585713130450" duration="366000" />
-      <workItem from="1585728567458" duration="10020000" />
-      <workItem from="1585784578426" duration="22679000" />
-      <workItem from="1585873378061" duration="1609000" />
-      <workItem from="1585877887967" duration="3770000" />
+      <updated>1585909366801</updated>
+      <workItem from="1585909371136" duration="41000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="361" y="91" key="#SQL_Dialects" timestamp="1585779837423">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="361" y="91" key="#SQL_Dialects/0.0.1536.864@0.0.1536.864" timestamp="1585779837423" />
-    <state x="361" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585777762441">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="361" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1585777762441" />
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser" timestamp="1585791000117">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585791000117" />
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585874053456">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1585874053456" />
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585878153534">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585878153534" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1585901914554">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585901914554" />
-    <state width="1493" height="436" key="GridCell.Tab.0.bottom" timestamp="1585902483505">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585902483505" />
-    <state width="1493" height="436" key="GridCell.Tab.0.center" timestamp="1585902483504">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585902483504" />
-    <state width="1493" height="436" key="GridCell.Tab.0.left" timestamp="1585902483504">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585902483504" />
-    <state width="1493" height="436" key="GridCell.Tab.0.right" timestamp="1585902483505">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="436" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585902483505" />
-    <state width="1493" height="413" key="GridCell.Tab.1.bottom" timestamp="1585902352544">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="413" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585902352544" />
-    <state width="1493" height="413" key="GridCell.Tab.1.center" timestamp="1585902352544">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="413" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1585902352544" />
-    <state width="1493" height="413" key="GridCell.Tab.1.left" timestamp="1585902352543">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="413" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1585902352543" />
-    <state width="1493" height="413" key="GridCell.Tab.1.right" timestamp="1585902352544">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="413" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1585902352544" />
-    <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1585715015695">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="221" height="457" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1585715015695" />
-    <state x="277" y="14" width="846" height="850" key="SettingsEditor" timestamp="1585785569227">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="277" y="14" width="846" height="850" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585785569227" />
-    <state x="667" y="312" width="322" height="239" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1585716984301">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="667" y="312" width="322" height="239" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.864@0.0.1536.864" timestamp="1585716984301" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1585785524178">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1585785524178" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HotelDatabase$HotelDatabase.ic" NAME="HotelDatabase Coverage Results" MODIFIED="1585797045669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ca.ubc.cs304.controller.*</FILTER>
-    </SUITE>
   </component>
 </project>
