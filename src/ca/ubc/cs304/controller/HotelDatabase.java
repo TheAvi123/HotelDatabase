@@ -11,6 +11,8 @@ import ca.ubc.cs304.ui.LoginWindow;
 import ca.ubc.cs304.ui.TerminalTransactions;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * This is the main controller class that will orchestrate everything.
  */
@@ -36,9 +38,9 @@ public class HotelDatabase implements LoginWindowDelegate, TerminalTransactionsD
 
 	/**
 	 * LoginWindowDelegate Implementation
-	 * 
-     * connects to Oracle database with supplied username and password
-     */ 
+	 *
+	 * connects to Oracle database with supplied username and password
+	 */
 	public void login(String username, String password) {
 		boolean didConnect = dbHandler.login(username, password);
 		if (didConnect) {
@@ -184,10 +186,10 @@ public class HotelDatabase implements LoginWindowDelegate, TerminalTransactionsD
 	 * Displays information about various rooms.
 	 */
 	public void showRoom() {
-		Room[] models = dbHandler.getRoomInfo();
+		ArrayList<Room> models = dbHandler.getRoomInfo();
 
-		for (int i = 0; i < models.length; i++) {
-			Room model = models[i];
+		for (int i = 0; i < models.size(); i++) {
+			Room model = models.get(i);
 			System.out.printf("%-10.10s", model.getNumber());
 			System.out.printf("%-20.20s", model.getFloor());
 			if (model.getType() == null) {

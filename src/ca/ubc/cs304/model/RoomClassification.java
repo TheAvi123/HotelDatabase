@@ -1,45 +1,46 @@
 //package ca.ubc.cs304.model;
 //
-//import ca.ubc.cs304.modelInterface.Table;
+//import ca.ubc.cs304.modelInterface.Entity;
+//import ca.ubc.cs304.modelInterface.TableHelper;
 //
 //import java.sql.PreparedStatement;
 //import java.sql.SQLException;
 //
-//public class RoomClassification extends Table {
+//public class RoomClassification extends Entity {
 //
-//	private final char[] roomType;
-//	private final char[] tierLevel;
+//    private RoomClassificationHelper helper = null;
 //
-//	public RoomClassification(char[] roomType, char[] tierLevel) {
+//    private final String roomType;
+//	private final String tierLevel;
+//
+//	public RoomClassification(String roomType, String tierLevel) {
 //		this.roomType = roomType;
 //		this.tierLevel = tierLevel;
-//	}
+//        this.helper = new RoomClassificationHelper();
+//    }
 //
-//	public char[] getRoomType() {
+//	public String getRoomType() {
 //		return roomType;
 //	}
 //
-//	public char[] getTierLevel() {
+//	public String getTierLevel() {
 //		return tierLevel;
 //	}
 //
-//	@Override
-//	public String getTableName() {
-//		return null;
+//
+//    @Override
+//    public int getAttributeCount() {
+//        return 2;
+//    }
+//
+//    @Override
+//    public TableHelper getTableHelper() {
+//        return this.helper;
 //	}
 //
-//	@Override
-//	public String[] getPrimaryAttributes() {
-//		return new String[0];
-//	}
-//
-//	@Override
-//	public void printTupleInfo(Table tuple) {
-//
-//	}
-//
-//	@Override
-//	public void setAllStatementParameters(PreparedStatement ps) throws SQLException {
-//
-//	}
+//    @Override
+//    public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
+//        ps.setString(1, this.getRoomType());
+//        ps.setString(2, this.getTierLevel());
+//    }
 //}

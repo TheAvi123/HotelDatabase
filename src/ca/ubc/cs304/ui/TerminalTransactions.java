@@ -1,15 +1,15 @@
 package ca.ubc.cs304.ui;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import ca.ubc.cs304.delegates.TerminalTransactionsDelegate;
 import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.BranchModelHelper;
 import ca.ubc.cs304.model.Room;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  * The class is only responsible for handling terminal text inputs. 
@@ -27,65 +27,72 @@ public class TerminalTransactions {
 	 * Displays simple text interface
 	 */ 
 	public void showMainMenu(TerminalTransactionsDelegate delegate) {
-		this.delegate = delegate;
-		
-	    bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-		int choice = INVALID_INPUT;
-		
-		while (choice != 5) {
-			System.out.println();
-			System.out.println("1. Insert branch");
-			System.out.println("2. Delete branch");
-			System.out.println("3. Update branch name");
-			System.out.println("4. Show branch");
-			System.out.println("5. Insert room");
-			System.out.println("6. Delete room");
-			System.out.println("7. Update room type");
-			System.out.println("8. Show room");
-			System.out.println("9. Quit");
-			System.out.print("Please choose one of the options above: ");
+//		this.delegate = delegate;
+//
+//	    bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//		int choice = INVALID_INPUT;
+//
+//		while (choice != 5) {
+//			System.out.println();
+//			System.out.println("1. Insert branch");
+//			System.out.println("2. Delete branch");
+//			System.out.println("3. Update branch name");
+//			System.out.println("4. Show branch");
+//			System.out.println("5. Insert room");
+//			System.out.println("6. Delete room");
+//			System.out.println("7. Update room type");
+//			System.out.println("8. Show room");
+//			System.out.println("9. Quit");
+//			System.out.print("Please choose one of the options above: ");
+//
+//			choice = readInteger(false);
+//
+//			System.out.println(" ");
+//
+//			if (choice != INVALID_INPUT) {
+//				switch (choice) {
+//				case 1:
+//					handleInsertOption();
+//					break;
+//				case 2:
+//					handleDeleteOption();
+//					break;
+//				case 3:
+//					handleUpdateOption();
+//					break;
+//				case 4:
+//					handleShowOption();
+//					//delegate.showBranch();
+//					break;
+//				case 5:
+//					handleInsertRoomOption();
+//					break;
+//				case 6:
+//					handleDeleteRoomOption();
+//					break;
+//				case 7:
+//					handleUpdateRoomOption();
+//					break;
+//				case 8:
+//					//delegate.showRoom();
+//					handleShowOption();
+//					break;
+//				case 9:
+//					handleQuitOption();
+//					break;
+//				default:
+//					System.out.println(WARNING_TAG + " The number that you entered was not a valid option.");
+//					break;
+//				}
+//			}
+//		}
 
-			choice = readInteger(false);
+		JFrame frame = new JFrame ("Welcome Screen");
+		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add (new WelcomeScreen());
+		frame.pack();
+		frame.setVisible (true);
 
-			System.out.println(" ");
-
-			if (choice != INVALID_INPUT) {
-				switch (choice) {
-				case 1:  
-					handleInsertOption(); 
-					break;
-				case 2:  
-					handleDeleteOption(); 
-					break;
-				case 3: 
-					handleUpdateOption();
-					break;
-				case 4:
-					handleShowOption();
-					//delegate.showBranch();
-					break;
-				case 5:
-					handleInsertRoomOption();
-					break;
-				case 6:
-					handleDeleteRoomOption();
-					break;
-				case 7:
-					handleUpdateRoomOption();
-					break;
-				case 8:
-					//delegate.showRoom();
-					handleShowOption();
-					break;
-				case 9:
-					handleQuitOption();
-					break;
-				default:
-					System.out.println(WARNING_TAG + " The number that you entered was not a valid option.");
-					break;
-				}
-			}
-		}		
 	}
 
 	private void handleInsertOption() {
@@ -169,7 +176,7 @@ public class TerminalTransactions {
 				numberOfBeds,
 				hotelAddress);
 		//delegate.insertRoom(model);
-		delegate.insertTable(model);
+//		delegate.insertTable(model);
 	}
 	
 	private void handleDeleteOption() {
