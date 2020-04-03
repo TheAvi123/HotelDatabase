@@ -1,5 +1,7 @@
 package userInterface;
 
+import controller.HotelController;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,7 +13,7 @@ public class ChooseMenu extends JPanel {
     private JButton showButton;
     private JButton backButton;
 
-    public ChooseMenu() {
+    public ChooseMenu(HotelController controller) {
         //construct components
         titleLabel = new JLabel ("What do you want to do with your selected entity?");
         insertButton = new JButton ("Insert");

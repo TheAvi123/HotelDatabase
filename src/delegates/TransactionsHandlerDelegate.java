@@ -4,6 +4,8 @@ import model.Table;
 import model.TableHelper;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * This interface uses the delegation design pattern where instead of having
  * the TerminalTransactions class try to do everything, it will only
@@ -15,10 +17,11 @@ import org.json.JSONObject;
  */
 public interface TransactionsHandlerDelegate {
 	//Transactions Functions
+	public void setupDatabase();
 	public void transactionsComplete();
 	//SQL DDL Functions
-	public void insertTable(Table table);
-	public void deleteTable(TableHelper table, JSONObject primaryKey);
-	public void updateTable(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys);
-	public void showTable(String tableName);
+	public void insertTuple(Table table);
+	public void deleteTuple(TableHelper table, JSONObject primaryKey);
+	public void updateTuples(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys);
+	public ArrayList<Table> getTuples(String tableName);
 }

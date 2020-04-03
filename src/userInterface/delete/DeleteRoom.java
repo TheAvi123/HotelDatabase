@@ -1,5 +1,9 @@
 package userInterface.delete;
 
+import controller.HotelController;
+import model.tableHelpers.RoomHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.WelcomeScreen;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +19,7 @@ public class DeleteRoom extends JPanel {
     private JPasswordField roomFloorField;
     private JButton submitButton;
 
-    public DeleteRoom() {
+    public DeleteRoom(HotelController controller) {
         //construct components
         whichRoomLabel = new JLabel ("Which ROOM to delete?");
         cancelButton = new JButton ("Cancel");
@@ -61,6 +65,16 @@ public class DeleteRoom extends JPanel {
                 // saving the primary keys needed to find the particular room to update
                 int roomNumberToDelete = Integer.parseInt(roomNumberField.getText());
                 int roomFloorToDelete = Integer.parseInt(roomFloorField.getText());
+                RoomHelper helper = new RoomHelper();
+                JSONObject primaryKey = new JSONObject();
+                try {
+                    primaryKey.put("room_number", roomNumberToDelete);
+                    primaryKey.put("room_floor", roomFloorToDelete);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.deleteTuple(helper, primaryKey);
             }
         });
 
@@ -70,7 +84,7 @@ public class DeleteRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen());
+                frame.getContentPane().add (new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

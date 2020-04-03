@@ -11,19 +11,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HotelDatabase implements LoginWindowDelegate, TransactionsHandlerDelegate {
+public class HotelController implements LoginWindowDelegate, TransactionsHandlerDelegate {
 
 	private DatabaseConnectionHandler dbHandler = null;
 	private LoginWindow loginWindow = null;
 
-	public HotelDatabase() {
-		dbHandler = new DatabaseConnectionHandler();
+	public HotelController() {
+		dbHandler = new DatabaseConnectionHandler(this);
 	}
 
 	// Entry Point To The Program
 	public static void main(String args[]) {
-		HotelDatabase hotelDatabase = new HotelDatabase();
-		hotelDatabase.startProgram();
+		HotelController hotelController = new HotelController();
+		hotelController.startProgram();
 	}
 
 	private void startProgram() {
@@ -36,8 +36,9 @@ public class HotelDatabase implements LoginWindowDelegate, TransactionsHandlerDe
 		if (didConnect) {
 			// Once connected, remove login window and start text transaction flow
 			loginWindow.dispose();
-			TransactionsHandler transactionsHandler = new TransactionsHandler();
-			transactionsHandler.showMainMenu(this);
+			TransactionsHandler transactionsHandler = new TransactionsHandler(this);
+			this.setupDatabase();
+			transactionsHandler.showMainMenu();
 		} else {
 			loginWindow.handleLoginFailed();
 			if (loginWindow.hasReachedMaxLoginAttempts()) {
@@ -48,6 +49,10 @@ public class HotelDatabase implements LoginWindowDelegate, TransactionsHandlerDe
 		}
 	}
 
+	public void setupDatabase() {
+		dbHandler.setupDatabase();
+	}
+
 	public void transactionsComplete() {
 		dbHandler.close();
 		dbHandler = null;
@@ -56,23 +61,19 @@ public class HotelDatabase implements LoginWindowDelegate, TransactionsHandlerDe
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void insertTable(Table table) {
+	public void insertTuple(Table table) {
 		dbHandler.insertTable(table);
 	}
 
-	public void deleteTable(TableHelper tableHelper, JSONObject primaryKey) {
+	public void deleteTuple(TableHelper tableHelper, JSONObject primaryKey) {
 		dbHandler.deleteTable(tableHelper, primaryKey);
 	}
 
-	public void updateTable(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys) {
+	public void updateTuples(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys) {
 		dbHandler.updateTable(tableHelper, setKeys, whereKeys);
 	}
 
-	public void showTable(String tableName) {
-		ArrayList<Table> tuples = dbHandler.getTableTuples(tableName);
-		for (int i = 0; i < tuples.size(); i++) {
-			Table tuple = tuples.get(i);
-			//tuple.getTableHelper().printTupleInfo(tuple);
-		}
+	public ArrayList<Table> getTuples(String tableName) {
+		return dbHandler.getTableTuples(tableName);
 	}
 }

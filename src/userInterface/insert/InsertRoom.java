@@ -1,5 +1,6 @@
 package userInterface.insert;
 
+import controller.HotelController;
 import model.tables.Room;
 import userInterface.WelcomeScreen;
 
@@ -23,7 +24,7 @@ public class InsertRoom extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public InsertRoom() {
+    public InsertRoom(HotelController controller) {
         //construct preComponents
         String[] needsCleaningFieldItems = {"True", "False"};
 
@@ -94,7 +95,7 @@ public class InsertRoom extends JPanel {
                         roomTypeField.getText(),
                         Integer.parseInt(numberOfBedsField.getText()),
                         hotelAddressField.getText());
-
+                controller.insertTuple(roomToInsert);
             }
         });
 
@@ -104,7 +105,7 @@ public class InsertRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen());
+                frame.getContentPane().add (new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

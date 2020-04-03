@@ -1,5 +1,6 @@
 package userInterface.chooseMenu;
 
+import controller.HotelController;
 import userInterface.WelcomeScreen;
 import userInterface.delete.DeleteRoom;
 import userInterface.insert.InsertRoom;
@@ -19,7 +20,7 @@ public class ChooseMenuRoom extends JPanel {
     private JButton showButton;
     private JButton backButton;
 
-    public ChooseMenuRoom() {
+    public ChooseMenuRoom(HotelController controller) {
         //construct components
         titleLabel = new JLabel ("What do you want to do with ROOM?");
         insertButton = new JButton ("Insert Room");
@@ -60,7 +61,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Insert Room");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertRoom());
+                frame.getContentPane().add (new InsertRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -72,7 +73,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Update Prompt");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptRoom());
+                frame.getContentPane().add (new UpdatePromptRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -84,7 +85,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Delete Room");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteRoom());
+                frame.getContentPane().add (new DeleteRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -96,7 +97,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Show all rooms");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllRooms());
+                frame.getContentPane().add (new ShowAllRooms(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -108,7 +109,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen());
+                frame.getContentPane().add (new WelcomeScreen(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
