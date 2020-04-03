@@ -16,9 +16,9 @@ public class DatabaseConnectionHandler {
 	private static final String ORACLE_URL = "jdbc:oracle:thin:@localhost:1522:stu";
 	private static final String EXCEPTION_TAG = "[EXCEPTION]";
 	private static final String WARNING_TAG = "[WARNING]";
-	
-	private Connection connection = null;
-	
+
+	private static Connection connection = null;
+
 	public DatabaseConnectionHandler() {
 		try {
 			// Load the Oracle JDBC driver
@@ -28,7 +28,7 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 	}
-	
+
 	public void close() {
 		try {
 			if (connection != null) {
@@ -163,14 +163,14 @@ public class DatabaseConnectionHandler {
 		try {
 			PreparedStatement ps = connection.prepareStatement("DELETE FROM branch WHERE branch_id = ?");
 			ps.setInt(1, branchId);
-			
+
 			int rowCount = ps.executeUpdate();
 			if (rowCount == 0) {
 				System.out.println(WARNING_TAG + " Branch " + branchId + " does not exist!");
 			}
-			
+
 			connection.commit();
-	
+
 			ps.close();
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
@@ -314,10 +314,10 @@ public class DatabaseConnectionHandler {
 		}
 		return null;
 	}
-	
+
 	public BranchModel[] getBranchInfo() {
 		ArrayList<BranchModel> result = new ArrayList<BranchModel>();
-		
+
 		try {
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM branch");
@@ -337,7 +337,7 @@ public class DatabaseConnectionHandler {
 		return result.toArray(new BranchModel[result.size()]);
 	}
 
-	public Room[] getRoomInfo() {
+	public static ArrayList<Room> getRoomInfo() {
 		ArrayList<Room> result = new ArrayList<Room>();
 		try {
 			Statement stmt = connection.createStatement();
@@ -355,6 +355,27 @@ public class DatabaseConnectionHandler {
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
-		return result.toArray(new Room[result.size()]);
+		return result;
+	}
+
+	public ArrayList<Room> setRooms() {
+		ArrayList<Room> result = new ArrayList<Room>();
+		try {
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM room");
+			while (rs.next()) {
+				Room model = new Room(rs.getInt("room_number"),
+						rs.getInt("room_floor"),
+						rs.getString("room_type"),
+						rs.getInt("number_of_beds"),
+						rs.getString("hotel_address"));
+				result.add(model);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return result;
 	}
 }
