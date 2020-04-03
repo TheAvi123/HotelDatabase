@@ -1,15 +1,16 @@
 package userInterface;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 import delegates.TransactionsHandlerDelegate;
-import model.tables.BranchModel;
 import model.tableHelpers.BranchModelHelper;
+import model.tables.BranchModel;
 import model.tables.Room;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.IOException;
 
 /**
  * The class is only responsible for handling terminal text inputs. 
