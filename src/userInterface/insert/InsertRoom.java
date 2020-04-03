@@ -2,7 +2,7 @@ package userInterface.insert;
 
 import controller.HotelController;
 import model.tables.Room;
-import userInterface.WelcomeScreen;
+import userInterface.chooseMenu.ChooseMenuRoom;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,8 +25,6 @@ public class InsertRoom extends JPanel {
     private JButton submitButton;
 
     public InsertRoom(HotelController controller) {
-        //construct preComponents
-        String[] needsCleaningFieldItems = {"True", "False"};
 
         //construct components
         titleLabel = new JLabel ("Insert new ROOM");
@@ -40,7 +38,7 @@ public class InsertRoom extends JPanel {
         numberOfBedsLabel = new JLabel ("No. of Beds");
         numberOfBedsField = new JTextField (1);
         hotelAddressLabel = new JLabel ("Hotel Address");
-        hotelAddressField = new JTextField (5);
+        hotelAddressField = new JTextField (1);
         submitButton = new JButton ("Submit");
 
         //set components properties
@@ -83,7 +81,7 @@ public class InsertRoom extends JPanel {
         numberOfBedsLabel.setBounds (100, 220, 100, 25);
         numberOfBedsField.setBounds (200, 220, 100, 25);
         hotelAddressLabel.setBounds (100, 255, 100, 25);
-        hotelAddressLabel.setBounds (200, 255, 100, 25);
+        hotelAddressField.setBounds (200, 255, 100, 25);
         submitButton.setBounds (100, 330, 100, 25);
 
         // on pressing the submitButton
@@ -91,7 +89,7 @@ public class InsertRoom extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Room roomToInsert = new Room(Integer.parseInt(roomNumberField.getText()),
-                        Integer.parseInt(roomNumberField.getText()),
+                        Integer.parseInt(roomFloorField.getText()),
                         roomTypeField.getText(),
                         Integer.parseInt(numberOfBedsField.getText()),
                         hotelAddressField.getText());
@@ -105,17 +103,17 @@ public class InsertRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
+                frame.getContentPane().add (new ChooseMenuRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
     }
-//
+
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("Insert Room");
 //        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new InsertRoom());
+//        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);
 //    }

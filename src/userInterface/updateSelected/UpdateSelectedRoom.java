@@ -1,7 +1,7 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
-import userInterface.WelcomeScreen;
+import userInterface.chooseMenu.ChooseMenuRoom;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,13 +14,13 @@ public class UpdateSelectedRoom extends JPanel {
     private JLabel roomNumberLabel;
     private JTextField roomNumberField;
     private JLabel roomFloorLabel;
-    private JPasswordField roomFloorField;
+    private JTextField roomFloorField;
     private JLabel roomTypeLabel;
     private JTextField roomTypeField;
     private JLabel numberOfBedsLabel;
-    private JPasswordField numberOfBedsField;
+    private JTextField numberOfBedsField;
     private JLabel hotelAddressLabel;
-    private JPasswordField hotelAddressField;
+    private JTextField hotelAddressField;
     private JButton submitButton;
 
     public UpdateSelectedRoom(HotelController controller) {
@@ -33,13 +33,13 @@ public class UpdateSelectedRoom extends JPanel {
         roomNumberLabel = new JLabel ("Room Number");
         roomNumberField = new JTextField (1);
         roomFloorLabel = new JLabel ("Room Floor");
-        roomFloorField = new JPasswordField (1);
+        roomFloorField = new JTextField (1);
         roomTypeLabel = new JLabel ("Room Type");
         roomTypeField = new JTextField (1);
         numberOfBedsLabel = new JLabel ("No. of Beds");
-        numberOfBedsField = new JPasswordField (1);
+        numberOfBedsField = new JTextField (1);
         hotelAddressLabel = new JLabel ("Hotel Address");
-        hotelAddressField = new JPasswordField (5);
+        hotelAddressField = new JTextField (1);
         submitButton = new JButton ("Submit");
 
         //set components properties
@@ -104,12 +104,13 @@ public class UpdateSelectedRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new WelcomeScreen(controller));
+                frame.getContentPane().add(new ChooseMenuRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
     }
+
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("Update Selected Room");
 //        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);

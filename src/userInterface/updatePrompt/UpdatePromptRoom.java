@@ -1,7 +1,7 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
-import userInterface.WelcomeScreen;
+import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.updateSelected.UpdateSelectedRoom;
 
 import java.awt.*;
@@ -80,13 +80,12 @@ public class UpdatePromptRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
+                frame.getContentPane().add (new ChooseMenuRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
     }
-
 
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("Update Prompt");

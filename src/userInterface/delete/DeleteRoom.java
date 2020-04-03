@@ -4,7 +4,8 @@ import controller.HotelController;
 import model.tableHelpers.RoomHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
-import userInterface.WelcomeScreen;
+import userInterface.chooseMenu.ChooseMenuRoom;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +17,7 @@ public class DeleteRoom extends JPanel {
     private JLabel roomNumberLabel;
     private JTextField roomNumberField;
     private JLabel roomFloorLabel;
-    private JPasswordField roomFloorField;
+    private JTextField roomFloorField;
     private JButton submitButton;
 
     public DeleteRoom(HotelController controller) {
@@ -26,7 +27,7 @@ public class DeleteRoom extends JPanel {
         roomNumberLabel = new JLabel ("Room Number");
         roomNumberField = new JTextField (1);
         roomFloorLabel = new JLabel ("Room Floor");
-        roomFloorField = new JPasswordField (1);
+        roomFloorField = new JTextField (1);
         submitButton = new JButton ("Submit");
 
         //set components properties
@@ -84,14 +85,13 @@ public class DeleteRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
+                frame.getContentPane().add (new ChooseMenuRoom(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
     }
 
-//
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("Delete Room");
 //        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
