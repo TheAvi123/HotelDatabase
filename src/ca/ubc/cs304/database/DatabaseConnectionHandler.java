@@ -6,7 +6,6 @@ import ca.ubc.cs304.model.BranchModel;
 import ca.ubc.cs304.model.Room;
 import ca.ubc.cs304.modelInterface.Entity;
 import ca.ubc.cs304.modelInterface.TableHelper;
-import javafx.embed.swt.SWTFXUtils;
 import org.json.JSONObject;
 
 /**

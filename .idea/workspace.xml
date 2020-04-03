@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +112,7 @@
       <updated>1585713128468</updated>
       <workItem from="1585713130450" duration="366000" />
       <workItem from="1585728567458" duration="10020000" />
-      <workItem from="1585784578426" duration="16193000" />
+      <workItem from="1585784578426" duration="21705000" />
     </task>
     <servers />
   </component>
@@ -153,22 +144,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585785552702" />
-    <state width="1493" height="57" key="GridCell.Tab.0.bottom" timestamp="1585801089707">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom" timestamp="1585864896720">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585801089707" />
-    <state width="1493" height="57" key="GridCell.Tab.0.center" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585864896720" />
+    <state width="1493" height="436" key="GridCell.Tab.0.center" timestamp="1585864896720">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
-    <state width="1493" height="57" key="GridCell.Tab.0.left" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585864896720" />
+    <state width="1493" height="436" key="GridCell.Tab.0.left" timestamp="1585864896720">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
-    <state width="1493" height="57" key="GridCell.Tab.0.right" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585864896720" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right" timestamp="1585864896720">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585864896720" />
     <state width="1493" height="414" key="GridCell.Tab.1.bottom" timestamp="1585797737566">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -207,7 +198,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
-          <line>182</line>
+          <line>181</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
