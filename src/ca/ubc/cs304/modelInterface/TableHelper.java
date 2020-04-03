@@ -9,6 +9,5 @@ public abstract class TableHelper {
 
     public abstract String getTableName();
     public abstract String[] getPrimaryAttributes();
-    public abstract void printTupleInfo(Entity tuple);
     public abstract void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject primaryKey) throws SQLException;
 }

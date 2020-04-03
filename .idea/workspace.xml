@@ -2,16 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="273f09f4-0151-4618-a37c-b047541b85c2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CPSC304-JavaDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CPSC304-JavaDemo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/controller/HotelDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/LoginWindowDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/LoginWindowDelegate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/delegates/TerminalTransactionsDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Assists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Booking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/BranchModelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Calls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Chef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Cleaned_By.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomClassification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomCost.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/RoomHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/modelInterface/TableHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/SecondaryGuest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/model/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/model/ValetDriver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/LoginWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ca/ubc/cs304/ui/TerminalTransactions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +91,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/resources" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/java-json.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -121,7 +149,8 @@
       <updated>1585713128468</updated>
       <workItem from="1585713130450" duration="366000" />
       <workItem from="1585728567458" duration="10020000" />
-      <workItem from="1585784578426" duration="16193000" />
+      <workItem from="1585784578426" duration="22679000" />
+      <workItem from="1585873378061" duration="1301000" />
     </task>
     <servers />
   </component>
@@ -141,10 +170,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="574" y="133" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1585791000117" />
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585799082146">
+    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585874053456">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1585799082146" />
+    <state x="342" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1585874053456" />
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585713615668">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -153,22 +182,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585785552702" />
-    <state width="1493" height="57" key="GridCell.Tab.0.bottom" timestamp="1585801089707">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom" timestamp="1585874861319">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585801089707" />
-    <state width="1493" height="57" key="GridCell.Tab.0.center" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585874861319" />
+    <state width="1493" height="436" key="GridCell.Tab.0.center" timestamp="1585874861318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
-    <state width="1493" height="57" key="GridCell.Tab.0.left" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585874861318" />
+    <state width="1493" height="436" key="GridCell.Tab.0.left" timestamp="1585874861318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
-    <state width="1493" height="57" key="GridCell.Tab.0.right" timestamp="1585801089706">
+    <state width="1493" height="436" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585874861318" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right" timestamp="1585874861318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="57" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585801089706" />
+    <state width="1493" height="436" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585874861318" />
     <state width="1493" height="414" key="GridCell.Tab.1.bottom" timestamp="1585797737566">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -207,7 +236,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ca/ubc/cs304/database/DatabaseConnectionHandler.java</url>
-          <line>182</line>
+          <line>181</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>

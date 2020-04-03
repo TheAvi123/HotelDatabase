@@ -86,7 +86,7 @@ public class HotelDatabase implements LoginWindowDelegate, TerminalTransactionsD
 		Entity[] tuples = dbHandler.getTableInfo(tableName);
 		for (int i = 0; i < tuples.length; i++) {
 			Entity tuple = tuples[i];
-			tuple.getTableHelper().printTupleInfo(tuple);
+			//tuple.getTableHelper().printTupleInfo(tuple);
 		}
 	}
 
@@ -188,17 +188,12 @@ public class HotelDatabase implements LoginWindowDelegate, TerminalTransactionsD
 
 		for (int i = 0; i < models.length; i++) {
 			Room model = models[i];
-			System.out.printf("%-10.10s", model.getRoomNumber());
-			System.out.printf("%-20.20s", model.getRoomFloor());
-			if (model.getRoomType() == null) {
+			System.out.printf("%-10.10s", model.getNumber());
+			System.out.printf("%-20.20s", model.getFloor());
+			if (model.getType() == null) {
 				System.out.printf("%-20.20s", " ");
 			} else {
-				System.out.printf("%-20.20s", model.getRoomType());
-			}
-			if (model.getNeedsCleaning() == null) {
-				System.out.printf("%-15.15s", " ");
-			} else {
-				System.out.printf("%-15.15s", model.getNeedsCleaning());
+				System.out.printf("%-20.20s", model.getType());
 			}
 			System.out.printf("%-15.15s", model.getNumberOfBeds());
 			System.out.printf("%-20.20s", model.getHotelAddress());
