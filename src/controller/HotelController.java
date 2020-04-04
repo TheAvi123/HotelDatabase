@@ -5,6 +5,7 @@ import delegates.LoginWindowDelegate;
 import delegates.TransactionsHandlerDelegate;
 import model.Table;
 import model.TableHelper;
+import tools.Condition;
 import userInterface.LoginWindow;
 import userInterface.TransactionsHandler;
 import org.json.JSONObject;
@@ -75,5 +76,11 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 
 	public ArrayList<Table> getTuples(String tableName) {
 		return dbHandler.getTableTuples(tableName);
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public void selectionQuery(TableHelper helper, Condition condition) {
+		dbHandler.selectionQuery(helper, condition);
 	}
 }

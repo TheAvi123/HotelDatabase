@@ -15,23 +15,22 @@ public class RoomCostHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[]{"roomCost_roomNumber", "roomCost_roomFloor"};
+	public String[] getAttributes() {
+		return new String[] {"roomNumber", "roomFloor", "roomCost"};
 	}
-
 
 	@Override
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "roomCost_roomNumber":
-					ps.setInt(index, keyValuePairs.getInt("roomCost_roomNumber"));
+				case "roomNumber":
+					ps.setInt(index, keyValuePairs.getInt("roomNumber"));
 					break;
-				case "roomCost_roomFloor":
-					ps.setInt(index, keyValuePairs.getInt("roomCost_roomFloor"));
+				case "roomFloor":
+					ps.setInt(index, keyValuePairs.getInt("roomFloor"));
 					break;
-				case "roomCost_cost":
-					ps.setDouble(index, keyValuePairs.getDouble("roomCost_cost"));
+				case "roomCost":
+					ps.setDouble(index, keyValuePairs.getDouble("roomCost"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

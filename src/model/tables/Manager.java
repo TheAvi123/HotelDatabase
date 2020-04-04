@@ -11,13 +11,13 @@ public class Manager extends Table {
 
     private ManagerHelper helper;
 
-    private final String staffID;
-	private final String name;
+    private final String managerStaffID;
+	private final String managerName;
 	private final String hotelAddress;
 
-	public Manager(String staffID, String name, String hotelAddress) {
-		this.staffID = staffID;
-		this.name = name;
+	public Manager(String managerStaffID, String managerName, String hotelAddress) {
+		this.managerStaffID = managerStaffID;
+		this.managerName = managerName;
 		this.hotelAddress = hotelAddress;
 
         this.helper = new ManagerHelper();
@@ -25,12 +25,12 @@ public class Manager extends Table {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public String getStaffID() {
-		return staffID;
+    public String getManagerStaffID() {
+		return managerStaffID;
 	}
 
-	public String getName() {
-		return name;
+	public String getManagerName() {
+		return managerName;
 	}
 
 	public String getHotelAddress() {
@@ -51,8 +51,8 @@ public class Manager extends Table {
 
     @Override
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-        ps.setString(1, this.getStaffID());
-        ps.setString(2, this.getName());
+        ps.setString(1, this.getManagerStaffID());
+        ps.setString(2, this.getManagerName());
         ps.setString(3, this.getHotelAddress());
     }
 }

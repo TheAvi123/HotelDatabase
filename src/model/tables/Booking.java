@@ -12,15 +12,15 @@ public class Booking extends Table {
 
 	private BookingHelper helper;
 
-	private final String id;
+	private final String bookingID;
 	private final Date startDate;
 	private final Date endDate;
 	private final int roomFloor;
 	private final int roomNumber;
 	private final String customerID;
 
-	public Booking(String id, Date startDate, Date endDate, int roomFloor, int roomNumber, String customerID) {
-		this.id = id;
+	public Booking(String bookingID, Date startDate, Date endDate, int roomFloor, int roomNumber, String customerID) {
+		this.bookingID = bookingID;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.roomFloor = roomFloor;
@@ -32,8 +32,8 @@ public class Booking extends Table {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public String getId() {
-		return id;
+	public String getBookingID() {
+		return bookingID;
 	}
 
 	public Date getStartDate() {
@@ -70,7 +70,7 @@ public class Booking extends Table {
 
 	@Override
 	public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-		ps.setString(1, this.getId());
+		ps.setString(1, this.getBookingID());
 		ps.setDate(2, this.getStartDate());
 		ps.setDate(3, this.getEndDate());
 		ps.setInt(4, this.getRoomFloor());

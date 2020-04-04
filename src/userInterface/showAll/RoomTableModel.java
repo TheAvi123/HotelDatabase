@@ -31,11 +31,11 @@ public class RoomTableModel extends AbstractTableModel {
         Room room = (Room) rooms.get(row);
         switch(col) {
             case 0:
-                return room.getNumber();
+                return room.getRoomNumber();
             case 1:
-                return room.getFloor();
+                return room.getRoomFloor();
             case 2:
-                return room.getType();
+                return room.getRoomType();
             case 3:
                 return room.getNumberOfBeds();
             case 4:

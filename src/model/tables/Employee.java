@@ -11,16 +11,16 @@ public class Employee extends Table {
 
     private EmployeeHelper helper;
 
-    private final String staffID;
-    private final String name;
+    private final String employeeStaffID;
+    private final String employeeName;
     private final int payrollAccountNumber;
     private final double salary;
     private final String workShift;
     private final String managerStaffID;
 
-    public Employee(String staffID, String name, int payrollAccountNumber, double salary, String workShift, String managerStaffID) {
-        this.staffID = staffID;
-        this.name = name;
+    public Employee(String employeeStaffID, String employeeName, int payrollAccountNumber, double salary, String workShift, String managerStaffID) {
+        this.employeeStaffID = employeeStaffID;
+        this.employeeName = employeeName;
         this.payrollAccountNumber = payrollAccountNumber;
         this.salary = salary;
         this.workShift = workShift;
@@ -31,12 +31,12 @@ public class Employee extends Table {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public String getStaffID() {
-        return staffID;
+    public String getEmployeeStaffID() {
+        return employeeStaffID;
     }
 
-    public String getName() {
-        return name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
     public int getPayrollAccountNumber() {
@@ -69,8 +69,8 @@ public class Employee extends Table {
 
     @Override
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-        ps.setString(1, this.getStaffID());
-        ps.setString(2, this.getName());
+        ps.setString(1, this.getEmployeeStaffID());
+        ps.setString(2, this.getEmployeeName());
         ps.setInt(3, this.getPayrollAccountNumber());
         ps.setDouble(4, this.getSalary());
         ps.setString(5, this.getWorkShift());
