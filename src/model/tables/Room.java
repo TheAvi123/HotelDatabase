@@ -11,16 +11,16 @@ public class Room extends Table {
 
 	private RoomHelper helper;
 
-	private final int number;
-	private final int floor;
-	private final String type;
+	private final int roomNumber;
+	private final int roomFloor;
+	private final String roomType;
 	private final int numberOfBeds;
 	private final String hotelAddress;
 
-	public Room(int number, int floor, String type, int numberOfBeds, String hotelAddress) {
-		this.number = number;
-		this.floor = floor;
-		this.type = type;
+	public Room(int roomNumber, int roomFloor, String roomType, int numberOfBeds, String hotelAddress) {
+		this.roomNumber = roomNumber;
+		this.roomFloor = roomFloor;
+		this.roomType = roomType;
 		this.numberOfBeds = numberOfBeds;
 		this.hotelAddress = hotelAddress;
 
@@ -29,16 +29,16 @@ public class Room extends Table {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public int getNumber() {
-		return number;
+	public int getRoomNumber() {
+		return roomNumber;
 	}
 
-	public int getFloor() {
-		return floor;
+	public int getRoomFloor() {
+		return roomFloor;
 	}
 
-	public String getType() {
-		return type;
+	public String getRoomType() {
+		return roomType;
 	}
 
 	public int getNumberOfBeds() {
@@ -63,9 +63,9 @@ public class Room extends Table {
 
 	@Override
 	public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-		ps.setInt(1, this.getNumber());
-		ps.setInt(2, this.getFloor());
-		ps.setString(3, this.getType());
+		ps.setInt(1, this.getRoomNumber());
+		ps.setInt(2, this.getRoomFloor());
+		ps.setString(3, this.getRoomType());
 		if (this.getNumberOfBeds() == 0) {
 			ps.setNull(4, java.sql.Types.INTEGER);
 		} else {

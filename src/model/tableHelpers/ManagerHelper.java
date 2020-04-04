@@ -15,8 +15,8 @@ public class ManagerHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[]{"manager_staffID"};
+	public String[] getAttributes() {
+		return new String[]{"managerStaffID", "managerName", "hotelAddress"};
 	}
 
 
@@ -24,14 +24,14 @@ public class ManagerHelper extends TableHelper {
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "manager_staffID":
-					ps.setString(index, keyValuePairs.getString("manager_staffID"));
+				case "managerStaffID":
+					ps.setString(index, keyValuePairs.getString("managerStaffID"));
 					break;
-				case "manager_name":
-					ps.setString(index, keyValuePairs.getString("manager_name"));
+				case "managerName":
+					ps.setString(index, keyValuePairs.getString("managerName"));
 					break;
-				case "manager_hotelAddress":
-					ps.setString(index, keyValuePairs.getString("manager_hotelAddress"));
+				case "hotelAddress":
+					ps.setString(index, keyValuePairs.getString("hotelAddress"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

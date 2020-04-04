@@ -15,8 +15,8 @@ public class CustomerHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[]{"customer_id"};
+	public String[] getAttributes() {
+		return new String[] {"customerID", "customerName", "customerAge", "paymentInformation", "phoneNumber"};
 	}
 
 
@@ -24,20 +24,20 @@ public class CustomerHelper extends TableHelper {
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "customer_id":
-					ps.setString(index, keyValuePairs.getString("customer_id"));
+				case "customerID":
+					ps.setString(index, keyValuePairs.getString("customerID"));
 					break;
-				case "customer_name":
-					ps.setString(index, keyValuePairs.getString("customer_name"));
+				case "customerName":
+					ps.setString(index, keyValuePairs.getString("customerName"));
 					break;
-				case "customer_age":
-					ps.setInt(index, keyValuePairs.getInt("customer_age"));
+				case "customerAge":
+					ps.setInt(index, keyValuePairs.getInt("customerAge"));
 					break;
-				case "customer_paymentInformation":
-					ps.setString(index, keyValuePairs.getString("customer_paymentInformation"));
+				case "paymentInformation":
+					ps.setString(index, keyValuePairs.getString("paymentInformation"));
 					break;
-				case "customer_phoneNumber":
-					ps.setString(index, keyValuePairs.getString("customer_phoneNumber"));
+				case "phoneNumber":
+					ps.setString(index, keyValuePairs.getString("phoneNumber"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

@@ -1,14 +1,18 @@
 package database;
 
+import java.awt.peer.LabelPeer;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import controller.HotelController;
-import model.tables.BranchModel;
 import model.tables.Room;
 import model.Table;
 import model.TableHelper;
+import model.tables.RoomCost;
+import org.json.JSONException;
 import org.json.JSONObject;
+import tools.Condition;
 
 /**
  * This class handles all database related transactions
@@ -165,13 +169,13 @@ public class DatabaseConnectionHandler {
 	}
 
 	//SQL SHOW COMMAND ROUTER
-	public ArrayList<Table> getTableTuples(String tableName) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
+	public ArrayList<JSONObject> getTableTuples(String tableName) {
+		ArrayList<JSONObject> tuples = new ArrayList<>();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
 			while(resultSet.next()) {
-				Table tuple = createEntityTuple(tableName, resultSet);
+				JSONObject tuple = createEntityTuple(tableName, resultSet);
 				tuples.add(tuple);
 			}
 			resultSet.close();
@@ -182,30 +186,100 @@ public class DatabaseConnectionHandler {
 		return tuples;
 	}
 
-	//HELPER METHODS
-	private Table createEntityTuple(String tableName, ResultSet rs) {
-		Table tuple = null;
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public ArrayList<JSONObject> selectionQuery(TableHelper helper, Condition condition) {
+		ArrayList<JSONObject> tuples = new ArrayList<>();
+		try {
+			StringBuilder sqlCommand = new StringBuilder("SELECT * FROM " + helper.getTableName() + " WHERE ");
+			sqlCommand.append(condition.getAttributeName()).append(" ");
+			sqlCommand.append(condition.getComparator()).append(" ");
+			sqlCommand.append(condition.getValue());
+			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				JSONObject tuple = createEntityTuple("roomCost", resultSet);
+				tuples.add(tuple);
+			}
+			resultSet.close();
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return tuples;
+	}
+
+	public ArrayList<JSONObject> naturalJoinQuery(TableHelper helper1, TableHelper helper2) {
+		ArrayList<JSONObject> table1Tuples = this.getTableTuples(helper1.getTableName());
+		ArrayList<JSONObject> table2Tuples = this.getTableTuples(helper2.getTableName());
+		ArrayList<String> commonAttributes = this.getCommonAttributes(helper1, helper2);
+		ArrayList<JSONObject> joinedTuples = new ArrayList<>();
+		for (JSONObject tuple1 : table1Tuples) {
+			for (JSONObject tuple2 : table2Tuples) {
+				for (String commonAttribute : commonAttributes) {
+					try {
+						if (tuple1.get(commonAttribute) == tuple2.get(commonAttribute)) {
+							JSONObject combinedTuple = new JSONObject();
+							Iterator<String> keys = tuple1.keys();
+							while (keys.hasNext()) {
+								String key = keys.next();
+								combinedTuple.put(key, tuple1.get(key));
+							}
+							keys = tuple2.keys();
+							while (keys.hasNext()) {
+								String key = keys.next();
+								if (!commonAttribute.contains(key)) {
+									combinedTuple.put(key, tuple2.get(key));
+								}
+							}
+							joinedTuples.add(combinedTuple);
+						}
+					} catch (JSONException e) {
+						System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+					}
+				}
+			}
+		}
+		return joinedTuples;
+	}
+
+	public ArrayList<String> getCommonAttributes(TableHelper helper1, TableHelper helper2) {
+		ArrayList<String> commonAttributes = new ArrayList<>();
+		for (String attribute1 : helper1.getAttributes()) {
+			for (String attribute2 : helper2.getAttributes()) {
+				if (attribute1.equals(attribute2)) {
+					commonAttributes.add(attribute1);
+				}
+			}
+		}
+		return commonAttributes;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private JSONObject createEntityTuple(String tableName, ResultSet rs) {
+		JSONObject tuple = new JSONObject();
 		try {
 			switch (tableName) {
-				case "branch":
-					tuple = new BranchModel(rs.getString("branch_addr"),
-							rs.getString("branch_city"),
-							rs.getInt("branch_id"),
-							rs.getString("branch_name"),
-							rs.getInt("branch_phone"));
-					break;
 				case "room":
-					tuple = new Room(rs.getInt("room_number"),
-							rs.getInt("room_floor"),
-							rs.getString("room_type"),
-							rs.getInt("room_numberOfBeds"),
-							rs.getString("room_hotelAddress"));
+					tuple.put("roomNumber", rs.getInt("roomNumber"));
+					tuple.put("roomFloor", rs.getInt("roomFloor"));
+					tuple.put("roomType", rs.getString("roomType"));
+					tuple.put("numberOfBeds", rs.getInt("numberOfBeds"));
+					tuple.put("hotelAddress", rs.getString("hotelAddress"));
+					break;
+				case "roomCost":
+					tuple.put("roomNumber", rs.getInt("roomNumber"));
+					tuple.put("roomFloor",rs.getInt("roomFloor"));
+					tuple.put("roomCost", rs.getDouble("roomCost"));
 					break;
 				default:
 					System.out.println("Invalid Table Name. Please try again.");
 					System.out.println("");
 					throw new Error("Invalid Table Name");
 			}
+		} catch (JSONException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		} catch (SQLException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}

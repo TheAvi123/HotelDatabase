@@ -17,28 +17,28 @@ public class RoomHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[] {"room_number", "room_floor"};
+	public String[] getAttributes() {
+		return new String[] {"roomNumber", "roomFloor", "roomType", "numberOfBeds", "hotelAddress"};
 	}
 
 	@Override
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "room_number":
-					ps.setInt(index, keyValuePairs.getInt("room_number"));
+				case "roomNumber":
+					ps.setInt(index, keyValuePairs.getInt("roomNumber"));
 					break;
-				case "room_floor":
-					ps.setInt(index, keyValuePairs.getInt("room_floor"));
+				case "roomFloor":
+					ps.setInt(index, keyValuePairs.getInt("roomFloor"));
 					break;
-				case "room_type":
-					ps.setString(index, keyValuePairs.getString("room_type"));
+				case "roomType":
+					ps.setString(index, keyValuePairs.getString("roomType"));
 					break;
-				case "room_numberOfBeds":
-					ps.setInt(index, keyValuePairs.getInt("room_numberOfBeds"));
+				case "numberOfBeds":
+					ps.setInt(index, keyValuePairs.getInt("numberOfBeds"));
 					break;
-				case "room_hotelAddress":
-					ps.setString(index, keyValuePairs.getString("room_hotelAddress"));
+				case "hotelAddress":
+					ps.setString(index, keyValuePairs.getString("hotelAddress"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

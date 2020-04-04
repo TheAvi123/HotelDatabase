@@ -15,8 +15,8 @@ public class ServiceHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[]{"service_id"};
+	public String[] getAttributes() {
+		return new String[]{"serviceID", "minTierLevel", "serviceCost", "hotelAddress"};
 	}
 
 
@@ -24,17 +24,17 @@ public class ServiceHelper extends TableHelper {
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "service_id":
-					ps.setInt(index, keyValuePairs.getInt("service_id"));
+				case "serviceID":
+					ps.setInt(index, keyValuePairs.getInt("serviceID"));
 					break;
-				case "service_minTierLevel":
-					ps.setInt(index, keyValuePairs.getInt("service_minTierLevel"));
+				case "minTierLevel":
+					ps.setInt(index, keyValuePairs.getInt("minTierLevel"));
 					break;
-				case "service_cost":
-					ps.setDouble(index, keyValuePairs.getDouble("service_cost"));
+				case "serviceCost":
+					ps.setDouble(index, keyValuePairs.getDouble("serviceCost"));
 					break;
-				case "service_hotelAddress":
-					ps.setDouble(index, keyValuePairs.getDouble("service_hotelAddress"));
+				case "hotelAddress":
+					ps.setDouble(index, keyValuePairs.getDouble("hotelAddress"));
 					break;
 				default:
 					throw new Error("Invalid Key!");
