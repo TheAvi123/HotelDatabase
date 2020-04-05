@@ -128,15 +128,16 @@ public class AggregationGrpByQuery extends JPanel {
                 }
 
                 if (chosenSelect[3] == true && chosenSelect[0] == true && chosenGrpBy[0] == false) {
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");                }
+                    JFrame frame1 = new JFrame();
+                    JOptionPane.showMessageDialog(frame1, "error, if aggregate function present, all non-aggregate values must be in Group-By");
+                }
                 if (chosenSelect[3] == true && chosenSelect[1] == true && chosenGrpBy[1] == false) {
-                    JFrame frame = new JFrame();
-                    System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
+                    JFrame frame2 = new JFrame();
+                    JOptionPane.showMessageDialog(frame2, "error, if aggregate function present, all non-aggregate values must be in Group-By");
                 }
                 if (chosenSelect[3] == true && chosenSelect[2] == true && chosenGrpBy[2] == false) {
-                    JFrame frame = new JFrame();
-                    System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
+                    JFrame frame3 = new JFrame();
+                    JOptionPane.showMessageDialog(frame3, "error, if aggregate function present, all non-aggregate values must be in Group-By");
                 }
 
                 arrayOfTuples = dbHandler.aggregationGroupHotel(chosenSelect, chosenGrpBy);

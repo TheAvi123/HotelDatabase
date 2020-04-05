@@ -2,6 +2,7 @@ package database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import controller.HotelController;
 import model.tables.Hotel;
@@ -10,6 +11,8 @@ import model.Table;
 import model.TableHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tools.Condition;
+
 
 /**
  * This class handles all database related transactions
@@ -548,5 +551,99 @@ public class DatabaseConnectionHandler {
 		return false;
 	}
 
+	// find customers that booked all rooms
+	public ArrayList<JSONObject> division(String table1, String table2) {
+		ArrayList<JSONObject> tuples = new ArrayList<JSONObject>();
+		if (table1.equals("customer") && table2.equals("room")) {
+
+			try {
+				String attributesInSelect = "c.customerName";
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT " + attributesInSelect + " FROM customer c " + "WHERE NOT EXISTS " +
+						"(SELECT r.roomfloor, r.roomNumber from room r EXCEPT SELECT b.roomfloor, b.roomnumber FROM Booking b " +
+						"WHERE b.customerid = c.customerid)");
+				while (resultSet.next()) {
+					JSONObject tuple = createEntityTuple("hotel", resultSet);
+					tuples.add(tuple);
+				}
+				resultSet.close();
+				statement.close();
+			} catch (SQLException e) {
+				System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+			}
+			return tuples;
+		}
+		return tuples;
+	}
+
+	//CASE 1:
+	public ArrayList<JSONObject> naturalJoinQuery(TableHelper helper1, TableHelper helper2) {
+		ArrayList<JSONObject> table1Tuples = this.getTableTuples(helper1.getTableName());
+		ArrayList<JSONObject> table2Tuples = this.getTableTuples(helper2.getTableName());
+		ArrayList<String> commonAttributes = this.getCommonAttributes(helper1, helper2);
+		ArrayList<JSONObject> joinedTuples = new ArrayList<>();
+		for (JSONObject tuple1 : table1Tuples) {
+			for (JSONObject tuple2 : table2Tuples) {
+				for (String commonAttribute : commonAttributes) {
+					try {
+						if (tuple1.get(commonAttribute) == tuple2.get(commonAttribute)) {
+							JSONObject combinedTuple = new JSONObject();
+							Iterator<String> keys = tuple1.keys();
+							while (keys.hasNext()) {
+								String key = keys.next();
+								combinedTuple.put(key, tuple1.get(key));
+							}
+							keys = tuple2.keys();
+							while (keys.hasNext()) {
+								String key = keys.next();
+								if (!commonAttribute.contains(key)) {
+									combinedTuple.put(key, tuple2.get(key));
+								}
+							}
+							joinedTuples.add(combinedTuple);
+						}
+					} catch (JSONException e) {
+						System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+					}
+				}
+			}
+		}
+		return joinedTuples;
+	}
+
+	public ArrayList<String> getCommonAttributes(TableHelper helper1, TableHelper helper2) {
+		ArrayList<String> commonAttributes = new ArrayList<>();
+		for (String attribute1 : helper1.getAttributes()) {
+			for (String attribute2 : helper2.getAttributes()) {
+				if (attribute1.equals(attribute2)) {
+					commonAttributes.add(attribute1);
+				}
+			}
+		}
+		return commonAttributes;
+	}
+
+	public ArrayList<JSONObject> selectionQuery(TableHelper helper, Condition condition) {
+		ArrayList<JSONObject> tuples = new ArrayList<>();
+		try {
+			StringBuilder sqlCommand = new StringBuilder("SELECT * FROM " + helper.getTableName() + " WHERE ");
+			sqlCommand.append(condition.getAttributeName()).append(" ");
+			sqlCommand.append(condition.getComparator()).append(" ");
+			sqlCommand.append(condition.getValue());
+			PreparedStatement ps = connection.prepareStatement(sqlCommand.toString());
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				JSONObject tuple = createEntityTuple("roomCost", resultSet);
+				tuples.add(tuple);
+			}
+			resultSet.close();
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+		}
+		return tuples;
+	}
+
 }
+
 
