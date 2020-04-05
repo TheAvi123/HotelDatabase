@@ -6,6 +6,7 @@ import model.TableHelper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 public class Employee extends Table {
 
@@ -72,7 +73,11 @@ public class Employee extends Table {
         ps.setString(1, this.getEmployeeStaffID());
         ps.setString(2, this.getEmployeeName());
         ps.setInt(3, this.getPayrollAccountNumber());
-        ps.setDouble(4, this.getSalary());
+        if (this.getSalary() == 0) {
+            ps.setDouble(4, Types.DOUBLE);
+        } else {
+            ps.setDouble(4, this.getSalary());
+        }
         ps.setString(5, this.getWorkShift());
         ps.setString(6, this.getManagerStaffID());
     }

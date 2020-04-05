@@ -25,16 +25,16 @@ public class ServiceHelper extends TableHelper {
 		try {
 			switch (key) {
 				case "serviceID":
-					ps.setInt(index, keyValuePairs.getInt("serviceID"));
+					ps.setString(index, keyValuePairs.getString("serviceID"));
 					break;
 				case "minTierLevel":
-					ps.setInt(index, keyValuePairs.getInt("minTierLevel"));
+					ps.setString(index, keyValuePairs.getString("minTierLevel"));
 					break;
 				case "serviceCost":
 					ps.setDouble(index, keyValuePairs.getDouble("serviceCost"));
 					break;
 				case "hotelAddress":
-					ps.setDouble(index, keyValuePairs.getDouble("hotelAddress"));
+					ps.setString(index, keyValuePairs.getString("hotelAddress"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

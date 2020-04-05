@@ -75,7 +75,7 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	}
 
 	public ArrayList<Table> getTuples(String tableName) {
-		return dbHandler.getTableTuples(tableName);
+		return null; //dbHandler.getTableTuples(tableName);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
