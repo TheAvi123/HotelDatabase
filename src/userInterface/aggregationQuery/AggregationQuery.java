@@ -75,7 +75,7 @@ public class AggregationQuery extends JPanel {
                 Object attributeSelected = attrField.getSelectedItem();
                 Object aggregationSelected = aggregationField.getSelectedItem();
                 Boolean[] maxCapacity = {false, false, true};
-                arrayOfTuples = dbHandler.projectionHotel(maxCapacity);
+                arrayOfTuples = dbHandler.aggregationMaxHotel(maxCapacity);
                 model = new RoomTableModel(arrayOfTuples);
 
                 //construct components
