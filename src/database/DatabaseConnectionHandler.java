@@ -250,24 +250,14 @@ public class DatabaseConnectionHandler {
 
 
 	//  Aggregation Hotel
-	public ArrayList<Table> aggregationMaxHotel(Boolean[] attributesToShow) {
+	public ArrayList<Table> aggregationMaxHotel(Boolean[] attributesInSelect) {
 		ArrayList<Table> tuples = new ArrayList<Table>();
 		try {
 			String attributesToJoin = "";
-			for (int i = 0; i < attributesToShow.length; i++) {
-//				if (attributesToShow[0] == true && attributesToJoin == null) {
-//					attributesToJoin = attributesToJoin + "address";
-//				} else if (attributesToShow[0] == true) {
-//					attributesToJoin = attributesToJoin + ", address";
-//				}
-//				if (attributesToShow[1] == true && attributesToJoin == null) {
-//					attributesToJoin = attributesToJoin + "name";
-//				} else if (attributesToShow[1] == true) {
-//					attributesToJoin = attributesToJoin + ", name";
-//				}
-				if (attributesToShow[2] == true && attributesToJoin.equals("")) {
+			for (int i = 0; i < attributesInSelect.length; i++) {
+				if (attributesInSelect[2] == true && attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + " MAX(capacity)";
-				} else if (attributesToShow[2] == true) {
+				} else if (attributesInSelect[2] == true) {
 					attributesToJoin = attributesToJoin + ", MAX(capacity)";
 				}
 			}
@@ -286,42 +276,50 @@ public class DatabaseConnectionHandler {
 	}
 
 	//  AggregationWithGroup Hotel
-	public ArrayList<Table> aggregationGroupHotel(Boolean[] attributesToShow, Boolean[] attributesInGroup) {
+	public ArrayList<Table> aggregationGroupHotel(Boolean[] attributesInSelect, Boolean[] attributesInGroup) {
 		ArrayList<Table> tuples = new ArrayList<Table>();
 		try {
 			String attributesToJoin = "";
 			String groupByToJoin = "";
-
-			for (int i = 0; i < attributesToShow.length; i++) {
-				if (attributesToShow[0] == true && attributesToJoin.equals("")) {
+			// address, name, capacity, max(capacity)
+			for (int i = 0; i < attributesInSelect.length; i++) {
+				if (attributesInSelect[0] == true && attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + "address";
-				} else if (attributesToShow[0] == true && !attributesToJoin.equals("")) {
+				} else if (attributesInSelect[0] == true && !attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + ", address";
 				}
-				if (attributesToShow[1] == true && attributesToJoin.equals("")) {
+				if (attributesInSelect[1] == true && attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + "name";
-				} else if (attributesToShow[1] == true && !attributesToJoin.equals("")) {
+				} else if (attributesInSelect[1] == true && !attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + ", name";
 				}
-				if (attributesToShow[2] == true && attributesToJoin.equals("")) {
+				if (attributesInSelect[2] == true && attributesToJoin.equals("")) {
+					attributesToJoin = attributesToJoin + " (capacity)";
+				} else if (attributesInSelect[2] == true && !attributesToJoin.equals("")) {
+					attributesToJoin = attributesToJoin + ", (capacity)";
+				}
+				if (attributesInSelect[3] == true && attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + " MAX(capacity)";
-				} else if (attributesToShow[2] == true && !attributesToJoin.equals("")) {
+				} else if (attributesInSelect[3] == true && !attributesToJoin.equals("")) {
 					attributesToJoin = attributesToJoin + ", MAX(capacity)";
 				}
-
-				// GROUP
+			}
+			// address, name, capacity
+			for (int i = 0; i < attributesInGroup.length; i++) {
 				if (attributesInGroup[0] == true && groupByToJoin.equals("")) {
 					groupByToJoin = groupByToJoin + "address";
-				} else if (attributesInGroup[0] == true && !attributesInGroup.equals("")) {
+				} else if (attributesInGroup[0] == true && !groupByToJoin.equals("")) {
 					groupByToJoin = groupByToJoin + ", address";
 				}
 				if (attributesInGroup[1] == true && groupByToJoin.equals("")) {
 					groupByToJoin = groupByToJoin + "name";
-				} else if (attributesInGroup[1] == true && !attributesInGroup.equals("")) {
+				} else if (attributesInGroup[1] == true && !groupByToJoin.equals("")) {
 					groupByToJoin = groupByToJoin + ", name";
 				}
-				if (attributesInGroup[2] == true) {
-					System.out.println("can't group aggregate key");
+				if (attributesInGroup[2] == true && groupByToJoin.equals("")) {
+					groupByToJoin = groupByToJoin + "capacity";
+				} else if (attributesInGroup[2] == true && !groupByToJoin.equals("")) {
+					groupByToJoin = groupByToJoin + ", capacity";
 				}
 			}
 
@@ -342,35 +340,3 @@ public class DatabaseConnectionHandler {
 
 }
 
-
-
-
-
-//			for (int i = 0; i < attributesToShow.length; i++) {
-//				if (attributesToShow[0] == true && attributesToJoin.equals("") && attributesInGroup[0] == true) {
-//					attributesToJoin = attributesToJoin + "address";
-//					groupByToJoin = groupByToJoin + "address";
-//				} else if (attributesToShow[0] == true && attributesInGroup[0] == false) {
-//					attributesToJoin = attributesToJoin + ", address";
-//					groupByToJoin = groupByToJoin + ", address";
-//
-//				} else if (attributesToShow[0] == true && attributesInGroup[0] == true) {
-//					System.out.println("error, can't have MAX aggregate for string"); // ERROR
-//				}
-//				if (attributesToShow[1] == true && attributesToJoin.equals("") && attributesInGroup[1] == false) {
-//					attributesToJoin = attributesToJoin + "name";
-//					groupByToJoin = groupByToJoin + "name";
-//
-//				} else if (attributesToShow[1] == true && attributesInGroup[1] == false) {
-//					attributesToJoin = attributesToJoin + ", name";
-//					groupByToJoin = groupByToJoin + ", name";
-//
-//				} else if (attributesToShow[1] == true && attributesInGroup[1] == true) {
-//					System.out.println("error, can't have MAX aggregate for string"); //ERROR
-//				}
-//				if (attributesToShow[2] == true && attributesToJoin .equals("") && attributesInGroup[2] == false) {
-//					attributesToJoin = attributesToJoin + " MAX(capacity)";
-//				} else if (attributesToShow[2] == true && attributesInGroup[2] == false) {
-//					attributesToJoin = attributesToJoin + ", MAX(capacity)";
-//				}
-//			}
