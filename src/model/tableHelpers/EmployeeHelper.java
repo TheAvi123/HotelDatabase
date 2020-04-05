@@ -15,8 +15,8 @@ public class EmployeeHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[]{"employee_staffID"};
+	public String[] getAttributes() {
+		return new String[]{"employeeStaffID", "employeeName", "payrollAccountNumber", "salary", "workShift", "managerStaffID"};
 	}
 
 
@@ -24,23 +24,23 @@ public class EmployeeHelper extends TableHelper {
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "employee_staffID":
-					ps.setString(index, keyValuePairs.getString("employee_staffID"));
+				case "employeeStaffID":
+					ps.setString(index, keyValuePairs.getString("employeeStaffID"));
 					break;
-				case "employee_name":
-					ps.setString(index, keyValuePairs.getString("employee_name"));
+				case "employeeName":
+					ps.setString(index, keyValuePairs.getString("employeeName"));
 					break;
-				case "employee_payrollAccountNumber":
-					ps.setInt(index, keyValuePairs.getInt("employee_payrollAccountNumber"));
+				case "payrollAccountNumber":
+					ps.setInt(index, keyValuePairs.getInt("payrollAccountNumber"));
 					break;
-				case "employee_salary":
-					ps.setInt(index, keyValuePairs.getInt("employee_salary"));
+				case "salary":
+					ps.setInt(index, keyValuePairs.getInt("salary"));
 					break;
-				case "employee_workShift":
-					ps.setString(index, keyValuePairs.getString("employee_workShift"));
+				case "workShift":
+					ps.setString(index, keyValuePairs.getString("workShift"));
 					break;
-				case "employee_managerStaffID":
-					ps.setString(index, keyValuePairs.getString("employee_managerStaffID"));
+				case "managerStaffID":
+					ps.setString(index, keyValuePairs.getString("managerStaffID"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

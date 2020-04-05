@@ -13,12 +13,12 @@ public class RoomCost extends Table {
 
     private final int roomNumber;
     private final int roomFloor;
-	private final double cost;
+	private final double roomCost;
 
-	public RoomCost(int roomNumber, int roomFloor, double cost) {
+	public RoomCost(int roomNumber, int roomFloor, double roomCost) {
         this.roomNumber = roomNumber;
         this.roomFloor = roomFloor;
-		this.cost = cost;
+		this.roomCost = roomCost;
 
         this.helper = new RoomCostHelper();
     }
@@ -33,8 +33,8 @@ public class RoomCost extends Table {
 		return roomFloor;
 	}
 
-	public double getCost() {
-		return cost;
+	public double getRoomCost() {
+		return roomCost;
 	}
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +53,6 @@ public class RoomCost extends Table {
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
         ps.setInt(1, this.getRoomNumber());
         ps.setInt(2, this.getRoomFloor());
-        ps.setDouble(3, this.getCost());
+        ps.setDouble(3, this.getRoomCost());
     }
 }

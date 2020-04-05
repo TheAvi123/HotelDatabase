@@ -18,39 +18,44 @@ public class BookingHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
-		return new String[] {"booking_id"};
+	public String[] getAttributes() {
+		return new String[] {"bookingID",
+				"startDate",
+				"endDate",
+				"roomFloor",
+				"roomNumber",
+				"customerID"};
 	}
 
 	@Override
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "booking_id":
-					ps.setString(index, keyValuePairs.getString("booking_id"));
+				case "bookingID":
+					ps.setString(index, keyValuePairs.getString("bookingID"));
 					break;
-				case "booking_startDate":
-					String dateStart = keyValuePairs.getString("booking_startDate");
+				case "startDate":
+					String dateStart = keyValuePairs.getString("startDate");
 					SimpleDateFormat simpleStartDate = new SimpleDateFormat("yyyy-MM-dd");
 					Date startDate = simpleStartDate.parse(dateStart);
 					java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
 					ps.setDate(index, sqlStartDate);
 					break;
-				case "booking_endDate":
-					String dateEnd = keyValuePairs.getString("booking_endDate");
+				case "endDate":
+					String dateEnd = keyValuePairs.getString("endDate");
 					SimpleDateFormat simpleEndDate = new SimpleDateFormat("yyyy-MM-dd");
 					Date endDate = simpleEndDate.parse(dateEnd);
 					java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
 					ps.setDate(index, sqlEndDate);
 					break;
-				case "booking_roomFloor":
-					ps.setInt(index, keyValuePairs.getInt("booking_roomFloor"));
+				case "roomFloor":
+					ps.setInt(index, keyValuePairs.getInt("roomFloor"));
 					break;
-				case "booking_roomNumber":
-					ps.setInt(index, keyValuePairs.getInt("booking_roomNumber"));
+				case "roomNumber":
+					ps.setInt(index, keyValuePairs.getInt("roomNumber"));
 					break;
-				case "booking_customerID":
-					ps.setString(index, keyValuePairs.getString("booking_customerID"));
+				case "customerID":
+					ps.setString(index, keyValuePairs.getString("customerID"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

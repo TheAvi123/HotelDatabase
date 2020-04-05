@@ -323,15 +323,15 @@ public class DatabaseConnectionHandler {
 				}
 			}
 
-			if (attributesInSelect[3] == true && attributesInSelect[0] == true && attributesInGroup[0] == false) {
-				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
-			}
-			if (attributesInSelect[3] == true && attributesInSelect[1] == true && attributesInGroup[1] == false) {
-				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
-			}
-			if (attributesInSelect[3] == true && attributesInSelect[2] == true && attributesInGroup[2] == false) {
-				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
-			}
+//			if (attributesInSelect[3] == true && attributesInSelect[0] == true && attributesInGroup[0] == false) {
+//				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
+//			}
+//			if (attributesInSelect[3] == true && attributesInSelect[1] == true && attributesInGroup[1] == false) {
+//				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
+//			}
+//			if (attributesInSelect[3] == true && attributesInSelect[2] == true && attributesInGroup[2] == false) {
+//				System.out.println("error, if aggregate function present, all non-aggregate values must be in Group-By");
+//			}
 
 
 			Statement statement = connection.createStatement();

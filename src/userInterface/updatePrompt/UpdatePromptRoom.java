@@ -15,7 +15,7 @@ public class UpdatePromptRoom extends JPanel {
     private JLabel roomNumberLabel;
     private JTextField roomNumberField;
     private JLabel roomFloorLabel;
-    private JPasswordField roomFloorField;
+    private JTextField roomFloorField;
     private JButton submitButton;
 
     public UpdatePromptRoom(HotelController controller) {
@@ -25,7 +25,7 @@ public class UpdatePromptRoom extends JPanel {
         roomNumberLabel = new JLabel ("Room Number");
         roomNumberField = new JTextField (1);
         roomFloorLabel = new JLabel ("Room Floor");
-        roomFloorField = new JPasswordField (1);
+        roomFloorField = new JTextField (1);
         submitButton = new JButton ("Submit");
 
         //set components properties
@@ -66,7 +66,7 @@ public class UpdatePromptRoom extends JPanel {
                 int roomFloorToUpdate = Integer.parseInt(roomFloorField.getText());
 
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Room" + roomFloorToUpdate + " on floor " + roomFloorToUpdate);
+                JFrame frame = new JFrame ("Update Room" + roomNumberToUpdate + " on floor " + roomFloorToUpdate);
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().add (new UpdateSelectedRoom(controller));
                 frame.pack();

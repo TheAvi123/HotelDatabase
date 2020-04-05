@@ -11,16 +11,16 @@ public class Customer extends Table {
 
     private CustomerHelper helper;
 
-    private final String id;
-	private final String name;
-	private final int age;
+    private final String customerID;
+	private final String customerName;
+	private final int customerAge;
 	private final String paymentInformation;
 	private final String phoneNumber;
 
-	public Customer(String id, String name, int age, String paymentInformation, String phoneNumber) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
+	public Customer(String customerID, String customerName, int customerAge, String paymentInformation, String phoneNumber) {
+		this.customerID = customerID;
+		this.customerName = customerName;
+		this.customerAge = customerAge;
 		this.paymentInformation = paymentInformation;
 		this.phoneNumber = phoneNumber;
 
@@ -29,16 +29,16 @@ public class Customer extends Table {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public String getId() {
-		return id;
+	public String getCustomerID() {
+		return customerID;
 	}
 
-	public String getName() {
-		return name;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public int getAge() {
-		return age;
+	public int getCustomerAge() {
+		return customerAge;
 	}
 
 	public String getPaymentInformation() {
@@ -63,9 +63,9 @@ public class Customer extends Table {
 
     @Override
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-        ps.setString(1, this.getId());
-        ps.setString(2, this.getName());
-        ps.setInt(3, this.getAge());
+        ps.setString(1, this.getCustomerID());
+        ps.setString(2, this.getCustomerName());
+        ps.setInt(3, this.getCustomerAge());
         ps.setString(4, this.getPaymentInformation());
         ps.setString(5, this.getPhoneNumber());
     }

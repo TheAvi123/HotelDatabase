@@ -11,13 +11,13 @@ public class Hotel extends Table {
 
     private HotelHelper helper;
 
-	private final String address;
-	private final String name;
+	private final String hotelAddress;
+	private final String hotelName;
 	private final int capacity;
 
-	public Hotel(String address, String name, int capacity) {
-		this.address = address;
-		this.name = name;
+	public Hotel(String hotelAddress, String hotelName, int capacity) {
+		this.hotelAddress = hotelAddress;
+		this.hotelName = hotelName;
 		this.capacity = capacity;
 
         this.helper = new HotelHelper();
@@ -25,12 +25,12 @@ public class Hotel extends Table {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public String getAddress() {
-		return address;
+    public String getHotelAddress() {
+		return hotelAddress;
 	}
 
-	public String getName() {
-		return name;
+	public String getHotelName() {
+		return hotelName;
 	}
 
 	public int getCapacity() {
@@ -51,8 +51,8 @@ public class Hotel extends Table {
 
     @Override
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-        ps.setString(1, this.getAddress());
-        ps.setString(2, this.getName());
+        ps.setString(1, this.getHotelAddress());
+        ps.setString(2, this.getHotelName());
         if (this.getCapacity() == 0) {
             ps.setNull(3, java.sql.Types.INTEGER);
         } else {

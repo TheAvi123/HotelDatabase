@@ -11,15 +11,15 @@ public class Service extends Table {
 
     private ServiceHelper helper;
 
-    private final String id;
+    private final String serviceID;
 	private final String minTierLevel;
-	private final double cost;
+	private final double serviceCost;
 	private final String hotelAddress;
 
-	public Service(String id, String minTierLevel, double cost, String hotelAddress) {
-		this.id = id;
+	public Service(String serviceID, String minTierLevel, double serviceCost, String hotelAddress) {
+		this.serviceID = serviceID;
 		this.minTierLevel = minTierLevel;
-		this.cost = cost;
+		this.serviceCost = serviceCost;
 		this.hotelAddress = hotelAddress;
 
         this.helper = new ServiceHelper();
@@ -27,16 +27,16 @@ public class Service extends Table {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public String getId() {
-		return id;
+	public String getServiceID() {
+		return serviceID;
 	}
 
 	public String getMinTierLevel() {
 		return minTierLevel;
 	}
 
-	public double getCost() {
-		return cost;
+	public double getServiceCost() {
+		return serviceCost;
 	}
 
 	public String getHotelAddress() {
@@ -57,9 +57,9 @@ public class Service extends Table {
 
     @Override
     public void setTupleParametersToStatement(PreparedStatement ps) throws SQLException {
-        ps.setString(1, this.getId());
+        ps.setString(1, this.getServiceID());
         ps.setString(2, this.getMinTierLevel());
-        ps.setDouble(3, this.getCost());
+        ps.setDouble(3, this.getServiceCost());
         ps.setString(4, this.getHotelAddress());
 
     }

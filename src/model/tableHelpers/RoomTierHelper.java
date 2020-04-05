@@ -15,7 +15,7 @@ public class RoomTierHelper extends TableHelper {
 	}
 
 	@Override
-	public String[] getPrimaryAttributes() {
+	public String[] getAttributes() {
 		return new String[]{"roomTier_roomType"};
 	}
 
