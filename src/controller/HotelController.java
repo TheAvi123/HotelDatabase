@@ -83,4 +83,10 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	public void selectionQuery(TableHelper helper, Condition condition) {
 		dbHandler.selectionQuery(helper, condition);
 	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public void selectionQuery(TableHelper helper, Condition condition) {
+		dbHandler.selectionQuery(helper, condition);
+	}
 }
