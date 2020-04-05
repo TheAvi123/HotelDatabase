@@ -23,5 +23,5 @@ public interface TransactionsHandlerDelegate {
 	public void insertTuple(Table table);
 	public void deleteTuple(TableHelper table, JSONObject primaryKey);
 	public void updateTuples(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys);
-	public ArrayList<Table> getTuples(String tableName);
+	public ArrayList<JSONObject> getTuples(String tableName);
 }

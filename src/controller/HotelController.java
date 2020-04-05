@@ -73,7 +73,7 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 		dbHandler.updateTable(tableHelper, setKeys, whereKeys);
 	}
 
-	public ArrayList<Table> getTuples(String tableName) {
+	public ArrayList<JSONObject> getTuples(String tableName) {
 		return dbHandler.getTableTuples(tableName);
 	}
 }

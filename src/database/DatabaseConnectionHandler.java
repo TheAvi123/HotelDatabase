@@ -8,6 +8,7 @@ import model.tables.Hotel;
 import model.tables.Room;
 import model.Table;
 import model.TableHelper;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -165,13 +166,13 @@ public class DatabaseConnectionHandler {
 	}
 
 	//SQL SHOW COMMAND ROUTER
-	public ArrayList<Table> getTableTuples(String tableName) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
+	public ArrayList<JSONObject> getTableTuples(String tableName) {
+		ArrayList<JSONObject> tuples = new ArrayList<JSONObject>();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
 			while (resultSet.next()) {
-				Table tuple = createEntityTuple(tableName, resultSet);
+				JSONObject tuple = createEntityTuple(tableName, resultSet);
 				tuples.add(tuple);
 			}
 			resultSet.close();
@@ -183,38 +184,224 @@ public class DatabaseConnectionHandler {
 	}
 
 	//HELPER METHODS
-	private Table createEntityTuple(String tableName, ResultSet rs) {
-		Table tuple = null;
+//	private Table createEntityTuple(String tableName, ResultSet rs) {
+//		Table tuple = null;
+//		try {
+//			switch (tableName) {
+//				case "room":
+//					tuple = new Room(
+//							rs.getInt("room_number"),
+//							rs.getInt("room_floor"),
+//							rs.getString("room_type"),
+//							rs.getInt("room_numberOfBeds"),
+//							rs.getString("room_hotelAddress"));
+//					break;
+//				case "hotel":
+//					tuple = new Hotel(
+//							rs.getString("hotel_address"),
+//							rs.getString("hotel_name"),
+//							rs.getInt("hotel_capacity"));
+//					break;
+//				default:
+//					System.out.println("Invalid Table Name. Please try again.");
+//					System.out.println("");
+//					throw new Error("Invalid Table Name");
+//			}
+//		} catch (SQLException e) {
+//			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+//		}
+//		return tuple;
+//	}
+
+	private JSONObject createEntityTuple(String tableName, ResultSet rs) {
+		JSONObject tuple = new JSONObject();
+		tuple = null;
 		try {
 			switch (tableName) {
 				case "room":
-					tuple = new Room(
-							rs.getInt("room_number"),
-							rs.getInt("room_floor"),
-							rs.getString("room_type"),
-							rs.getInt("room_numberOfBeds"),
-							rs.getString("room_hotelAddress"));
+					if (hasColumn(rs, "room_number") == true) {
+						int roomNum = rs.getInt("room_number");
+						tuple.put("room_number", roomNum);
+
+					}
+					if (hasColumn(rs, "room_floor") == true) {
+						int roomFloor = rs.getInt("room_floor");
+						tuple.put("room_floor", roomFloor);
+
+					}
+					if (hasColumn(rs, "room_type") == true) {
+						String roomType = rs.getString("room_type");
+						tuple.put("room_type", roomType);
+
+					}
+					if (hasColumn(rs, "room_numberOfBeds") == true) {
+						int numberOfBeds = rs.getInt("room_numberOfBeds");
+						tuple.put("room_numberOfBeds", numberOfBeds);
+
+					}
+					if (hasColumn(rs, "room_hotelAddress") == true) {
+						String hotelAddress = rs.getString("room_hotelAddress");
+						tuple.put("room_hotelAddress", hotelAddress);
+					}
 					break;
 				case "hotel":
-					tuple = new Hotel(
-							rs.getString("hotel_address"),
-							rs.getString("hotel_name"),
-							rs.getInt("hotel_capacity"));
+					if (hasColumn(rs, "hotel_address") == true) {
+						String hotelAddress = rs.getString("hotel_address");
+						tuple.put("hotel_address", hotelAddress);
+					}
+					if (hasColumn(rs, "hotel_name") == true) {
+						String hotelName = rs.getString("hotel_name");
+						tuple.put("hotel_name", hotelName);
+					}
+					if (hasColumn(rs, "hotel_capacity") == true) {
+						int hotelCapacity = rs.getInt("hotel_capacity");
+						tuple.put("hotel_capacity", hotelCapacity);
+					}
+					break;
+				case "booking":
+					if (hasColumn(rs, "booking_bookingID") == true) {
+						String bookingID = rs.getString("booking_bookingID");
+						tuple.put("hotel_address", bookingID);
+					}
+					if (hasColumn(rs, "booking_startDate") == true) {
+						Date startDate = rs.getDate("booking_startDate");
+						tuple.put("hotel_name", startDate);
+					}
+					if (hasColumn(rs, "booking_endDate") == true) {
+						Date endDate = rs.getDate("booking_endDate");
+						tuple.put("hotel_capacity", endDate);
+					}
+					if (hasColumn(rs, "booking_roomFloor") == true) {
+						int roomFloor = rs.getInt("booking_roomFloor");
+						tuple.put("hotel_capacity", roomFloor);
+					}
+					if (hasColumn(rs, "booking_roomNumber") == true) {
+						int roomNumber = rs.getInt("booking_roomNumber");
+						tuple.put("hotel_capacity", roomNumber);
+					}
+					if (hasColumn(rs, "booking_customerID") == true) {
+						String customerID = rs.getString("booking_customerID");
+						tuple.put("hotel_capacity", customerID);
+					}
+					break;
+				case "customer":
+					if (hasColumn(rs, "customer_customerID") == true) {
+						String customerID = rs.getString("customer_customerID");
+						tuple.put("customer_customerID", customerID);
+					}
+					if (hasColumn(rs, "customer_customerName") == true) {
+						String customerName = rs.getString("customer_customerName");
+						tuple.put("customer_customerName", customerName);
+					}
+					if (hasColumn(rs, "customer_customerAge") == true) {
+						int customerAge = rs.getInt("customer_customerAge");
+						tuple.put("customer_customerAge", customerAge);
+					}
+					if (hasColumn(rs, "customer_paymentInformation") == true) {
+						String paymentInformation = rs.getString("customer_paymentInformation");
+						tuple.put("customer_paymentInformation", paymentInformation);
+					}
+					if (hasColumn(rs, "customer_phoneNumber") == true) {
+						String phoneNumber = rs.getString("customer_phoneNumber");
+						tuple.put("customer_phoneNumber", phoneNumber);
+					}
+					break;
+				case "employee":
+					if (hasColumn(rs, "employee_employeeStaffID") == true) {
+						String staffID = rs.getString("employee_employeeStaffID");
+						tuple.put("employee_employeeStaffID", staffID);
+					}
+					if (hasColumn(rs, "employee_employeeName") == true) {
+						String employeeName = rs.getString("employee_employeeName");
+						tuple.put("employee_employeeName", employeeName);
+					}
+					if (hasColumn(rs, "employee_payrollAccountNumber") == true) {
+						int accountNumber = rs.getInt("employee_payrollAccountNumber");
+						tuple.put("employee_payrollAccountNumber", accountNumber);
+					}
+					if (hasColumn(rs, "employee_salary") == true) {
+						double salary = rs.getDouble("employee_salary");
+						tuple.put("employee_salary", salary);
+					}
+					if (hasColumn(rs, "employee_workShift") == true) {
+						String workShift = rs.getString("employee_workShift");
+						tuple.put("employee_workShift", workShift);
+					}
+					if (hasColumn(rs, "employee_managerStaffID") == true) {
+						String managerStaffID = rs.getString("employee_managerStaffID");
+						tuple.put("employee_managerStaffID", managerStaffID);
+					}
+					break;
+				case "manager":
+					if (hasColumn(rs, "manager_managerStaffID") == true) {
+						String staffID = rs.getString("manager_managerStaffID");
+						tuple.put("manager_managerStaffID", staffID);
+					}
+					if (hasColumn(rs, "manager_managerName") == true) {
+						String managerName = rs.getString("manager_managerName");
+						tuple.put("manager_managerName", managerName);
+					}
+					if (hasColumn(rs, "manager_hotelAddress") == true) {
+						String hotelAddress = rs.getString("manager_hotelAddress");
+						tuple.put("manager_hotelAddress", hotelAddress);
+					}
+					break;
+				case "roomCost":
+					if (hasColumn(rs, "roomCost_roomNumber") == true) {
+						int roomNum = rs.getInt("roomCost_roomNumber");
+						tuple.put("roomCost_roomNumber", roomNum);
+					}
+					if (hasColumn(rs, "roomCost_roomFloor") == true) {
+						int roomFloor = rs.getInt("roomCost_roomFloor");
+						tuple.put("roomCost_roomFloor", roomFloor);
+					}
+					if (hasColumn(rs, "roomCost_roomCost") == true) {
+						double roomCost = rs.getDouble("roomCost_roomCost");
+						tuple.put("roomCost_roomCost", roomCost);
+					}
+					break;
+				case "roomTier":
+					if (hasColumn(rs, "roomTier_roomType") == true) {
+						String roomType = rs.getString("roomTier_roomType");
+						tuple.put("roomTier_roomType", roomType);
+					}
+					if (hasColumn(rs, "roomTier_tierLevel") == true) {
+						String roomTier = rs.getString("roomTier_tierLevel");
+						tuple.put("roomTier_tierLevel", roomTier);
+					}
+					break;
+				case "service":
+					if (hasColumn(rs, "service_serviceID") == true) {
+						String serviceID = rs.getString("service_serviceID");
+						tuple.put("service_serviceID", serviceID);
+					}
+					if (hasColumn(rs, "service_minTierLevel") == true) {
+						String minTierLevel = rs.getString("service_minTierLevel");
+						tuple.put("service_minTierLevel", minTierLevel);
+					}
+					if (hasColumn(rs, "service_serviceCost") == true) {
+						double serviceCost = rs.getDouble("service_serviceCost");
+						tuple.put("service_serviceCost", serviceCost);
+					}
+					if (hasColumn(rs, "service_hotelAddress") == true) {
+						String hotelAddress = rs.getString("service_hotelAddress");
+						tuple.put("service_hotelAddress", hotelAddress);
+					}
 					break;
 				default:
 					System.out.println("Invalid Table Name. Please try again.");
 					System.out.println("");
 					throw new Error("Invalid Table Name");
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | JSONException e) {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 		return tuple;
 	}
 
 	// Projection Hotel
-	public ArrayList<Table> projectionHotel(Boolean[] attributesToShow) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
+	public ArrayList<JSONObject> projectionHotel(Boolean[] attributesToShow) {
+		ArrayList<JSONObject> tuples = new ArrayList<JSONObject>();
 		try {
 			String attributesToJoin = "";
 			for (int i = 0; i < attributesToShow.length; i++) {
@@ -237,7 +424,7 @@ public class DatabaseConnectionHandler {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT " + attributesToJoin + " FROM hotel");
 			while (resultSet.next()) {
-				Table tuple = createEntityTuple("hotel", resultSet);
+				JSONObject tuple = createEntityTuple("hotel", resultSet);
 				tuples.add(tuple);
 			}
 			resultSet.close();
@@ -250,8 +437,8 @@ public class DatabaseConnectionHandler {
 
 
 	//  Aggregation Hotel
-	public ArrayList<Table> aggregationMaxHotel(Boolean[] attributesInSelect) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
+	public ArrayList<JSONObject> aggregationMaxHotel(Boolean[] attributesInSelect) {
+		ArrayList<JSONObject> tuples = new ArrayList<JSONObject>();
 		try {
 			String attributesToJoin = "";
 			for (int i = 0; i < attributesInSelect.length; i++) {
@@ -264,7 +451,7 @@ public class DatabaseConnectionHandler {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT " + attributesToJoin + " FROM hotel");
 			while (resultSet.next()) {
-				Table tuple = createEntityTuple("hotel", resultSet);
+				JSONObject tuple = createEntityTuple("hotel", resultSet);
 				tuples.add(tuple);
 			}
 			resultSet.close();
@@ -276,8 +463,8 @@ public class DatabaseConnectionHandler {
 	}
 
 	//  AggregationWithGroup Hotel
-	public ArrayList<Table> aggregationGroupHotel(Boolean[] attributesInSelect, Boolean[] attributesInGroup) {
-		ArrayList<Table> tuples = new ArrayList<Table>();
+	public ArrayList<JSONObject> aggregationGroupHotel(Boolean[] attributesInSelect, Boolean[] attributesInGroup) {
+		ArrayList<JSONObject> tuples = new ArrayList<JSONObject>();
 		try {
 			String attributesToJoin = "";
 			String groupByToJoin = "";
@@ -338,7 +525,7 @@ public class DatabaseConnectionHandler {
 			ResultSet resultSet = statement.executeQuery("SELECT " + attributesToJoin + " FROM hotel " + "GROUP BY "
 					+ groupByToJoin);
 			while (resultSet.next()) {
-				Table tuple = createEntityTuple("hotel", resultSet);
+				JSONObject tuple = createEntityTuple("hotel", resultSet);
 				tuples.add(tuple);
 			}
 			resultSet.close();
@@ -347,6 +534,18 @@ public class DatabaseConnectionHandler {
 			System.out.println(EXCEPTION_TAG + " " + e.getMessage());
 		}
 		return tuples;
+	}
+
+	// https://stackoverflow.com/questions/3599861/how-can-i-determine-if-the-column-name-exist-in-the-resultset
+	public static boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columns = rsmd.getColumnCount();
+		for (int x = 1; x <= columns; x++) {
+			if (columnName.equals(rsmd.getColumnName(x))) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -3,15 +3,17 @@ package userInterface.showAll;
 import model.Table;
 import model.tables.Customer;
 import model.tables.Room;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class CustomerTableModel extends AbstractTableModel {
-    private ArrayList<Table> customers;
+    private ArrayList<JSONObject> customers;
     private String[] columns ;
 
-    public CustomerTableModel(ArrayList<Table> customerArr){
+    public CustomerTableModel(ArrayList<JSONObject> customerArr){
         super();
         customers = customerArr ;
         columns = new String[]{"Customer ID", "Customer Name", "Customer Age", "Payment Information", "Phone Number"};
@@ -29,18 +31,38 @@ public class CustomerTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Customer customer = (Customer) customers.get(row);
+        JSONObject customer = customers.get(row);
         switch(col) {
             case 0:
-                return customer.getCustomerID();
+                try {
+                    return customer.get("customer_customerID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return customer.getCustomerName();
+                try {
+                    return customer.get("customer_customerName");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return customer.getCustomerAge();
+                try {
+                    return customer.get("customer_customerAge");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 3:
-                return customer.getPaymentInformation();
+                try {
+                    return customer.get("customer_paymentInformation");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 4:
-                return customer.getPhoneNumber();
+                try {
+                    return customer.get("customer_phoneNumber");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }

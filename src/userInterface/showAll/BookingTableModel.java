@@ -3,15 +3,17 @@ package userInterface.showAll;
 import model.Table;
 import model.tables.Booking;
 import model.tables.Room;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class BookingTableModel extends AbstractTableModel {
-    private ArrayList<Table> bookings;
+    private ArrayList<JSONObject> bookings;
     private String[] columns ;
 
-    public BookingTableModel(ArrayList<Table> bookingArr){
+    public BookingTableModel(ArrayList<JSONObject> bookingArr){
         super();
         bookings = bookingArr ;
         columns = new String[]{"Booking ID", "Start Date", "End Date", "Room Floor", "Room Number", "Customer ID"};
@@ -29,20 +31,44 @@ public class BookingTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Booking booking = (Booking) bookings.get(row);
+        JSONObject booking = bookings.get(row);
         switch(col) {
             case 0:
-                return booking.getBookingID();
+                try {
+                    return booking.get("booking_bookingID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return booking.getStartDate();
+                try {
+                    return booking.get("booking_startDate");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return booking.getEndDate();
+                try {
+                    return booking.get("booking_endDate");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 3:
-                return booking.getRoomFloor();
+                try {
+                    return booking.get("booking_roomFloor");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 4:
-                return booking.getRoomNumber();
+                try {
+                    return booking.get("booking_roomNumber");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 5:
-                return booking.getCustomerID();
+                try {
+                    return booking.get("booking_customerID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }

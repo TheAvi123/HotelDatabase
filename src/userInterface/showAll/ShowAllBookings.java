@@ -3,6 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuBooking;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class ShowAllBookings extends JPanel {
     private JLabel showBookingsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> bookings;
+    ArrayList<JSONObject> bookings;
     TableModel model;
     JTable table;
 

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ProjectionQuery extends JPanel {
     private DatabaseConnectionHandler dbHandler;
     TableModel model;
-    ArrayList<Table> arrayOfTuples;
+    ArrayList<JSONObject> arrayOfTuples;
     JTable table;
     private JLabel showRoomsLabel;
 

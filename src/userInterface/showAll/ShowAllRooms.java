@@ -3,6 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
 import java.awt.*;
@@ -15,7 +16,7 @@ import javax.swing.table.TableModel;
 public class ShowAllRooms extends JPanel {
     private JLabel showRoomsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> rooms;
+    ArrayList<JSONObject> rooms;
     TableModel model;
     JTable table;
 

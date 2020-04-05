@@ -4,6 +4,7 @@ package userInterface.aggregationQuery;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
 import userInterface.showAll.RoomTableModel;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class AggregationQuery extends JPanel {
     private DatabaseConnectionHandler dbHandler;
     TableModel model;
-    ArrayList<Table> arrayOfTuples;
+    ArrayList<JSONObject> arrayOfTuples;
     JTable table;
     private JLabel showRoomsLabel;
 
