@@ -3,17 +3,15 @@ package userInterface.showAll;
 import model.Table;
 import model.tables.Room;
 import model.tables.RoomCost;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class RoomCostTableModel extends AbstractTableModel {
-    private ArrayList<JSONObject> roomCosts;
+    private ArrayList<Table> roomCosts;
     private String[] columns ;
 
-    public RoomCostTableModel(ArrayList<JSONObject> roomArr){
+    public RoomCostTableModel(ArrayList<Table> roomArr){
         super();
         roomCosts = roomArr ;
         columns = new String[]{"Room No.", "Room Floor", "Room Cost"};
@@ -31,26 +29,14 @@ public class RoomCostTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        JSONObject roomCost = roomCosts.get(row);
+        RoomCost roomCost = (RoomCost) roomCosts.get(row);
         switch(col) {
             case 0:
-                try {
-                    return roomCost.get("roomCost_roomNumber");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                return roomCost.getRoomNumber();
             case 1:
-                try {
-                    return roomCost.get("roomCost_roomFloor");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                return roomCost.getRoomFloor();
             case 2:
-                try {
-                    return roomCost.get("roomCost_roomCost");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                return roomCost.getRoomCost();
             default:
                 return null;
         }

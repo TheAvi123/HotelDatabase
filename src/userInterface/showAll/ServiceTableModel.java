@@ -2,18 +2,19 @@ package userInterface.showAll;
 
 import model.Table;
 import model.tables.Room;
+import model.tables.Service;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class RoomTableModel extends AbstractTableModel {
-    private ArrayList<Table> rooms;
+public class ServiceTableModel extends AbstractTableModel {
+    private ArrayList<Table> services;
     private String[] columns ;
 
-    public RoomTableModel(ArrayList<Table> roomArr){
+    public ServiceTableModel(ArrayList<Table> serviceArr){
         super();
-        rooms = roomArr ;
-        columns = new String[]{"Room No.", "Room Floor", "Room Type", "No. Of Beds", "Hotel Address"};
+        services = serviceArr ;
+        columns = new String[]{"Service ID", "Min Tier Level", "Service Cost", "Hotel Address"};
     }
 
     // Number of column of your table
@@ -23,23 +24,21 @@ public class RoomTableModel extends AbstractTableModel {
 
     // Number of row of your table
     public int getRowCount() {
-        return rooms.size();
+        return services.size();
     }
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Room room = (Room) rooms.get(row);
+        Service service = (Service) services.get(row);
         switch(col) {
             case 0:
-                return room.getRoomNumber();
+                return service.getServiceID();
             case 1:
-                return room.getRoomFloor();
+                return service.getMinTierLevel();
             case 2:
-                return room.getRoomType();
+                return service.getServiceCost();
             case 3:
-                return room.getNumberOfBeds();
-            case 4:
-                return room.getHotelAddress();
+                return service.getHotelAddress();
             default:
                 return null;
         }

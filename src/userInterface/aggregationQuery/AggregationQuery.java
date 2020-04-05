@@ -3,10 +3,10 @@ package userInterface.aggregationQuery;
 
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
-import model.Table;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.showAll.HotelTableModel;
 import userInterface.showAll.RoomTableModel;
 
 import javax.swing.*;
@@ -23,7 +23,6 @@ public class AggregationQuery extends JPanel {
     JTable table;
     private JLabel showRoomsLabel;
 
-
     private JLabel titleLabel;
     private JLabel attrLabel;
     private JLabel aggregationLabel;
@@ -34,6 +33,8 @@ public class AggregationQuery extends JPanel {
 
     public AggregationQuery(HotelController controller) {
         dbHandler = new DatabaseConnectionHandler(controller);
+
+
 
         //construct preComponents
         String[] attrFieldItems = {"Hotel Address", "Hotel Name", "Capacity"};
@@ -77,7 +78,7 @@ public class AggregationQuery extends JPanel {
                 Object aggregationSelected = aggregationField.getSelectedItem();
                 Boolean[] maxCapacity = {false, false, true};
                 arrayOfTuples = dbHandler.aggregationMaxHotel(maxCapacity);
-                model = new RoomTableModel(arrayOfTuples);
+                model = new HotelTableModel(arrayOfTuples);
 
                 //construct components
                 showRoomsLabel = new JLabel ("Showing Aggregation Query");

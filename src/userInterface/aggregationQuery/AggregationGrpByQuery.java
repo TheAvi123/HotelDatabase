@@ -3,10 +3,10 @@ package userInterface.aggregationQuery;
 
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
-import model.Table;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.showAll.HotelTableModel;
 import userInterface.showAll.RoomTableModel;
 
 import javax.swing.*;
@@ -21,8 +21,8 @@ public class AggregationGrpByQuery extends JPanel {
     TableModel model;
     ArrayList<JSONObject> arrayOfTuples;
     JTable table;
-    private JLabel showRoomsLabel;
 
+    private JLabel showRoomsLabel;
     private JLabel titleLabel;
     private JLabel selectLabel;
     private JCheckBox hotelAddressSelField;
@@ -126,6 +126,7 @@ public class AggregationGrpByQuery extends JPanel {
                 } else {
                     chosenGrpBy[2] = false;
                 }
+
                 if (chosenSelect[3] == true && chosenSelect[0] == true && chosenGrpBy[0] == false) {
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "Eggs are not supposed to be green.");                }
@@ -139,7 +140,7 @@ public class AggregationGrpByQuery extends JPanel {
                 }
 
                 arrayOfTuples = dbHandler.aggregationGroupHotel(chosenSelect, chosenGrpBy);
-                model = new RoomTableModel(arrayOfTuples);
+                model = new HotelTableModel(arrayOfTuples);
 
                 //construct components
                 showRoomsLabel = new JLabel ("Showing Aggregation Group By Query");
@@ -160,7 +161,6 @@ public class AggregationGrpByQuery extends JPanel {
                 backButton.setBounds (55, 260, 100, 25);
 
             }
-
         });
 
         // on pressing backButton

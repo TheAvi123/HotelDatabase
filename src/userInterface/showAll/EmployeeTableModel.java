@@ -1,20 +1,20 @@
 package userInterface.showAll;
 
 import model.Table;
-import model.tables.Booking;
-import model.tables.Room;
+import model.tables.Employee;
+import model.tables.Service;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class BookingTableModel extends AbstractTableModel {
-    private ArrayList<Table> bookings;
+public class EmployeeTableModel extends AbstractTableModel {
+    private ArrayList<Table> employees;
     private String[] columns ;
 
-    public BookingTableModel(ArrayList<Table> bookingArr){
+    public EmployeeTableModel(ArrayList<Table> employeeArr){
         super();
-        bookings = bookingArr ;
-        columns = new String[]{"Booking ID", "Start Date", "End Date", "Room Floor", "Room Number", "Customer ID"};
+        employees = employeeArr ;
+        columns = new String[]{"employeeStaffID", "employeeName", "payrollAccountNumber", "salary", "workShift", "managerStaffID"};
     }
 
     // Number of column of your table
@@ -24,25 +24,25 @@ public class BookingTableModel extends AbstractTableModel {
 
     // Number of row of your table
     public int getRowCount() {
-        return bookings.size();
+        return employees.size();
     }
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Booking booking = (Booking) bookings.get(row);
+        Employee em = (Employee) employees.get(row);
         switch(col) {
             case 0:
-                return booking.getBookingID();
+                return em.getEmployeeStaffID();
             case 1:
-                return booking.getStartDate();
+                return em.getEmployeeName();
             case 2:
-                return booking.getEndDate();
+                return em.getPayrollAccountNumber();
             case 3:
-                return booking.getRoomFloor();
+                return em.getSalary();
             case 4:
-                return booking.getRoomNumber();
+                return em.getWorkShift();
             case 5:
-                return booking.getCustomerID();
+                return em.getManagerStaffID();
             default:
                 return null;
         }

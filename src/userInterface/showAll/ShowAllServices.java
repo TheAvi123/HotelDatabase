@@ -3,7 +3,8 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
-import userInterface.chooseMenu.ChooseMenuCustomer;
+import userInterface.chooseMenu.ChooseMenuRoom;
+import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -12,23 +13,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ShowAllCustomers extends JPanel {
-    private JLabel showCustomersLabel;
+public class ShowAllServices extends JPanel {
+    private JLabel showServicesLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> customers;
+    ArrayList<Table> services;
     TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllCustomers(HotelController controller) {
+    public ShowAllServices(HotelController controller) {
 
         dbHandler = new DatabaseConnectionHandler(controller);
-        customers = dbHandler.getTableTuples("customer");
-        model = new CustomerTableModel(customers);
+        services = dbHandler.getTableTuples("service");
+        model = new ManagerTableModel(services);
 
         //construct components
-        showCustomersLabel = new JLabel ("Showing All Customers");
+        showServicesLabel = new JLabel ("Showing All Services");
         table = new JTable(model);
         backButton = new JButton ("Back");
 
@@ -37,11 +38,11 @@ public class ShowAllCustomers extends JPanel {
         setLayout (null);
 
         //add components
-        add (showCustomersLabel);
+        add (showServicesLabel);
         add (table);
         add (backButton);
         //set component bounds (only needed by Absolute Positioning)
-        showCustomersLabel.setBounds (55, 55, 130, 15);
+        showServicesLabel.setBounds (55, 55, 140, 15);
         table.setBounds (55, 95, 300, 145);
         backButton.setBounds (55, 260, 100, 25);
 
@@ -51,7 +52,7 @@ public class ShowAllCustomers extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuCustomer(controller));
+                frame.getContentPane().add (new ChooseMenuService(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

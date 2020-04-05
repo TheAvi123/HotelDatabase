@@ -4,10 +4,9 @@ package userInterface.projectionQuery;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
-import model.Table;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
-import userInterface.showAll.RoomTableModel;
+import userInterface.showAll.HotelTableModel;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -84,9 +83,8 @@ public class ProjectionQuery extends JPanel {
                 } else {
                     attributes[2] = false;
                 }
-
                 arrayOfTuples = dbHandler.projectionHotel(attributes);
-                model = new RoomTableModel(arrayOfTuples);
+                model = new HotelTableModel(arrayOfTuples);
 
                 //construct components
                 showRoomsLabel = new JLabel ("Showing Projection Query");

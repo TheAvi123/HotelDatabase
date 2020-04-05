@@ -2,9 +2,7 @@ package userInterface.showAll;
 
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
-import jdk.nashorn.internal.runtime.JSONFunctions;
 import model.Table;
-import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
 
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 public class ShowAllHotels extends JPanel {
     private JLabel showHotelsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<JSONObject> hotels;
+    ArrayList<Table> hotels;
     TableModel model;
     JTable table;
 
@@ -28,7 +26,7 @@ public class ShowAllHotels extends JPanel {
 
         dbHandler = new DatabaseConnectionHandler(controller);
         hotels = dbHandler.getTableTuples("hotel");
-        model = new RoomTableModel(hotels);
+        model = new HotelTableModel(hotels);
 
         //construct components
         showHotelsLabel = new JLabel ("Showing All Hotels");
