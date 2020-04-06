@@ -1,17 +1,16 @@
 package userInterface.showAll;
 
-import model.Table;
-import model.tables.Employee;
-import model.tables.Service;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class EmployeeTableModel extends AbstractTableModel {
-    private ArrayList<Table> employees;
+    private ArrayList<JSONObject> employees;
     private String[] columns ;
 
-    public EmployeeTableModel(ArrayList<Table> employeeArr){
+    public EmployeeTableModel(ArrayList<JSONObject> employeeArr){
         super();
         employees = employeeArr ;
         columns = new String[]{"employeeStaffID", "employeeName", "payrollAccountNumber", "salary", "workShift", "managerStaffID"};
@@ -29,20 +28,44 @@ public class EmployeeTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Employee em = (Employee) employees.get(row);
+        JSONObject employee = employees.get(row);
         switch(col) {
             case 0:
-                return em.getEmployeeStaffID();
+                try {
+                    return employee.get("employeeStaffID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return em.getEmployeeName();
+                try {
+                    return employee.get("employeeName");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return em.getPayrollAccountNumber();
+                try {
+                    return employee.get("payrollAccountNumber");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 3:
-                return em.getSalary();
+                try {
+                    return employee.get("salary");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 4:
-                return em.getWorkShift();
+                try {
+                    return employee.get("workShift");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 5:
-                return em.getManagerStaffID();
+                try {
+                    return employee.get("managerStaffID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }

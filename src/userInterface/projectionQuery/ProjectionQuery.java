@@ -5,8 +5,9 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
-import userInterface.showAll.HotelTableModel;
+import userInterface.aggregationQuery.AggregationResult;
+import userInterface.chooseMenu.ChooseMenuHotel;
+import userInterface.showAll.DynamicTableModel;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -30,7 +31,7 @@ public class ProjectionQuery extends JPanel {
     private JCheckBox hotelNameCB;
     private JCheckBox capacityCB;
 
-    public ProjectionQuery(HotelController controller) {
+    public ProjectionQuery(HotelController controller, JFrame frame) {
         dbHandler = new DatabaseConnectionHandler(controller);
 
         //construct components
@@ -84,26 +85,12 @@ public class ProjectionQuery extends JPanel {
                     attributes[2] = false;
                 }
                 arrayOfTuples = dbHandler.projectionHotel(attributes);
-                model = new HotelTableModel(arrayOfTuples);
+                model = new DynamicTableModel(arrayOfTuples);
 
-                //construct components
-                showRoomsLabel = new JLabel ("Showing Projection Query");
-                table = new JTable(model);
-                backButton = new JButton ("Back");
-
-                //adjust size and set layout
-                setPreferredSize (new Dimension (736, 523));
-                setLayout (null);
-
-                //add components
-                add (showRoomsLabel);
-                add (table);
-                add (backButton);
-                //set component bounds (only needed by Absolute Positioning)
-                showRoomsLabel.setBounds (55, 55, 130, 15);
-                table.setBounds (55, 95, 300, 145);
-                backButton.setBounds (55, 260, 100, 25);
-
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ProjectionResult(model, controller, frame));
+                frame.pack();
+                frame.setVisible (true);
             }
         });
 
@@ -111,19 +98,19 @@ public class ProjectionQuery extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("MyPanel");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new SelectionQuery(controller));
+//        JFrame frame = new JFrame();
+//        frame.getContentPane().removeAll();
+//        frame.getContentPane().add (new ProjectionQuery(new HotelController(), frame));
 //        frame.pack();
 //        frame.setVisible (true);
 //    }

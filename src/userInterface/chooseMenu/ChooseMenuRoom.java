@@ -20,7 +20,7 @@ public class ChooseMenuRoom extends JPanel {
     private JButton showButton;
     private JButton backButton;
 
-    public ChooseMenuRoom(HotelController controller) {
+    public ChooseMenuRoom(HotelController controller, JFrame frame) {
         //construct components
         titleLabel = new JLabel ("What do you want to do with ROOM?");
         insertButton = new JButton ("Insert Room");
@@ -59,11 +59,10 @@ public class ChooseMenuRoom extends JPanel {
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Room");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new InsertRoom(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -71,11 +70,10 @@ public class ChooseMenuRoom extends JPanel {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Update Prompt");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdatePromptRoom(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -83,11 +81,10 @@ public class ChooseMenuRoom extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Room");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new DeleteRoom(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -95,11 +92,10 @@ public class ChooseMenuRoom extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all rooms");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllRooms(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ShowAllRooms(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -107,18 +103,17 @@ public class ChooseMenuRoom extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new WelcomeScreen(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Choose Menu");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ca.ubc.cs304.ui.chooseMenu.ChooseMenuRoom());
 //        frame.pack();
 //        frame.setVisible (true);

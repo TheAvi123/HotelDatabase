@@ -1,10 +1,10 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuBooking;
-import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.updateSelected.UpdateSelectedBooking;
-import userInterface.updateSelected.UpdateSelectedRoom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class UpdatePromptBooking extends JPanel {
     private JTextField bookingIDField;
     private JButton submitButton;
 
-    public UpdatePromptBooking(HotelController controller) {
+    public UpdatePromptBooking(HotelController controller, JFrame frame) {
         //construct components
         whichBookingLabel = new JLabel ("Which BOOKING to update?");
         cancelButton = new JButton ("Cancel");
@@ -54,12 +54,20 @@ public class UpdatePromptBooking extends JPanel {
                 // saving the primary keys needed to find the particular room to update
                 String bookingIDtoUpdate = bookingIDField.getText();
 
+                JSONObject whereKeys = new JSONObject();
+                try {
+                    whereKeys.put("bookingID", bookingIDtoUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Booking" + bookingIDtoUpdate);
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdateSelectedBooking(controller, frame, whereKeys));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -67,18 +75,18 @@ public class UpdatePromptBooking extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuBooking(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Prompt");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdatePromptRoom());
 //        frame.pack();
 //        frame.setVisible (true);

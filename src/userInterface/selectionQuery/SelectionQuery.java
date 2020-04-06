@@ -2,15 +2,32 @@ package userInterface.selectionQuery;
 
 
 import controller.HotelController;
+import database.DatabaseConnectionHandler;
+import model.TableHelper;
+import model.tableHelpers.RoomCostHelper;
 import model.tables.RoomCost;
+import org.json.JSONObject;
+import tools.Comparator;
+import tools.Condition;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.projectionQuery.ProjectionResult;
+import userInterface.showAll.DynamicTableModel;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.TableModel;
 
 public class SelectionQuery extends JPanel {
+    private DatabaseConnectionHandler dbHandler;
+    TableModel model;
+    ArrayList<JSONObject> arrayOfTuples;
+    JTable table;
+
+    private JLabel showRoomsLabel;
     private JLabel titleLabel;
     private JLabel attrLabel;
     private JLabel condLabel;
@@ -22,7 +39,9 @@ public class SelectionQuery extends JPanel {
     private JButton submitButton;
     private JButton backButton;
 
-    public SelectionQuery(HotelController controller) {
+    public SelectionQuery(HotelController controller, JFrame frame) {
+        dbHandler = new DatabaseConnectionHandler(controller);
+
         //construct preComponents
         String[] attrFieldItems = {"Room Number", "Room Floor", "Room Cost"};
         String[] condFieldItems = {"=", "!=", ">", "<", ">=", "<="};
@@ -70,9 +89,45 @@ public class SelectionQuery extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object attributeSelected = attrField.getSelectedItem();
-                Object conditionSelected = condField.getSelectedItem();
-                int valueEntered = Integer.parseInt(valField.getText());
+                String attributeSelected = (String) attrField.getSelectedItem();
+                String conditionSelected = (String) condField.getSelectedItem();
+                Comparator useComparator = Comparator.equal;
+                String attributeName = new String();
+                switch (attributeSelected) {
+                    case "Room Number":
+                        attributeName = "roomNumber";
+                        break;
+                    case "Room Floor":
+                        attributeName = "roomFloor";
+                        break;
+                    case "Room Cost":
+                        attributeName = "roomCost";
+                        break;
+                }
+                    if(conditionSelected.equals("=")) {
+                        useComparator = Comparator.equal;
+                    } else if(conditionSelected.equals("!=")) {
+                        useComparator = Comparator.notEqual;
+                    } else if(conditionSelected.equals("<")) {
+                        useComparator = Comparator.less;
+                    } else if(conditionSelected.equals(">")) {
+                        useComparator = Comparator.more;
+                    } else if(conditionSelected.equals("<=")) {
+                        useComparator = Comparator.lessEqual;
+                    } else if(conditionSelected.equals(">=")) {
+                        useComparator = Comparator.moreEqual;
+                }
+
+                String valueEntered = valField.getText();
+                Condition sample = new Condition(attributeName, useComparator, valueEntered);
+                TableHelper roomCostSample = new RoomCostHelper();
+                arrayOfTuples = dbHandler.selectionQuery(roomCostSample, sample);
+                model = new DynamicTableModel(arrayOfTuples);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new SelectionResult(model, controller, frame));
+                frame.pack();
+                frame.setVisible (true);
             }
         });
 
@@ -80,19 +135,19 @@ public class SelectionQuery extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("MyPanel");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new SelectionQuery(controller));
+//        JFrame frame = new JFrame();
+//        frame.getContentPane().removeAll();
+//        frame.getContentPane().add (new SelectionQuery(new HotelController(), frame));
 //        frame.pack();
 //        frame.setVisible (true);
 //    }

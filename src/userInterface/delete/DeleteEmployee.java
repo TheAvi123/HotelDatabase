@@ -2,11 +2,9 @@ package userInterface.delete;
 
 import controller.HotelController;
 import model.tableHelpers.EmployeeHelper;
-import model.tableHelpers.ServiceHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuEmployee;
-import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +18,7 @@ public class DeleteEmployee extends JPanel {
     private JTextField employeeStaffIDField;
     private JButton submitButton;
 
-    public DeleteEmployee(HotelController controller) {
+    public DeleteEmployee(HotelController controller, JFrame frame) {
         //construct components
         whichEmployeeLabel = new JLabel ("Which EMPLOYEE to delete?");
         cancelButton = new JButton ("Cancel");
@@ -71,18 +69,17 @@ public class DeleteEmployee extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuEmployee(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuEmployee(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

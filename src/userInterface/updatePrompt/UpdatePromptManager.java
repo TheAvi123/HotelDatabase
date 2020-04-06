@@ -1,10 +1,10 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuManager;
-import userInterface.chooseMenu.ChooseMenuService;
 import userInterface.updateSelected.UpdateSelectedManager;
-import userInterface.updateSelected.UpdateSelectedService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class UpdatePromptManager extends JPanel {
     private JTextField staffManagerIDField;
     private JButton submitButton;
 
-    public UpdatePromptManager(HotelController controller) {
+    public UpdatePromptManager(HotelController controller, JFrame frame) {
         //construct components
         whichManagerLabel = new JLabel ("Which MANAGER to update?");
         cancelButton = new JButton ("Cancel");
@@ -54,12 +54,21 @@ public class UpdatePromptManager extends JPanel {
                 // saving the primary keys needed to find the particular room to update
                 String managerStaffIDtoUpdate = String.valueOf(staffManagerIDField.getText());
 
+
+                JSONObject wherKeys = new JSONObject();
+                try {
+                    wherKeys.put("managerStaffID", managerStaffIDtoUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Manager" + managerStaffIDtoUpdate);
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdateSelectedManager(controller, frame, wherKeys));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -67,11 +76,11 @@ public class UpdatePromptManager extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuManager(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

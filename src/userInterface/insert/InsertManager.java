@@ -22,7 +22,7 @@ public class InsertManager extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public InsertManager(HotelController controller) {
+    public InsertManager(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new MANAGER");
@@ -79,11 +79,11 @@ public class InsertManager extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuManager(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

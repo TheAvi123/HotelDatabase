@@ -1,20 +1,20 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
-import userInterface.chooseMenu.ChooseMenuBooking;
+import model.tableHelpers.EmployeeHelper;
+import model.tableHelpers.RoomHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuEmployee;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 public class UpdateSelectedEmployee extends JPanel {
     private JLabel updateLabel;
     private JButton cancelButton;
-    private JLabel employeeStaffIDLabel;
-    private JTextField employeeStaffIDField;
     private JLabel employeeNameLabel;
     private JTextField employeeNameField;
     private JLabel payrollInformationLabel;
@@ -27,16 +27,14 @@ public class UpdateSelectedEmployee extends JPanel {
     private JTextField managerStaffIDField;
     private JButton submitButton;
 
-    public UpdateSelectedEmployee(HotelController controller) {
+    public UpdateSelectedEmployee(HotelController controller, JFrame frame, JSONObject whereKeys) {
 
         //construct components
         updateLabel = new JLabel ("Update the selected EMPLOYEE");
         cancelButton = new JButton ("Cancel");
-        employeeStaffIDLabel = new JLabel ("Employee Staff ID");
-        employeeStaffIDField = new JTextField (1);
         employeeNameLabel = new JLabel ("Employee Name");
         employeeNameField = new JTextField (1);
-        payrollInformationLabel = new JLabel ("Payroll Information");
+        payrollInformationLabel = new JLabel ("Payroll Account");
         payrollInformationField = new JTextField (1);
         salaryLabel = new JLabel ("Salary");
         salaryField = new JTextField (1);
@@ -56,8 +54,6 @@ public class UpdateSelectedEmployee extends JPanel {
         //add components
         add (updateLabel);
         add (cancelButton);
-        add (employeeStaffIDLabel);
-        add (employeeStaffIDField);
         add (employeeNameLabel);
         add (employeeNameField);
         add (payrollInformationLabel);
@@ -73,8 +69,6 @@ public class UpdateSelectedEmployee extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         updateLabel.setBounds (145, 70, 300, 30);
         cancelButton.setBounds (265, 330, 102, 25);
-        employeeStaffIDLabel.setBounds (100, 115, 100, 25);
-        employeeStaffIDField.setBounds (265, 115, 100, 25);
         employeeNameLabel.setBounds (100, 150, 145, 25);
         employeeNameField.setBounds (265, 150, 100, 25);
         payrollInformationLabel.setBounds (100, 185, 135, 25);
@@ -92,12 +86,26 @@ public class UpdateSelectedEmployee extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the fields for the booking to update
-                String newRoomNumber = String.valueOf(workShiftField.getText());
-                int newRoomFloor = Integer.parseInt(salaryField.getText());
-                String newEmployeeStaffID = String.valueOf(employeeStaffIDField.getText());
-                String newManagerStaffID = managerStaffIDField.getText();
+//                String newEmployeeStaffID = String.valueOf(employeeStaffIDField.getText());
                 String newEmployeeName = String.valueOf(employeeNameField.getText());
                 int newPayrollInformation = Integer.parseInt(payrollInformationField.getText());
+                Double newSalary = Double.parseDouble(salaryField.getText());
+                String newWorkShift = String.valueOf(workShiftField.getText());
+                String newManagerStaffID = managerStaffIDField.getText();
+
+                EmployeeHelper helper = new EmployeeHelper();
+                JSONObject setKeys = new JSONObject();
+                try {
+                    setKeys.put("employeeName", newEmployeeName);
+                    setKeys.put("payrollAccountNumber", newPayrollInformation);
+                    setKeys.put("salary", newSalary);
+                    setKeys.put("workShift", newWorkShift);
+                    setKeys.put("managerStaffID", newManagerStaffID);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
             }
         });
 
@@ -105,11 +113,11 @@ public class UpdateSelectedEmployee extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuEmployee(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(new ChooseMenuEmployee(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

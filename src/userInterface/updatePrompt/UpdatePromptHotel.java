@@ -1,10 +1,12 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.updateSelected.UpdateSelectedHotel;
-import userInterface.updateSelected.UpdateSelectedRoomCost;
+import userInterface.updateSelected.UpdateSelectedRoom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +20,7 @@ public class UpdatePromptHotel extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdatePromptHotel(HotelController controller) {
+    public UpdatePromptHotel(HotelController controller, JFrame frame) {
         //construct components
         whichHotelLabel = new JLabel ("Which HOTEL to update?");
         cancelButton = new JButton ("Cancel");
@@ -54,12 +56,20 @@ public class UpdatePromptHotel extends JPanel {
                 // saving the primary keys needed to find the particular room to update
                 String hotelAddressToUpdate = String.valueOf(hotelAddressField.getText());
 
+                JSONObject wherKeys = new JSONObject();
+                try {
+                    wherKeys.put("hotelAddress", hotelAddressToUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Hotel" + hotelAddressToUpdate);
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdateSelectedHotel(controller, frame, wherKeys));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -67,18 +77,18 @@ public class UpdatePromptHotel extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Prompt");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdatePromptRoom());
 //        frame.pack();
 //        frame.setVisible (true);

@@ -3,13 +3,9 @@ package userInterface.chooseMenu;
 import controller.HotelController;
 import userInterface.WelcomeScreen;
 import userInterface.delete.DeleteBooking;
-import userInterface.delete.DeleteRoom;
 import userInterface.insert.InsertBooking;
-import userInterface.insert.InsertRoom;
 import userInterface.showAll.ShowAllBookings;
-import userInterface.showAll.ShowAllRooms;
 import userInterface.updatePrompt.UpdatePromptBooking;
-import userInterface.updatePrompt.UpdatePromptRoom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +20,7 @@ public class ChooseMenuBooking extends JPanel {
     private JButton showButton;
     private JButton backButton;
 
-    public ChooseMenuBooking(HotelController controller) {
+    public ChooseMenuBooking(HotelController controller, JFrame frame) {
         //construct components
         titleLabel = new JLabel ("What do you want to do with BOOKING?");
         insertButton = new JButton ("Insert Booking");
@@ -63,11 +59,10 @@ public class ChooseMenuBooking extends JPanel {
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Booking");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new InsertBooking(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -75,11 +70,10 @@ public class ChooseMenuBooking extends JPanel {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Update Prompt");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdatePromptBooking(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -87,11 +81,10 @@ public class ChooseMenuBooking extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Booking");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new DeleteBooking(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -99,11 +92,10 @@ public class ChooseMenuBooking extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all bookings");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllBookings(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ShowAllBookings(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -111,18 +103,18 @@ public class ChooseMenuBooking extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new WelcomeScreen(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Choose Menu");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ca.ubc.cs304.ui.chooseMenu.ChooseMenuRoom());
 //        frame.pack();
 //        frame.setVisible (true);

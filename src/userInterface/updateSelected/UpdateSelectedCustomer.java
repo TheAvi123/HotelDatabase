@@ -1,7 +1,12 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
-import userInterface.chooseMenu.ChooseMenuRoom;
+import model.tableHelpers.CustomerHelper;
+import model.tableHelpers.RoomHelper;
+import model.tables.Customer;
+import org.json.JSONException;
+import org.json.JSONObject;
+import userInterface.chooseMenu.ChooseMenuCustomer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +16,6 @@ import java.awt.event.ActionListener;
 public class UpdateSelectedCustomer extends JPanel {
     private JLabel updateCustomerLabel;
     private JButton cancelButton;
-    private JLabel customerIDLabel;
-    private JTextField customerIDField;
     private JLabel customerNameLabel;
     private JTextField customerNameField;
     private JLabel customerAgeLabel;
@@ -23,13 +26,11 @@ public class UpdateSelectedCustomer extends JPanel {
     private JTextField phoneNumberField;
     private JButton submitButton;
 
-    public UpdateSelectedCustomer(HotelController controller) {
+    public UpdateSelectedCustomer(HotelController controller, JFrame frame, JSONObject whereKeys) {
 
         //construct components
         updateCustomerLabel = new JLabel ("Update the selected Customer");
         cancelButton = new JButton ("Cancel");
-        customerIDLabel = new JLabel ("Customer ID");
-        customerIDField = new JTextField (1);
         customerNameLabel = new JLabel ("Customer Name");
         customerNameField = new JTextField (1);
         customerAgeLabel = new JLabel ("Customer Age");
@@ -52,8 +53,6 @@ public class UpdateSelectedCustomer extends JPanel {
         //add components
         add (updateCustomerLabel);
         add (cancelButton);
-        add (customerIDLabel);
-        add (customerIDField);
         add (customerNameLabel);
         add (customerNameField);
         add (customerAgeLabel);
@@ -67,8 +66,6 @@ public class UpdateSelectedCustomer extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         updateCustomerLabel.setBounds (115, 70, 300, 30);
         cancelButton.setBounds (200, 330, 102, 25);
-        customerIDLabel.setBounds (100, 115, 100, 25);
-        customerIDField.setBounds (200, 115, 100, 25);
         customerNameLabel.setBounds (100, 150, 100, 25);
         customerNameField.setBounds (200, 150, 100, 25);
         customerAgeLabel.setBounds (100, 185, 100, 25);
@@ -84,11 +81,24 @@ public class UpdateSelectedCustomer extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the fields for the room to update
-                String newCustomerID = String.valueOf(customerIDField.getText());
                 String newCustomerName = String.valueOf(customerNameField.getText());
-                String newPaymentInformation = String.valueOf(paymentInformationField.getText());
                 int newCustomerAge = Integer.parseInt(customerAgeField.getText());
+                String newPaymentInformation = String.valueOf(paymentInformationField.getText());
                 String newPhoneNumber = String.valueOf(phoneNumberField.getText());
+
+                CustomerHelper helper = new CustomerHelper();
+                JSONObject setKeys = new JSONObject();
+                try {
+                    setKeys.put("customerName", newCustomerName);
+                    setKeys.put("customerAge", newCustomerAge);
+                    setKeys.put("paymentInformation", newPaymentInformation);
+                    setKeys.put("phoneNumber", newPhoneNumber);
+
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
             }
         });
 
@@ -96,18 +106,18 @@ public class UpdateSelectedCustomer extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(new ChooseMenuCustomer(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Selected Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdateSelectedRoom());
 //        frame.pack();
 //        frame.setVisible (true);

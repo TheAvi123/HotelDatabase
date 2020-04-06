@@ -2,16 +2,10 @@ package userInterface.chooseMenu;
 
 import controller.HotelController;
 import userInterface.WelcomeScreen;
-import userInterface.aggregationQuery.AggregationQuery;
-import userInterface.delete.DeleteHotel;
 import userInterface.delete.DeleteRoomCost;
-import userInterface.insert.InsertHotel;
 import userInterface.insert.InsertRoomCost;
-import userInterface.projectionQuery.ProjectionQuery;
 import userInterface.selectionQuery.SelectionQuery;
-import userInterface.showAll.ShowAllHotels;
 import userInterface.showAll.ShowAllRoomCosts;
-import userInterface.updatePrompt.UpdatePromptHotel;
 import userInterface.updatePrompt.UpdatePromptRoomCost;
 
 import javax.swing.*;
@@ -29,15 +23,15 @@ public class ChooseMenuRoomCost extends JPanel {
     private JButton projectionButton;
     private JButton aggregationButton;
 
-    public ChooseMenuRoomCost(HotelController controller) {
+    public ChooseMenuRoomCost(HotelController controller, JFrame frame) {
         //construct components
-        titleLabel = new JLabel ("What do you want to do with HOTEL?");
+        titleLabel = new JLabel ("What do you want to do with RoomCost?");
         insertButton = new JButton ("Insert");
         deleteButton = new JButton ("Delete");
         updateButton = new JButton ("Update");
         showButton = new JButton ("Show");
         backButton = new JButton ("Back to Welcome Screen");
-        projectionButton = new JButton ("Projection");
+        projectionButton = new JButton ("Selection");
         aggregationButton = new JButton ("Aggregation");
 
         //set components properties
@@ -74,11 +68,10 @@ public class ChooseMenuRoomCost extends JPanel {
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Hotel");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new InsertRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -86,11 +79,10 @@ public class ChooseMenuRoomCost extends JPanel {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Update Prompt");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdatePromptRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -98,11 +90,10 @@ public class ChooseMenuRoomCost extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Hotel");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new DeleteRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -110,11 +101,10 @@ public class ChooseMenuRoomCost extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all hotels");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllHotels(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ShowAllRoomCosts(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -122,42 +112,40 @@ public class ChooseMenuRoomCost extends JPanel {
         projectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Selection Query");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ProjectionQuery(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new SelectionQuery(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
-        // on clicking the aggregationButton
-        aggregationButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Aggregation Query");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new AggregationQuery(controller));
-                frame.pack();
-                frame.setVisible (true);
-            }
-        });
+//        // on clicking the aggregationButton
+//        aggregationButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                frame.getContentPane().removeAll();
+//                frame.getContentPane().add (new AggregationQuery(controller, frame));
+//                frame.pack();
+//                frame.setVisible (true);
+//            }
+//        });
 
         // on clicking the back button
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new WelcomeScreen(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Choose Menu");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ca.ubc.cs304.ui.chooseMenu.ChooseMenuRoom());
 //        frame.pack();
 //        frame.setVisible (true);

@@ -5,9 +5,7 @@ import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
-import userInterface.showAll.HotelTableModel;
-import userInterface.showAll.RoomTableModel;
+import userInterface.showAll.DynamicTableModel;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -21,31 +19,26 @@ public class AggregationQuery extends JPanel {
     TableModel model;
     ArrayList<JSONObject> arrayOfTuples;
     JTable table;
-    private JLabel showRoomsLabel;
 
     private JLabel titleLabel;
-    private JLabel attrLabel;
-    private JLabel aggregationLabel;
-    private JComboBox attrField;
-    private JComboBox aggregationField;
+    private JLabel selectLabel;
+    private JCheckBox hotelAddressSelField;
+    private JCheckBox hotelNameSelField;
+    private JCheckBox capacitySelField;
+    private JCheckBox aggrSelField;
     private JButton submitButton;
     private JButton backButton;
 
-    public AggregationQuery(HotelController controller) {
+    public AggregationQuery(HotelController controller, JFrame frame) {
         dbHandler = new DatabaseConnectionHandler(controller);
 
-
-
-        //construct preComponents
-        String[] attrFieldItems = {"Hotel Address", "Hotel Name", "Capacity"};
-        String[] aggregationFieldItems = {"Min", "Max", "Average", "Count"};
-
         //construct components
-        titleLabel = new JLabel ("AGGREGATION QUERY");
-        attrLabel = new JLabel ("ATTRIBUTE");
-        aggregationLabel = new JLabel ("AGGREGATION");
-        attrField = new JComboBox (attrFieldItems);
-        aggregationField = new JComboBox (aggregationFieldItems);
+        titleLabel = new JLabel ("AGGREGATION");
+        selectLabel = new JLabel ("SELECT");
+        hotelAddressSelField = new JCheckBox ("Hotel Address");
+        hotelNameSelField = new JCheckBox ("Hotel Name");
+        capacitySelField = new JCheckBox ("Capacity");
+        aggrSelField = new JCheckBox ("Max Capacity");
         submitButton = new JButton ("Submit Query");
         backButton = new JButton ("Back to Menu");
 
@@ -55,49 +48,64 @@ public class AggregationQuery extends JPanel {
 
         //add components
         add (titleLabel);
-        add (attrLabel);
-        add (aggregationLabel);
-        add (attrField);
-        add (aggregationField);
+        add (selectLabel);
+        add (hotelAddressSelField);
+        add (hotelNameSelField);
+        add (capacitySelField);
+        add (aggrSelField);
         add (submitButton);
         add (backButton);
 
         //set component bounds (only needed by Absolute Positioning)
-        titleLabel.setBounds (300, 95, 175, 30);
-        attrLabel.setBounds (125, 150, 100, 25);
-        aggregationLabel.setBounds (320, 150, 100, 25);
-        attrField.setBounds (95, 190, 130, 25);
-        aggregationField.setBounds (300, 190, 115, 25);
-        submitButton.setBounds (515, 195, 120, 20);
-        backButton.setBounds (590, 35, 115, 25);
+        titleLabel.setBounds (245, 70, 260, 25);
+        selectLabel.setBounds (75, 135, 100, 25);
+        hotelAddressSelField.setBounds (45, 165, 130, 30);
+        hotelNameSelField.setBounds (45, 200, 100, 25);
+        capacitySelField.setBounds (45, 230, 100, 25);
+        aggrSelField.setBounds (45, 260, 103, 25);
+        submitButton.setBounds (505, 170, 115, 25);
+        backButton.setBounds (505, 210, 115, 25);
 
+        Boolean[] chosenSelect = new Boolean[4];
+        Boolean[] chosenGrpBy = new Boolean[3];
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object attributeSelected = attrField.getSelectedItem();
-                Object aggregationSelected = aggregationField.getSelectedItem();
-                Boolean[] maxCapacity = {false, false, true};
-                arrayOfTuples = dbHandler.aggregationMaxHotel(maxCapacity);
-                model = new HotelTableModel(arrayOfTuples);
 
-                //construct components
-                showRoomsLabel = new JLabel ("Showing Aggregation Query");
-                table = new JTable(model);
-                backButton = new JButton ("Back");
+                if (hotelAddressSelField.isSelected()) {
+                    chosenSelect[0] = true;
+                } else {
+                    chosenSelect[0] = false;
+                }
+                if (hotelNameSelField.isSelected()) {
+                    chosenSelect[1] = true;
+                } else {
+                    chosenSelect[1] = false;
+                }
+                if (capacitySelField.isSelected()) {
+                    chosenSelect[2] = true;
+                } else {
+                    chosenSelect[2] = false;
+                }
+                if (aggrSelField.isSelected()) {
+                    chosenSelect[3] = true;
+                } else {
+                    chosenSelect[3] = false;
+                }
 
-                //adjust size and set layout
-                setPreferredSize (new Dimension (736, 523));
-                setLayout (null);
+                if (!chosenSelect[3] || chosenSelect[0] || chosenSelect[1] || chosenSelect[2]) {
+                    JOptionPane.showMessageDialog(new JFrame(), "must select the only aggregation possible", "Dialog",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
 
-                //add components
-                add (showRoomsLabel);
-                add (table);
-                add (backButton);
-                //set component bounds (only needed by Absolute Positioning)
-                showRoomsLabel.setBounds (55, 55, 130, 15);
-                table.setBounds (55, 95, 300, 145);
-                backButton.setBounds (55, 260, 100, 25);
+                    arrayOfTuples = dbHandler.aggregationMaxHotel(chosenSelect);
+                    model = new DynamicTableModel(arrayOfTuples);
 
+                    frame.getContentPane().removeAll();
+                    frame.getContentPane().add(new AggregationResult(model, controller, frame));
+                    frame.pack();
+                    frame.setVisible(true);
+                }
             }
         });
 
@@ -105,21 +113,12 @@ public class AggregationQuery extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
-
-//    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("MyPanel");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new SelectionQuery(controller));
-//        frame.pack();
-//        frame.setVisible (true);
-//    }
 }
 

@@ -34,7 +34,7 @@ public class EmployeeHelper extends TableHelper {
 					ps.setInt(index, keyValuePairs.getInt("payrollAccountNumber"));
 					break;
 				case "salary":
-					ps.setInt(index, keyValuePairs.getInt("salary"));
+					ps.setDouble(index, keyValuePairs.getDouble("salary"));
 					break;
 				case "workShift":
 					ps.setString(index, keyValuePairs.getString("workShift"));

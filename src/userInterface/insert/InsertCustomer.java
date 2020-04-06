@@ -2,9 +2,7 @@ package userInterface.insert;
 
 import controller.HotelController;
 import model.tables.Customer;
-import model.tables.Room;
 import userInterface.chooseMenu.ChooseMenuCustomer;
-import userInterface.chooseMenu.ChooseMenuRoom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,10 +24,10 @@ public class InsertCustomer extends JPanel {
     private JTextField phoneNumberField;
     private JButton submitButton;
 
-    public InsertCustomer(HotelController controller) {
+    public InsertCustomer(HotelController controller, JFrame frame) {
 
         //construct components
-        titleLabel = new JLabel ("Insert new Booking");
+        titleLabel = new JLabel ("Insert new Customer");
         cancelButton = new JButton ("Cancel");
         customerIDLabel = new JLabel ("Customer ID");
         customerIDField = new JTextField (1);
@@ -97,18 +95,18 @@ public class InsertCustomer extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuCustomer(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuCustomer(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

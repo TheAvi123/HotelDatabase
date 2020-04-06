@@ -20,7 +20,7 @@ public class DeleteHotel extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public DeleteHotel(HotelController controller) {
+    public DeleteHotel(HotelController controller, JFrame frame) {
         //construct components
         whichHotelLabel = new JLabel ("Which HOTEL to delete?");
         cancelButton = new JButton ("Cancel");
@@ -55,6 +55,7 @@ public class DeleteHotel extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 // saving the primary keys needed to find the particular hotel to delete
                 String hotelAddressToDelete = String.valueOf(hotelAddressField.getText());
                 HotelHelper helper = new HotelHelper();
@@ -73,18 +74,17 @@ public class DeleteHotel extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

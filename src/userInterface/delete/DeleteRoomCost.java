@@ -6,6 +6,7 @@ import model.tableHelpers.RoomHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
+import userInterface.chooseMenu.ChooseMenuRoomCost;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +22,7 @@ public class DeleteRoomCost extends JPanel {
     private JTextField roomFloorField;
     private JButton submitButton;
 
-    public DeleteRoomCost(HotelController controller) {
+    public DeleteRoomCost(HotelController controller, JFrame frame) {
         //construct components
         whichRoomLabel = new JLabel ("Which ROOM COST to delete?");
         cancelButton = new JButton ("Cancel");
@@ -70,8 +71,8 @@ public class DeleteRoomCost extends JPanel {
                 RoomCostHelper helper = new RoomCostHelper();
                 JSONObject primaryKey = new JSONObject();
                 try {
-                    primaryKey.put("room_number", roomNumberToDelete);
-                    primaryKey.put("room_floor", roomFloorToDelete);
+                    primaryKey.put("roomNumber", roomNumberToDelete);
+                    primaryKey.put("roomFloor", roomFloorToDelete);
                 } catch (JSONException error) {
                     System.out.println(error.getMessage());
                     error.printStackTrace();
@@ -84,18 +85,17 @@ public class DeleteRoomCost extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

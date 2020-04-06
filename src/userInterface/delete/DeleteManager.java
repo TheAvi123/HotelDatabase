@@ -6,7 +6,6 @@ import model.tableHelpers.ServiceHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuManager;
-import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,11 +19,11 @@ public class DeleteManager extends JPanel {
     private JTextField managerStaffIDField;
     private JButton submitButton;
 
-    public DeleteManager(HotelController controller) {
+    public DeleteManager(HotelController controller, JFrame frame) {
         //construct components
         whichManagerLabel = new JLabel ("Which MANAGER to delete?");
         cancelButton = new JButton ("Cancel");
-        managerStaffIDLabel = new JLabel ("Service ID");
+        managerStaffIDLabel = new JLabel ("Manager ID");
         managerStaffIDField = new JTextField (1);
         submitButton = new JButton ("Submit");
 
@@ -71,18 +70,17 @@ public class DeleteManager extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuManager(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

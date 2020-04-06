@@ -2,9 +2,7 @@ package userInterface.insert;
 
 import controller.HotelController;
 import model.tables.Booking;
-import model.tables.Room;
 import userInterface.chooseMenu.ChooseMenuBooking;
-import userInterface.chooseMenu.ChooseMenuRoom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +27,7 @@ public class InsertBooking extends JPanel {
     private JTextField roomFloorField;
 
 
-    public InsertBooking(HotelController controller) {
+    public InsertBooking(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new BOOKING");
@@ -40,8 +38,8 @@ public class InsertBooking extends JPanel {
         startDateField = new JTextField (1);
         endDateLabel = new JLabel ("End Date (yyyy-MM-dd)");
         endDateField = new JTextField (1);
-        roomFloorLabel = new JLabel ("Room Floor *");
-        roomNumberLabel = new JLabel ("Room Number *");
+        roomFloorLabel = new JLabel ("Room Number *");
+        roomNumberLabel = new JLabel ("Room Floor *");
         roomNumberField = new JTextField (1);
         customerIDLabel = new JLabel ("Customer ID");
         customerIDField = new JTextField (1);
@@ -112,18 +110,18 @@ public class InsertBooking extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuBooking(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuBooking(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

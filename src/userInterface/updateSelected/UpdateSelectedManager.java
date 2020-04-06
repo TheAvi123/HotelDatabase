@@ -1,8 +1,11 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import model.tableHelpers.ManagerHelper;
+import model.tableHelpers.RoomHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuManager;
-import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +23,7 @@ public class UpdateSelectedManager extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedManager(HotelController controller) {
+    public UpdateSelectedManager(HotelController controller, JFrame frame, JSONObject whereKeys) {
         //construct preComponents
 
         //construct components
@@ -70,9 +73,20 @@ public class UpdateSelectedManager extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the fields for the room to update
-                String newManagerStaffID = String.valueOf(managerStaffIDField.getText());
+//                String newManagerStaffID = String.valueOf(managerStaffIDField.getText());
                 String newManagerName = String.valueOf(managerNameField.getText());
                 String newHotelAddress = String.valueOf(hotelAddressField.getText());
+
+                ManagerHelper helper = new ManagerHelper();
+                JSONObject setKeys = new JSONObject();
+                try {
+                    setKeys.put("managerName", newManagerName);
+                    setKeys.put("hotelAddress", newHotelAddress);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
             }
         });
 
@@ -80,18 +94,18 @@ public class UpdateSelectedManager extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(new ChooseMenuManager(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Selected Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdateSelectedRoom());
 //        frame.pack();
 //        frame.setVisible (true);

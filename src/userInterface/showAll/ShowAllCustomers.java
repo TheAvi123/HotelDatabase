@@ -3,6 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuCustomer;
 
 import javax.swing.*;
@@ -15,17 +16,17 @@ import java.util.ArrayList;
 public class ShowAllCustomers extends JPanel {
     private JLabel showCustomersLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> customers;
+    ArrayList<JSONObject> customers;
     TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllCustomers(HotelController controller) {
+    public ShowAllCustomers(HotelController controller, JFrame frame) {
 
         dbHandler = new DatabaseConnectionHandler(controller);
         customers = dbHandler.getTableTuples("customer");
-        model = new CustomerTableModel(customers);
+        model = new DynamicTableModel(customers);
 
         //construct components
         showCustomersLabel = new JLabel ("Showing All Customers");
@@ -42,25 +43,25 @@ public class ShowAllCustomers extends JPanel {
         add (backButton);
         //set component bounds (only needed by Absolute Positioning)
         showCustomersLabel.setBounds (55, 55, 130, 15);
-        table.setBounds (55, 95, 300, 145);
-        backButton.setBounds (55, 260, 100, 25);
+        table.setBounds (55, 95, 626, 300);
+        backButton.setBounds (55, 400, 100, 25);
 
         // on clicking the back button
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuCustomer(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuCustomer(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Show all rooms");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ShowAllRooms());
 //        frame.pack();
 //        frame.setVisible (true);

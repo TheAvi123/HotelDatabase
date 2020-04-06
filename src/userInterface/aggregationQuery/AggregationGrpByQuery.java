@@ -5,9 +5,8 @@ import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuHotel;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
-import userInterface.showAll.HotelTableModel;
-import userInterface.showAll.RoomTableModel;
+import userInterface.showAll.DynamicTableModel;
+
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -36,7 +35,7 @@ public class AggregationGrpByQuery extends JPanel {
     private JButton submitButton;
     private JButton backButton;
 
-    public AggregationGrpByQuery(HotelController controller) {
+    public AggregationGrpByQuery(HotelController controller, JFrame frame) {
         dbHandler = new DatabaseConnectionHandler(controller);
 
         //construct components
@@ -90,6 +89,7 @@ public class AggregationGrpByQuery extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 if (hotelAddressSelField.isSelected()) {
                     chosenSelect[0] = true;
                 } else {
@@ -128,39 +128,24 @@ public class AggregationGrpByQuery extends JPanel {
                 }
 
                 if (chosenSelect[3] == true && chosenSelect[0] == true && chosenGrpBy[0] == false) {
-                    JFrame frame1 = new JFrame();
-                    JOptionPane.showMessageDialog(frame1, "error, if aggregate function present, all non-aggregate values must be in Group-By");
-                }
+                    JOptionPane.showMessageDialog(new JFrame(), "groupBy must contain non-aggregate in select", "Dialog",
+                            JOptionPane.ERROR_MESSAGE);               }
                 if (chosenSelect[3] == true && chosenSelect[1] == true && chosenGrpBy[1] == false) {
-                    JFrame frame2 = new JFrame();
-                    JOptionPane.showMessageDialog(frame2, "error, if aggregate function present, all non-aggregate values must be in Group-By");
+                    JOptionPane.showMessageDialog(new JFrame(), "groupBy must contain non-aggregate in select", "Dialog",
+                            JOptionPane.ERROR_MESSAGE);
                 }
                 if (chosenSelect[3] == true && chosenSelect[2] == true && chosenGrpBy[2] == false) {
-                    JFrame frame3 = new JFrame();
-                    JOptionPane.showMessageDialog(frame3, "error, if aggregate function present, all non-aggregate values must be in Group-By");
+                    JOptionPane.showMessageDialog(new JFrame(), "groupBy must contain non-aggregate in select", "Dialog",
+                            JOptionPane.ERROR_MESSAGE);
                 }
 
                 arrayOfTuples = dbHandler.aggregationGroupHotel(chosenSelect, chosenGrpBy);
-                model = new HotelTableModel(arrayOfTuples);
+                model = new DynamicTableModel(arrayOfTuples);
 
-                //construct components
-                showRoomsLabel = new JLabel ("Showing Aggregation Group By Query");
-                table = new JTable(model);
-                backButton = new JButton ("Back");
-
-                //adjust size and set layout
-                setPreferredSize (new Dimension (736, 523));
-                setLayout (null);
-
-                //add components
-                add (showRoomsLabel);
-                add (table);
-                add (backButton);
-                //set component bounds (only needed by Absolute Positioning)
-                showRoomsLabel.setBounds (55, 55, 130, 15);
-                table.setBounds (55, 95, 300, 145);
-                backButton.setBounds (55, 260, 100, 25);
-
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new AggregationGrpByResult(model, controller, frame));
+                frame.pack();
+                frame.setVisible (true);
             }
         });
 
@@ -168,11 +153,10 @@ public class AggregationGrpByQuery extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

@@ -5,6 +5,7 @@ import delegates.LoginWindowDelegate;
 import delegates.TransactionsHandlerDelegate;
 import model.Table;
 import model.TableHelper;
+import tools.Condition;
 import userInterface.LoginWindow;
 import userInterface.TransactionsHandler;
 import org.json.JSONObject;
@@ -37,7 +38,6 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 			// Once connected, remove login window and start text transaction flow
 			loginWindow.dispose();
 			TransactionsHandler transactionsHandler = new TransactionsHandler(this);
-			this.setupDatabase();
 			transactionsHandler.showMainMenu();
 		} else {
 			loginWindow.handleLoginFailed();
@@ -47,10 +47,6 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 				System.exit(-1);
 			}
 		}
-	}
-
-	public void setupDatabase() {
-		dbHandler.setupDatabase();
 	}
 
 	public void transactionsComplete() {
@@ -76,4 +72,13 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	public ArrayList<JSONObject> getTuples(String tableName) {
 		return dbHandler.getTableTuples(tableName);
 	}
+
+
+//public void selectionQuery(TableHelper helper, Condition condition) { dbHandler.selectionQuery(helper, condition); }
+public ArrayList<JSONObject> projectionQueryHotel(Boolean[] attributesToShow) {
+	return dbHandler.projectionHotel(attributesToShow);
 }
+
+}
+
+

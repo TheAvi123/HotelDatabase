@@ -1,17 +1,16 @@
 package userInterface.showAll;
 
-import model.Table;
-import model.tables.Hotel;
-import model.tables.RoomCost;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class HotelTableModel extends AbstractTableModel {
-    private ArrayList<Table> hotels;
+    private ArrayList<JSONObject> hotels;
     private String[] columns ;
 
-    public HotelTableModel(ArrayList<Table> roomArr){
+    public HotelTableModel(ArrayList<JSONObject> roomArr){
         super();
         hotels = roomArr ;
         columns = new String[]{"Hotel Address", "Hotel Name", "Capacity"};
@@ -29,14 +28,26 @@ public class HotelTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Hotel hotel = (Hotel) hotels.get(row);
+        JSONObject hotel = hotels.get(row);
         switch(col) {
             case 0:
-                return hotel.getHotelAddress();
+                try {
+                    return hotel.get("hotelAddress");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return hotel.getHotelName();
+                try {
+                    return hotel.get("hotelName");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return hotel.getCapacity();
+                try {
+                    return hotel.get("capacity");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }

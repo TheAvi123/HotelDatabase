@@ -22,7 +22,7 @@ public class InsertRoomCost extends JPanel {
     private JTextField roomCostField;
     private JButton submitButton;
 
-    public InsertRoomCost(HotelController controller) {
+    public InsertRoomCost(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new ROOM COST");
@@ -83,18 +83,18 @@ public class InsertRoomCost extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

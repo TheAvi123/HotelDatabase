@@ -20,7 +20,7 @@ public class DeleteService extends JPanel {
     private JTextField serviceIDField;
     private JButton submitButton;
 
-    public DeleteService(HotelController controller) {
+    public DeleteService(HotelController controller, JFrame frame) {
         //construct components
         whichServiceLabel = new JLabel ("Which SERVICE to delete?");
         cancelButton = new JButton ("Cancel");
@@ -71,18 +71,18 @@ public class DeleteService extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuService(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuService(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

@@ -16,7 +16,7 @@ public class RoomTierHelper extends TableHelper {
 
 	@Override
 	public String[] getAttributes() {
-		return new String[]{"roomTier_roomType"};
+		return new String[]{"roomType", "tierLevel"};
 	}
 
 
@@ -24,11 +24,11 @@ public class RoomTierHelper extends TableHelper {
 	public void setStatementParameter(PreparedStatement ps, int index, String key, JSONObject keyValuePairs) throws SQLException {
 		try {
 			switch (key) {
-				case "roomTier_roomType":
-					ps.setString(index, keyValuePairs.getString("roomTier_roomType"));
+				case "roomType":
+					ps.setString(index, keyValuePairs.getString("roomType"));
 					break;
-				case "roomTier_tierLevel":
-					ps.setString(index, keyValuePairs.getString("roomTier_tierLevel"));
+				case "tierLevel":
+					ps.setString(index, keyValuePairs.getString("tierLevel"));
 					break;
 				default:
 					throw new Error("Invalid Key!");

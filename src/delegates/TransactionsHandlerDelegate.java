@@ -17,7 +17,6 @@ import java.util.ArrayList;
  */
 public interface TransactionsHandlerDelegate {
 	//Transactions Functions
-	public void setupDatabase();
 	public void transactionsComplete();
 	//SQL DDL Functions
 	public void insertTuple(Table table);

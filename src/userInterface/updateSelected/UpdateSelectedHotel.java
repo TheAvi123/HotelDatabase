@@ -1,9 +1,12 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import model.tableHelpers.HotelHelper;
+import model.tableHelpers.RoomHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.omg.CORBA.INTERNAL;
 import userInterface.chooseMenu.ChooseMenuHotel;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,20 +16,16 @@ import java.awt.event.ActionListener;
 public class UpdateSelectedHotel extends JPanel {
     private JLabel updateHotelLabel;
     private JButton cancelButton;
-    private JLabel hotelAddressLabel;
-    private JTextField hotelAddressField;
     private JLabel hotelNameLabel;
     private JTextField hotelNameField;
     private JLabel capacityLabel;
     private JTextField capacityField;
     private JButton submitButton;
 
-    public UpdateSelectedHotel(HotelController controller) {
+    public UpdateSelectedHotel(HotelController controller, JFrame frame, JSONObject whereKeys) {
         //construct components
         updateHotelLabel = new JLabel ("Update the selected HOTEL");
         cancelButton = new JButton ("Cancel");
-        hotelAddressLabel = new JLabel ("Hotel Address");
-        hotelAddressField = new JTextField (5);
         hotelNameLabel = new JLabel ("Hotel Name");
         hotelNameField = new JTextField (1);
         capacityLabel = new JLabel ("Capacity");
@@ -43,8 +42,6 @@ public class UpdateSelectedHotel extends JPanel {
         //add components
         add (updateHotelLabel);
         add (cancelButton);
-        add (hotelAddressLabel);
-        add (hotelAddressField);
         add (hotelNameLabel);
         add (hotelNameField);
         add (capacityLabel);
@@ -54,8 +51,6 @@ public class UpdateSelectedHotel extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         updateHotelLabel.setBounds (115, 70, 300, 30);
         cancelButton.setBounds (200, 330, 102, 25);
-        hotelAddressLabel.setBounds (100, 115, 100, 25);
-        hotelAddressField.setBounds (200, 115, 100, 25);
         hotelNameLabel.setBounds (100, 150, 100, 25);
         hotelNameField.setBounds (200, 150, 100, 25);
         capacityLabel.setBounds (100, 185, 100, 25);
@@ -66,29 +61,41 @@ public class UpdateSelectedHotel extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // saving the fields for the room to update
-                String newHotelAddress = String.valueOf(hotelAddressField.getText());
+                // saving the fields for the hotel to update
+//                String newHotelAddress = String.valueOf(hotelAddressField.getText());
                 String newHotelName = String.valueOf(hotelNameField.getText());
                 Integer newCapacity = Integer.parseInt(capacityField.getText());
+                HotelHelper helper = new HotelHelper();
+                JSONObject setKeys = new JSONObject();
+
+                try {
+                    setKeys.put("hotelName", newHotelName);
+                    setKeys.put("capacity", newCapacity);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
             }
+
         });
 
         // on clicking the cancel button
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(new ChooseMenuHotel(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Selected Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdateSelectedRoom());
 //        frame.pack();
 //        frame.setVisible (true);

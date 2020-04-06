@@ -1,11 +1,10 @@
 package userInterface.delete;
 
 import controller.HotelController;
-import model.tableHelpers.BookingHelper;
 import model.tableHelpers.CustomerHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
-import userInterface.chooseMenu.ChooseMenuRoom;
+import userInterface.chooseMenu.ChooseMenuCustomer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,7 @@ public class DeleteCustomer extends JPanel {
     private JButton submitButton;
 
 
-    public DeleteCustomer(HotelController controller) {
+    public DeleteCustomer(HotelController controller, JFrame frame) {
         //construct components
         whichCustomerLabel = new JLabel ("Which CUSTOMER to delete?");
         cancelButton = new JButton ("Cancel");
@@ -72,18 +71,17 @@ public class DeleteCustomer extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuCustomer(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Delete Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new DeleteRoom());
 //        frame.pack();
 //        frame.setVisible (true);

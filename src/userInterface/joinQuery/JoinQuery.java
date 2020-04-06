@@ -2,15 +2,30 @@ package userInterface.joinQuery;
 
 
 import controller.HotelController;
+import database.DatabaseConnectionHandler;
+import model.TableHelper;
+import model.tableHelpers.BookingHelper;
+import model.tableHelpers.CustomerHelper;
+import org.json.JSONObject;
 import userInterface.WelcomeScreen;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.projectionQuery.ProjectionResult;
+import userInterface.showAll.DynamicTableModel;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JoinQuery extends JPanel {
+    private DatabaseConnectionHandler dbHandler;
+    TableModel model;
+    ArrayList<JSONObject> arrayOfTuples;
+    JTable table;
+
+    private JLabel showRoomsLabel;
     private JLabel titleLabel;
     private JLabel table1Label;
     private JButton submitButton;
@@ -22,7 +37,9 @@ public class JoinQuery extends JPanel {
     private JComboBox joinField;
 
 
-    public JoinQuery(HotelController controller) {
+    public JoinQuery(HotelController controller, JFrame frame) {
+        dbHandler = new DatabaseConnectionHandler(controller);
+
         //construct preComponents
         String[] table1FieldItems = {"Booking", "Customer", "Employee", "Hotel", "Manager", "RoomCost", "Room", "Service"};
         String[] table2FieldItems = {"Booking", "Customer", "Employee", "Hotel", "Manager", "RoomCost", "Room", "Service"};
@@ -68,9 +85,20 @@ public class JoinQuery extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object table1Selected = table1Field.getSelectedItem();
-                Object table2Selected = table2Field.getSelectedItem();
+                String table1Selected = (String) table1Field.getSelectedItem();
+                String table2Selected = (String) table2Field.getSelectedItem();
                 Object joinSelected = joinField.getSelectedItem();
+                TableHelper customerSample = new CustomerHelper();
+                TableHelper bookingSample = new BookingHelper();
+
+                arrayOfTuples = dbHandler.naturalJoinQuery(customerSample, bookingSample);
+                // TODO need to display these arraysofTuples as a table
+                model = new DynamicTableModel(arrayOfTuples);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new JoinResult(model, controller, frame));
+                frame.pack();
+                frame.setVisible (true);
             }
         });
 
@@ -78,19 +106,19 @@ public class JoinQuery extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new WelcomeScreen(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new WelcomeScreen(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("MyPanel");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new SelectionQuery(controller));
+//
+//        frame.getContentPane().removeAll();
+//        frame.getContentPane().add (new SelectionQuery(controller, frame));
 //        frame.pack();
 //        frame.setVisible (true);
 //    }

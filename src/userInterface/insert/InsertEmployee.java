@@ -1,9 +1,7 @@
 package userInterface.insert;
 
 import controller.HotelController;
-import model.tables.Booking;
 import model.tables.Employee;
-import userInterface.chooseMenu.ChooseMenuBooking;
 import userInterface.chooseMenu.ChooseMenuEmployee;
 
 import javax.swing.*;
@@ -29,7 +27,7 @@ public class InsertEmployee extends JPanel {
     private JButton submitButton;
 
 
-    public InsertEmployee(HotelController controller) {
+    public InsertEmployee(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new EMPLOYEE");
@@ -38,7 +36,7 @@ public class InsertEmployee extends JPanel {
         employeeStaffIDField = new JTextField (1);
         employeeNameLabel = new JLabel ("Employee Name");
         employeeNameField = new JTextField (1);
-        payrollAccountNumberLabel = new JLabel ("Payroll Information");
+        payrollAccountNumberLabel = new JLabel ("Payroll Account");
         payrollAccountNumberField = new JTextField (1);
         salaryLabel = new JLabel ("Salary");
         salaryField = new JTextField (1);
@@ -96,7 +94,7 @@ public class InsertEmployee extends JPanel {
                 Employee employee = new Employee(employeeStaffIDField.getText(),
                         employeeNameField.getText(),
                         Integer.parseInt(payrollAccountNumberField.getText()),
-                        Integer.parseInt(salaryField.getText()),
+                        Double.parseDouble(salaryField.getText()),
                         workShiftField.getText(),
                         managerStaffIDField.getText());
                 controller.insertTuple(employee);
@@ -107,18 +105,18 @@ public class InsertEmployee extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuEmployee(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuEmployee(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

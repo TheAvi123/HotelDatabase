@@ -16,9 +16,9 @@ public class TransactionsHandler {
 	}
 
 	public void showMainMenu() {
-		JFrame frame = new JFrame("Welcome Screen");
+		JFrame frame = new JFrame("Hotel Database");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new WelcomeScreen(controller));
+		frame.getContentPane().add(new WelcomeScreen(controller, frame));
 		frame.pack();
 		frame.setVisible (true);
 	}

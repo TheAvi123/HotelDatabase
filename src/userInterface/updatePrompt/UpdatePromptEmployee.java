@@ -1,10 +1,10 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuEmployee;
-import userInterface.chooseMenu.ChooseMenuService;
 import userInterface.updateSelected.UpdateSelectedEmployee;
-import userInterface.updateSelected.UpdateSelectedService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class UpdatePromptEmployee extends JPanel {
     private JTextField employeeStaffIDField;
     private JButton submitButton;
 
-    public UpdatePromptEmployee(HotelController controller) {
+    public UpdatePromptEmployee(HotelController controller, JFrame frame) {
         //construct components
         whichEmployeeLabel = new JLabel ("Which EMPLOYEE to update?");
         cancelButton = new JButton ("Cancel");
@@ -52,14 +52,22 @@ public class UpdatePromptEmployee extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the primary keys needed to find the particular room to update
-                String managerStaffIDToUpdate = String.valueOf(employeeStaffIDField.getText());
+                String employeeStaffIDToUpdate = String.valueOf(employeeStaffIDField.getText());
+
+                JSONObject wherKeys = new JSONObject();
+                try {
+                    wherKeys.put("employeeStaffID", employeeStaffIDToUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
 
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Service" + managerStaffIDToUpdate);
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedEmployee(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdateSelectedEmployee(controller, frame, wherKeys));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -67,11 +75,11 @@ public class UpdatePromptEmployee extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuEmployee(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuEmployee(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

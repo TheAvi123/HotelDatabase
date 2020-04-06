@@ -1,19 +1,18 @@
 package userInterface.showAll;
 
-import model.Table;
-import model.tables.Manager;
-import model.tables.Service;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class ManagerTableModel extends AbstractTableModel {
-    private ArrayList<Table> services;
+    private ArrayList<JSONObject> managers;
     private String[] columns ;
 
-    public ManagerTableModel(ArrayList<Table> serviceArr){
+    public ManagerTableModel(ArrayList<JSONObject> managerArr){
         super();
-        services = serviceArr ;
+        managers = managerArr ;
         columns = new String[]{"Manager Staff ID", "Manager Name", "Hotel Address"};
     }
 
@@ -24,23 +23,36 @@ public class ManagerTableModel extends AbstractTableModel {
 
     // Number of row of your table
     public int getRowCount() {
-        return services.size();
+        return managers.size();
     }
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Manager manager = (Manager) services.get(row);
+        JSONObject managers = this.managers.get(row);
         switch(col) {
             case 0:
-                return manager.getManagerStaffID();
+                try {
+                    return managers.get("managerStaffID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return manager.getManagerName();
+                try {
+                    return managers.get("managerName");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return manager.getHotelAddress();
+                try {
+                    return managers.get("hotelAddress");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }
     }
+
     public String getColumnName(int col) {
         return columns[col] ;
     }

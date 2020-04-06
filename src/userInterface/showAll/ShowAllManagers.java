@@ -3,8 +3,8 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuManager;
-import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -16,17 +16,17 @@ import java.util.ArrayList;
 public class ShowAllManagers extends JPanel {
     private JLabel showManagersLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> managers;
+    ArrayList<JSONObject> managers;
     TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllManagers(HotelController controller) {
+    public ShowAllManagers(HotelController controller, JFrame frame) {
 
         dbHandler = new DatabaseConnectionHandler(controller);
         managers = dbHandler.getTableTuples("manager");
-        model = new ManagerTableModel(managers);
+        model = new DynamicTableModel(managers);
 
         //construct components
         showManagersLabel = new JLabel ("Showing All Managers");
@@ -42,26 +42,26 @@ public class ShowAllManagers extends JPanel {
         add (table);
         add (backButton);
         //set component bounds (only needed by Absolute Positioning)
-        showManagersLabel.setBounds (55, 55, 140, 15);
-        table.setBounds (55, 95, 300, 145);
-        backButton.setBounds (55, 260, 100, 25);
+        showManagersLabel.setBounds (55, 55, 200, 15);
+        table.setBounds (55, 95, 626, 300);
+        backButton.setBounds (55, 400, 100, 25);
 
         // on clicking the back button
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuManager(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuManager(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Show all rooms");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ShowAllRooms());
 //        frame.pack();
 //        frame.setVisible (true);

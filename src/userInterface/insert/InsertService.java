@@ -1,10 +1,8 @@
 package userInterface.insert;
 
 import controller.HotelController;
-import model.tables.Room;
 import model.tables.Service;
-import userInterface.chooseMenu.ChooseMenuHotel;
-import userInterface.chooseMenu.ChooseMenuRoom;
+import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +22,7 @@ public class InsertService extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public InsertService(HotelController controller) {
+    public InsertService(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new SERVICE");
@@ -88,18 +86,18 @@ public class InsertService extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuHotel(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuService(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

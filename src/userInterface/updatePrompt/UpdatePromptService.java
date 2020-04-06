@@ -1,9 +1,9 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
-import userInterface.chooseMenu.ChooseMenuHotel;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuService;
-import userInterface.updateSelected.UpdateSelectedHotel;
 import userInterface.updateSelected.UpdateSelectedService;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class UpdatePromptService extends JPanel {
     private JTextField serviceIDField;
     private JButton submitButton;
 
-    public UpdatePromptService(HotelController controller) {
+    public UpdatePromptService(HotelController controller, JFrame frame) {
         //construct components
         whichServiceLabel = new JLabel ("Which SERVICE to update?");
         cancelButton = new JButton ("Cancel");
@@ -54,12 +54,20 @@ public class UpdatePromptService extends JPanel {
                 // saving the primary keys needed to find the particular room to update
                 String serviceIDToUpdate = String.valueOf(serviceIDField.getText());
 
+                JSONObject wherKeys = new JSONObject();
+                try {
+                    wherKeys.put("serviceID", serviceIDToUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+
                 // open the update room screen
-                JFrame frame = new JFrame ("Update Service" + serviceIDToUpdate);
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedService(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new UpdateSelectedService(controller, frame, wherKeys));
+                frame.revalidate();
+                frame.repaint();
             }
         });
 
@@ -67,11 +75,11 @@ public class UpdatePromptService extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuService(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuService(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }

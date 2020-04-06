@@ -1,6 +1,10 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import model.tableHelpers.RoomHelper;
+import model.tableHelpers.ServiceHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.chooseMenu.ChooseMenuService;
 
@@ -12,8 +16,6 @@ import java.awt.event.ActionListener;
 public class UpdateSelectedService extends JPanel {
     private JLabel updateLabel;
     private JButton cancelButton;
-    private JLabel serviceIDLabel;
-    private JTextField serviceIDField;
     private JLabel minTierLevelLabel;
     private JTextField minTierLevelField;
     private JLabel serviceCostLabel;
@@ -22,14 +24,12 @@ public class UpdateSelectedService extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedService(HotelController controller) {
+    public UpdateSelectedService(HotelController controller, JFrame frame, JSONObject whereKeys) {
         //construct preComponents
 
         //construct components
         updateLabel = new JLabel ("Update the selected SERVICE");
         cancelButton = new JButton ("Cancel");
-        serviceIDLabel = new JLabel ("Service ID");
-        serviceIDField = new JTextField (1);
         minTierLevelLabel = new JLabel ("Min Tier Lvl");
         minTierLevelField = new JTextField (1);
         serviceCostLabel = new JLabel ("Service Cost");
@@ -48,8 +48,6 @@ public class UpdateSelectedService extends JPanel {
         //add components
         add (updateLabel);
         add (cancelButton);
-        add (serviceIDLabel);
-        add (serviceIDField);
         add (minTierLevelLabel);
         add (minTierLevelField);
         add (serviceCostLabel);
@@ -61,8 +59,6 @@ public class UpdateSelectedService extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         updateLabel.setBounds (115, 70, 300, 30);
         cancelButton.setBounds (200, 330, 102, 25);
-        serviceIDLabel.setBounds (100, 115, 107, 25);
-        serviceIDField.setBounds (200, 115, 107, 25);
         minTierLevelLabel.setBounds (100, 150, 107, 25);
         minTierLevelField.setBounds (200, 150, 107, 25);
         serviceCostLabel.setBounds (100, 185, 107, 25);
@@ -76,10 +72,23 @@ public class UpdateSelectedService extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the fields for the room to update
-                String newServiceID = String.valueOf(serviceIDField.getText());
+//                String newServiceID = String.valueOf(serviceIDField.getText());
                 String newMinTierLevel = String.valueOf(minTierLevelField.getText());
                 Double newServiceCost = Double.valueOf(serviceCostField.getText());
                 String newHotelAddress = String.valueOf(hotelAddressField.getText());
+
+                ServiceHelper helper = new ServiceHelper();
+                JSONObject setKeys = new JSONObject();
+                try {
+                    setKeys.put("minTierLevel", newMinTierLevel);
+                    setKeys.put("serviceCost", newServiceCost);
+                    setKeys.put("hotelAddress", newHotelAddress);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
+
             }
         });
 
@@ -87,18 +96,18 @@ public class UpdateSelectedService extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuService(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(new ChooseMenuService(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Update Selected Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new UpdateSelectedRoom());
 //        frame.pack();
 //        frame.setVisible (true);

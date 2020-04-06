@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+
 public class InsertRoom extends JPanel {
     private JLabel titleLabel;
     private JButton cancelButton;
@@ -24,7 +25,7 @@ public class InsertRoom extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public InsertRoom(HotelController controller) {
+    public InsertRoom(HotelController controller, JFrame frame) {
 
         //construct components
         titleLabel = new JLabel ("Insert new ROOM");
@@ -88,6 +89,17 @@ public class InsertRoom extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    int i = Integer.parseInt(roomFloorField.getText());
+                    int i1 = Integer.parseInt(roomNumberField.getText());
+                    int i2 = Integer.parseInt(roomFloorField.getText());
+                    String i3 = roomTypeField.getText();
+                    int i4 = Integer.parseInt(numberOfBedsField.getText());
+                    String i5 = hotelAddressField.getText();
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(new JFrame(), "one or more of the fields should be a number", "Dialog",
+                            JOptionPane.ERROR_MESSAGE);
+                }
                 Room roomToInsert = new Room(Integer.parseInt(roomNumberField.getText()),
                         Integer.parseInt(roomFloorField.getText()),
                         roomTypeField.getText(),
@@ -101,18 +113,18 @@ public class InsertRoom extends JPanel {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoom(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuRoom(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Insert Room");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new InsertRoom(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);

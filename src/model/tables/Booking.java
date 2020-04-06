@@ -19,12 +19,12 @@ public class Booking extends Table {
 	private final int roomNumber;
 	private final String customerID;
 
-	public Booking(String bookingID, Date startDate, Date endDate, int roomFloor, int roomNumber, String customerID) {
+	public Booking(String bookingID, Date startDate, Date endDate, int roomNumber, int roomFloor, String customerID) {
 		this.bookingID = bookingID;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.roomFloor = roomFloor;
 		this.roomNumber = roomNumber;
+		this.roomFloor = roomFloor;
 		this.customerID = customerID;
 
 		this.helper = new BookingHelper();
@@ -73,8 +73,8 @@ public class Booking extends Table {
 		ps.setString(1, this.getBookingID());
 		ps.setDate(2, this.getStartDate());
 		ps.setDate(3, this.getEndDate());
-		ps.setInt(4, this.getRoomFloor());
-		ps.setInt(5, this.getRoomNumber());
+		ps.setInt(4, this.getRoomNumber());
+		ps.setInt(5, this.getRoomFloor());
 		ps.setString(6, this.getCustomerID());
 	}
 }

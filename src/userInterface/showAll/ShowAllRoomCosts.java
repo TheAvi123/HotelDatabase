@@ -3,6 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import model.Table;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
 
@@ -16,20 +17,20 @@ import java.util.ArrayList;
 public class ShowAllRoomCosts extends JPanel {
     private JLabel showRoomCostsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<Table> roomCosts;
+    ArrayList<JSONObject> roomCosts;
     TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllRoomCosts(HotelController controller) {
+    public ShowAllRoomCosts(HotelController controller, JFrame frame) {
 
         dbHandler = new DatabaseConnectionHandler(controller);
         roomCosts = dbHandler.getTableTuples("roomCost");
-        model = new RoomCostTableModel(roomCosts);
+        model = new DynamicTableModel(roomCosts);
 
         //construct components
-        showRoomCostsLabel = new JLabel ("Showing All Rooms");
+        showRoomCostsLabel = new JLabel ("Showing All RoomCost");
         table = new JTable(model);
         backButton = new JButton ("Back");
 
@@ -42,26 +43,26 @@ public class ShowAllRoomCosts extends JPanel {
         add (table);
         add (backButton);
         //set component bounds (only needed by Absolute Positioning)
-        showRoomCostsLabel.setBounds (55, 55, 130, 15);
-        table.setBounds (55, 95, 300, 145);
-        backButton.setBounds (55, 260, 100, 25);
+        showRoomCostsLabel.setBounds (55, 55, 200, 15);
+        table.setBounds (55, 95, 626, 300);
+        backButton.setBounds (55, 400, 100, 25);
 
         // on clicking the back button
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Welcome Screen");
-                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
-                frame.pack();
-                frame.setVisible (true);
+
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add (new ChooseMenuRoomCost(controller, frame));
+                frame.revalidate();
+                frame.repaint();
             }
         });
     }
 
 //    public static void main (String[] args) {
-//        JFrame frame = new JFrame ("Show all rooms");
-//        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+//
+//        frame.getContentPane().removeAll();
 //        frame.getContentPane().add (new ShowAllRooms());
 //        frame.pack();
 //        frame.setVisible (true);

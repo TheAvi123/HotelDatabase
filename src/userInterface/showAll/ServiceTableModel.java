@@ -1,17 +1,16 @@
 package userInterface.showAll;
 
-import model.Table;
-import model.tables.Room;
-import model.tables.Service;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class ServiceTableModel extends AbstractTableModel {
-    private ArrayList<Table> services;
+    private ArrayList<JSONObject> services;
     private String[] columns ;
 
-    public ServiceTableModel(ArrayList<Table> serviceArr){
+    public ServiceTableModel(ArrayList<JSONObject> serviceArr){
         super();
         services = serviceArr ;
         columns = new String[]{"Service ID", "Min Tier Level", "Service Cost", "Hotel Address"};
@@ -29,16 +28,32 @@ public class ServiceTableModel extends AbstractTableModel {
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        Service service = (Service) services.get(row);
+        JSONObject service = services.get(row);
         switch(col) {
             case 0:
-                return service.getServiceID();
+                try {
+                    return service.get("serviceID");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 1:
-                return service.getMinTierLevel();
+                try {
+                    return service.get("minTierLevel");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 2:
-                return service.getServiceCost();
+                try {
+                    return service.get("serviceCost");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             case 3:
-                return service.getHotelAddress();
+                try {
+                    return service.get("hotelAddress");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             default:
                 return null;
         }
