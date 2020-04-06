@@ -27,7 +27,7 @@ public class UpdateSelectedBooking extends JPanel {
     private JButton submitButton;
     private JTextField roomFloorField;
 
-    public UpdateSelectedBooking(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedBooking(HotelController controller) {
 
         //construct components
         updateBookingLabel = new JLabel ("Update the selected BOOKING");

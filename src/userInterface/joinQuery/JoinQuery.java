@@ -2,6 +2,11 @@ package userInterface.joinQuery;
 
 
 import controller.HotelController;
+import model.Table;
+import model.TableHelper;
+import model.tableHelpers.BookingHelper;
+import model.tableHelpers.CustomerHelper;
+import model.tables.Employee;
 import userInterface.WelcomeScreen;
 
 import javax.swing.*;
@@ -67,9 +72,9 @@ public class JoinQuery extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object table1Selected = table1Field.getSelectedItem();
-                Object table2Selected = table2Field.getSelectedItem();
-                Object joinSelected = joinField.getSelectedItem();
+                CustomerHelper customerHelper = new CustomerHelper();
+                BookingHelper bookingHelper = new BookingHelper();
+                controller.joinQuery(customerHelper, bookingHelper);
             }
         });
 

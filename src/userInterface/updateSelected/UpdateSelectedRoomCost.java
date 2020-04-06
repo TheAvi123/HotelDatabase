@@ -20,7 +20,7 @@ public class UpdateSelectedRoomCost extends JPanel {
     private JTextField roomCostField;
     private JButton submitButton;
 
-    public UpdateSelectedRoomCost(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedRoomCost(HotelController controller) {
         //construct components
         updateRoomLabel = new JLabel ("Update the selected ROOM COST");
         cancelButton = new JButton ("Cancel");

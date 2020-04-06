@@ -20,7 +20,7 @@ public class UpdateSelectedManager extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedManager(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedManager(HotelController controller) {
         //construct preComponents
 
         //construct components

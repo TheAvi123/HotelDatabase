@@ -82,4 +82,8 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	public ArrayList<JSONObject> projectionQueryHotel(Boolean[] attributesToShow) {
 		return dbHandler.projectionHotel(attributesToShow);
 	}
+
+	public ArrayList<JSONObject> joinQuery(TableHelper helper1, TableHelper helper2) {
+		return dbHandler.naturalJoinQuery(helper1, helper2);
+	}
 }

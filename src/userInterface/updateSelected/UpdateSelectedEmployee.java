@@ -26,7 +26,7 @@ public class UpdateSelectedEmployee extends JPanel {
     private JTextField managerStaffIDField;
     private JButton submitButton;
 
-    public UpdateSelectedEmployee(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedEmployee(HotelController controller) {
 
         //construct components
         updateLabel = new JLabel ("Update the selected EMPLOYEE");

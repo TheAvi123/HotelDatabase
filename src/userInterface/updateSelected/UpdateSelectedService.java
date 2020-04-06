@@ -22,7 +22,7 @@ public class UpdateSelectedService extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedService(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedService(HotelController controller) {
         //construct preComponents
 
         //construct components

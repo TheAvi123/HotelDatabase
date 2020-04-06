@@ -20,7 +20,7 @@ public class UpdateSelectedHotel extends JPanel {
     private JTextField capacityField;
     private JButton submitButton;
 
-    public UpdateSelectedHotel(HotelController controller, JSONObject whereKeys) {
+    public UpdateSelectedHotel(HotelController controller) {
         //construct components
         updateHotelLabel = new JLabel ("Update the selected HOTEL");
         cancelButton = new JButton ("Cancel");
