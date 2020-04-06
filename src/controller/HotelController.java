@@ -50,10 +50,6 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 		}
 	}
 
-	public void setupDatabase() {
-		dbHandler.setupDatabase();
-	}
-
 	public void transactionsComplete() {
 		dbHandler.close();
 		dbHandler = null;
@@ -74,8 +70,8 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 		dbHandler.updateTable(tableHelper, setKeys, whereKeys);
 	}
 
-	public ArrayList<Table> getTuples(String tableName) {
-		return null; //dbHandler.getTableTuples(tableName);
+	public ArrayList<JSONObject> getTuples(String tableName) {
+		return dbHandler.getTableTuples(tableName);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,9 +80,5 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 		dbHandler.selectionQuery(helper, condition);
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void selectionQuery(TableHelper helper, Condition condition) {
-		dbHandler.selectionQuery(helper, condition);
-	}
 }

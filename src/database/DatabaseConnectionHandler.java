@@ -1,15 +1,12 @@
 package database;
 
-import java.awt.peer.LabelPeer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import controller.HotelController;
-import model.tables.Room;
 import model.Table;
 import model.TableHelper;
-import model.tables.RoomCost;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tools.Condition;
