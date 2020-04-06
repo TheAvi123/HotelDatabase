@@ -2,7 +2,7 @@ package userInterface.insert;
 
 import controller.HotelController;
 import model.tables.RoomCost;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.chooseMenu.ChooseMenuHotel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,7 +83,7 @@ public class InsertRoomCost extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
+                frame.getContentPane().add (new ChooseMenuHotel(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

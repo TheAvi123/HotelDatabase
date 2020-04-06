@@ -23,7 +23,7 @@ public class ShowAllCustomers extends JPanel {
 
     public ShowAllCustomers(HotelController controller) {
 
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
         customers = dbHandler.getTableTuples("customer");
         model = new CustomerTableModel(customers);
 

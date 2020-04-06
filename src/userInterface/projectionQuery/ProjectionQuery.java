@@ -4,7 +4,7 @@ package userInterface.projectionQuery;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.chooseMenu.ChooseMenuHotel;
 import userInterface.showAll.HotelTableModel;
 
 import javax.swing.*;
@@ -30,7 +30,7 @@ public class ProjectionQuery extends JPanel {
     private JCheckBox capacityCB;
 
     public ProjectionQuery(HotelController controller) {
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
 
         //construct components
         titleLabel = new JLabel ("PROJECTION QUERY");
@@ -99,8 +99,8 @@ public class ProjectionQuery extends JPanel {
                 add (table);
                 add (backButton);
                 //set component bounds (only needed by Absolute Positioning)
-                showRoomsLabel.setBounds (55, 55, 130, 15);
-                table.setBounds (55, 95, 300, 145);
+                showRoomsLabel.setBounds (97, 343, 130, 15);
+                table.setBounds (100, 355, 300, 145);
                 backButton.setBounds (55, 260, 100, 25);
 
             }
@@ -112,7 +112,7 @@ public class ProjectionQuery extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
+                frame.getContentPane().add (new ChooseMenuHotel(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

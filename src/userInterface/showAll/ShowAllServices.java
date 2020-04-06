@@ -23,7 +23,7 @@ public class ShowAllServices extends JPanel {
 
     public ShowAllServices(HotelController controller) {
 
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
         services = dbHandler.getTableTuples("service");
         model = new ManagerTableModel(services);
 

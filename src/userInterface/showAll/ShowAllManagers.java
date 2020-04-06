@@ -23,7 +23,7 @@ public class ShowAllManagers extends JPanel {
 
     public ShowAllManagers(HotelController controller) {
 
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
         managers = dbHandler.getTableTuples("manager");
         model = new ManagerTableModel(managers);
 

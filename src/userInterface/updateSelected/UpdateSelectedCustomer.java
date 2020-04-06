@@ -1,6 +1,7 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import userInterface.chooseMenu.ChooseMenuCustomer;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
 import javax.swing.*;
@@ -98,7 +99,7 @@ public class UpdateSelectedCustomer extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add(new ChooseMenuRoom(controller));
+                frame.getContentPane().add(new ChooseMenuCustomer(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

@@ -18,7 +18,7 @@ public class DatabaseConnectionHandler {
 
 	private static Connection connection = null;
 
-	public DatabaseConnectionHandler() {
+	public DatabaseConnectionHandler(HotelController controller) {
 		try {
 			// Load the Oracle JDBC driver
 			// Note that the path could change for new drivers

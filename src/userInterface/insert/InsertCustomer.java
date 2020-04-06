@@ -27,7 +27,7 @@ public class InsertCustomer extends JPanel {
     public InsertCustomer(HotelController controller) {
 
         //construct components
-        titleLabel = new JLabel ("Insert new Booking");
+        titleLabel = new JLabel ("Insert new Customer");
         cancelButton = new JButton ("Cancel");
         customerIDLabel = new JLabel ("Customer ID");
         customerIDField = new JTextField (1);
@@ -66,16 +66,16 @@ public class InsertCustomer extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         titleLabel.setBounds (145, 65, 300, 30);
         cancelButton.setBounds (200, 330, 102, 25);
-        customerIDLabel.setBounds (100, 115, 130, 25);
-        customerIDField.setBounds (200, 115, 130, 25);
-        customerNameLabel.setBounds (100, 150, 130, 25);
-        customerNameField.setBounds (200, 150, 130, 25);
-        customerAgeLabel.setBounds (100, 185, 130, 25);
-        customerAgeField.setBounds (200, 185, 130, 25);
-        paymentInformationLabel.setBounds (100, 220, 130, 25);
-        paymentInformationField.setBounds (200, 220, 130, 25);
-        phoneNumberLabel.setBounds (100, 255, 130, 25);
-        phoneNumberField.setBounds (200, 255, 130, 25);
+        customerIDLabel.setBounds (100, 115, 150, 25);
+        customerIDField.setBounds (200, 115, 150, 25);
+        customerNameLabel.setBounds (100, 150, 150, 25);
+        customerNameField.setBounds (200, 150, 150, 25);
+        customerAgeLabel.setBounds (100, 185, 150, 25);
+        customerAgeField.setBounds (200, 185, 150, 25);
+        paymentInformationLabel.setBounds (100, 220, 150, 25);
+        paymentInformationField.setBounds (200, 220, 150, 25);
+        phoneNumberLabel.setBounds (100, 255, 150, 25);
+        phoneNumberField.setBounds (200, 255, 150, 25);
         submitButton.setBounds (100, 330, 100, 25);
 
         // on pressing the submitButton

@@ -2,14 +2,31 @@ package userInterface.selectionQuery;
 
 
 import controller.HotelController;
+import database.DatabaseConnectionHandler;
+import model.TableHelper;
+import model.tableHelpers.RoomCostHelper;
+import model.tables.RoomCost;
+import org.json.JSONObject;
+import tools.Comparator;
+import tools.Condition;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.showAll.HotelTableModel;
+import userInterface.showAll.RoomCostTableModel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.table.TableModel;
 
 public class SelectionQuery extends JPanel {
+    private DatabaseConnectionHandler dbHandler;
+    TableModel model;
+    ArrayList<JSONObject> arrayOfTuples;
+    JTable table;
+
+    private JLabel showRoomsLabel;
     private JLabel titleLabel;
     private JLabel attrLabel;
     private JLabel condLabel;
@@ -22,6 +39,8 @@ public class SelectionQuery extends JPanel {
     private JButton backButton;
 
     public SelectionQuery(HotelController controller) {
+        dbHandler = new DatabaseConnectionHandler(controller);
+
         //construct preComponents
         String[] attrFieldItems = {"Room Number", "Room Floor", "Room Cost"};
         String[] condFieldItems = {"=", "!=", ">", "<", ">=", "<="};
@@ -69,10 +88,60 @@ public class SelectionQuery extends JPanel {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object attributeSelected = attrField.getSelectedItem();
-                Object conditionSelected = condField.getSelectedItem();
-                int valueEntered = Integer.parseInt(valField.getText());
-                //controller.selectionQuery();
+                String attributeSelected = (String) attrField.getSelectedItem();
+                String conditionSelected = (String) condField.getSelectedItem();
+                Comparator useComparator = Comparator.equal;
+                String attributeName = new String();
+                switch (attributeSelected) {
+                    case "Room Number":
+                        attributeName = "roomNumber";
+                        break;
+                    case "Room Floor":
+                        attributeName = "roomFloor";
+                        break;
+                    case "Room Cost":
+                        attributeName = "roomCost";
+                        break;
+                }
+                    if(conditionSelected.equals("=")) {
+                        useComparator = Comparator.equal;
+                    } else if(conditionSelected.equals("!=")) {
+                        useComparator = Comparator.notEqual;
+                    } else if(conditionSelected.equals("<")) {
+                        useComparator = Comparator.less;
+                    } else if(conditionSelected.equals(">")) {
+                        useComparator = Comparator.more;
+                    } else if(conditionSelected.equals("<=")) {
+                        useComparator = Comparator.lessEqual;
+                    } else if(conditionSelected.equals(">=")) {
+                        useComparator = Comparator.moreEqual;
+                }
+
+                String valueEntered = valField.getText();
+                Condition sample = new Condition(attributeName, useComparator, valueEntered);
+                TableHelper roomCostSample = new RoomCostHelper();
+                arrayOfTuples = dbHandler.selectionQuery(roomCostSample, sample);
+                model = new RoomCostTableModel(arrayOfTuples);
+
+                //construct components
+                showRoomsLabel = new JLabel ("Showing Selection Query");
+                table = new JTable(model);
+                backButton = new JButton ("Back");
+
+                //adjust size and set layout
+                setPreferredSize (new Dimension (736, 523));
+                setLayout (null);
+
+                //add components
+                add (showRoomsLabel);
+                add (table);
+                add (backButton);
+                //set component bounds (only needed by Absolute Positioning)
+                showRoomsLabel.setBounds (55, 345, 130, 15);
+                table.setBounds (55, 350, 300, 145);
+                backButton.setBounds (55, 260, 100, 25);
+                // here
+
             }
         });
 
@@ -92,7 +161,7 @@ public class SelectionQuery extends JPanel {
 //    public static void main (String[] args) {
 //        JFrame frame = new JFrame ("MyPanel");
 //        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//        frame.getContentPane().add (new SelectionQuery(controller));
+//        frame.getContentPane().add (new SelectionQuery(new HotelController()));
 //        frame.pack();
 //        frame.setVisible (true);
 //    }

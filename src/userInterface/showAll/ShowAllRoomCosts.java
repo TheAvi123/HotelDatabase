@@ -3,7 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
-import userInterface.chooseMenu.ChooseMenuRoomCost;
+import userInterface.chooseMenu.ChooseMenuHotel;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -23,7 +23,7 @@ public class ShowAllRoomCosts extends JPanel {
 
     public ShowAllRoomCosts(HotelController controller) {
 
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
         roomCosts = dbHandler.getTableTuples("roomCost");
         model = new RoomCostTableModel(roomCosts);
 
@@ -51,7 +51,7 @@ public class ShowAllRoomCosts extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
+                frame.getContentPane().add (new ChooseMenuHotel(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

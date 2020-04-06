@@ -23,7 +23,7 @@ public class ShowAllRooms extends JPanel {
 
     public ShowAllRooms(HotelController controller) {
 
-        dbHandler = new DatabaseConnectionHandler();
+        dbHandler = new DatabaseConnectionHandler(controller);
         rooms = dbHandler.getTableTuples("room");
         model = new RoomTableModel(rooms);
 

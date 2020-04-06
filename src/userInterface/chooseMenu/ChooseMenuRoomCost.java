@@ -2,10 +2,10 @@ package userInterface.chooseMenu;
 
 import controller.HotelController;
 import userInterface.WelcomeScreen;
-import userInterface.aggregationQuery.AggregationQuery;
+import userInterface.aggregationQuery.AggregationGrpByQuery;
 import userInterface.delete.DeleteRoomCost;
 import userInterface.insert.InsertRoomCost;
-import userInterface.projectionQuery.ProjectionQuery;
+import userInterface.selectionQuery.SelectionQuery;
 import userInterface.showAll.ShowAllRoomCosts;
 import userInterface.updatePrompt.UpdatePromptRoomCost;
 
@@ -21,19 +21,19 @@ public class ChooseMenuRoomCost extends JPanel {
     private JButton updateButton;
     private JButton showButton;
     private JButton backButton;
-    private JButton projectionButton;
-    private JButton aggregationButton;
+    private JButton selectButton;
+    private JButton aggrGrpByButton;
 
     public ChooseMenuRoomCost(HotelController controller) {
         //construct components
-        titleLabel = new JLabel ("What do you want to do with HOTEL?");
+        titleLabel = new JLabel ("What do you want to do with ROOM COST?");
         insertButton = new JButton ("Insert");
         deleteButton = new JButton ("Delete");
         updateButton = new JButton ("Update");
         showButton = new JButton ("Show");
         backButton = new JButton ("Back to Welcome Screen");
-        projectionButton = new JButton ("Projection");
-        aggregationButton = new JButton ("Aggregation");
+        selectButton = new JButton ("Select");
+        aggrGrpByButton = new JButton ("Aggr + GrpBy");
 
         //set components properties
         insertButton.setToolTipText ("Inserts new tuple into SQL table");
@@ -52,24 +52,25 @@ public class ChooseMenuRoomCost extends JPanel {
         add (updateButton);
         add (showButton);
         add (backButton);
-        add (projectionButton);
-        add (aggregationButton);
+        add (selectButton);
+        add (aggrGrpByButton);
+
 
         //set component bounds (only needed by Absolute Positioning)
-        titleLabel.setBounds (255, 65, 300, 30);
-        insertButton.setBounds (305, 110, 103, 25);
-        deleteButton.setBounds (305, 150, 103, 25);
-        updateButton.setBounds (305, 190, 103, 25);
-        showButton.setBounds (305, 230, 103, 25);
-        backButton.setBounds (485, 345, 180, 25);
-        projectionButton.setBounds (305, 270, 103, 25);
-        aggregationButton.setBounds (305, 310, 103, 25);
+        titleLabel.setBounds (250, 65, 300, 30);
+        insertButton.setBounds (305, 110, 110, 25);
+        deleteButton.setBounds (305, 150, 110, 25);
+        updateButton.setBounds (305, 190, 110, 25);
+        showButton.setBounds (305, 230, 110, 25);
+        backButton.setBounds (485, 360, 180, 25);
+        selectButton.setBounds (305, 270, 110, 25);
+        aggrGrpByButton.setBounds (305, 310, 110, 25);
 
         // on clicking the insertButton
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Hotel");
+                JFrame frame = new JFrame ("Insert RoomCost");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().add (new InsertRoomCost(controller));
                 frame.pack();
@@ -93,7 +94,7 @@ public class ChooseMenuRoomCost extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Hotel");
+                JFrame frame = new JFrame ("Delete Room Cost");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().add (new DeleteRoomCost(controller));
                 frame.pack();
@@ -105,7 +106,7 @@ public class ChooseMenuRoomCost extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all hotels");
+                JFrame frame = new JFrame ("Show all room costs");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().add (new ShowAllRoomCosts(controller));
                 frame.pack();
@@ -113,25 +114,25 @@ public class ChooseMenuRoomCost extends JPanel {
             }
         });
 
-        // on clicking the projectionButton
-        projectionButton.addActionListener(new ActionListener() {
+        // on clicking the selectButton
+        selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Selection Query");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ProjectionQuery(controller));
+                frame.getContentPane().add (new SelectionQuery(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
         });
 
-        // on clicking the aggregationButton
-        aggregationButton.addActionListener(new ActionListener() {
+        // on clicking the aggrGrpByButton
+        aggrGrpByButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Aggregation Query");
+                JFrame frame = new JFrame ("Selection Query");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new AggregationQuery(controller));
+                frame.getContentPane().add (new AggregationGrpByQuery(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

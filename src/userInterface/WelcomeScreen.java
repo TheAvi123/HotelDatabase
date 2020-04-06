@@ -107,7 +107,6 @@ public class WelcomeScreen extends JPanel {
                 }
 
                 String selectedQuery = String.valueOf(queryChooserField.getSelectedItem());
-                // TODO: add functionality for other entities once they're implemented in the backend
                 if (selectedQuery.equals("Join Query")) {
                     JFrame frame = new JFrame ("Join Query");
                     frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);

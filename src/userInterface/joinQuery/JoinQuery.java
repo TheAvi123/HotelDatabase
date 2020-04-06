@@ -20,7 +20,6 @@ public class JoinQuery extends JPanel {
     private JComboBox table2Field;
     private JComboBox joinField;
 
-
     public JoinQuery(HotelController controller) {
         //construct preComponents
         String[] table1FieldItems = {"Booking", "Customer", "Employee", "Hotel", "Manager", "RoomCost", "Room", "Service"};
