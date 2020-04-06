@@ -18,7 +18,7 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	private LoginWindow loginWindow = null;
 
 	public HotelController() {
-		dbHandler = new DatabaseConnectionHandler(this);
+		dbHandler = new DatabaseConnectionHandler();
 	}
 
 	// Entry Point To The Program
@@ -38,7 +38,6 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 			// Once connected, remove login window and start text transaction flow
 			loginWindow.dispose();
 			TransactionsHandler transactionsHandler = new TransactionsHandler(this);
-			this.setupDatabase();
 			transactionsHandler.showMainMenu();
 		} else {
 			loginWindow.handleLoginFailed();
@@ -76,9 +75,11 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void selectionQuery(TableHelper helper, Condition condition) {
-		dbHandler.selectionQuery(helper, condition);
+	public ArrayList<JSONObject> selectionQuery(TableHelper helper, Condition condition) {
+		return dbHandler.selectionQuery(helper, condition);
 	}
 
-
+	public ArrayList<JSONObject> projectionQueryHotel(Boolean[] attributesToShow) {
+		return dbHandler.projectionHotel(attributesToShow);
+	}
 }

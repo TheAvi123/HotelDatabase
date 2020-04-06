@@ -2,17 +2,17 @@ package userInterface.chooseMenu;
 
 import controller.HotelController;
 import userInterface.WelcomeScreen;
-import userInterface.delete.DeleteRoom;
-import userInterface.insert.InsertRoom;
-import userInterface.showAll.ShowAllRooms;
-import userInterface.updatePrompt.UpdatePromptRoom;
+import userInterface.delete.DeleteManager;
+import userInterface.insert.InsertManager;
+import userInterface.showAll.ShowAllManagers;
+import userInterface.updatePrompt.UpdatePromptManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChooseMenuRoom extends JPanel {
+public class ChooseMenuManager extends JPanel {
     private JLabel titleLabel;
     private JButton insertButton;
     private JButton deleteButton;
@@ -20,20 +20,20 @@ public class ChooseMenuRoom extends JPanel {
     private JButton showButton;
     private JButton backButton;
 
-    public ChooseMenuRoom(HotelController controller) {
+    public ChooseMenuManager(HotelController controller) {
         //construct components
-        titleLabel = new JLabel ("What do you want to do with ROOM?");
-        insertButton = new JButton ("Insert Room");
-        deleteButton = new JButton ("Delete Room");
-        updateButton = new JButton ("Update Room");
-        showButton = new JButton ("Show Rooms");
+        titleLabel = new JLabel ("What do you want to do with MANAGER?");
+        insertButton = new JButton ("Insert Manager");
+        deleteButton = new JButton ("Delete Manager");
+        updateButton = new JButton ("Update Manager");
+        showButton = new JButton ("Show Managers");
         backButton = new JButton ("Back to Welcome Screen");
 
         //set components properties
-        insertButton.setToolTipText ("Inserts room into SQL table");
-        deleteButton.setToolTipText ("Removes room from SQL table");
-        updateButton.setToolTipText ("Updates room in the SQL table");
-        showButton.setToolTipText ("Shows all rooms in the SQL table");
+        insertButton.setToolTipText ("Inserts manager into SQL table");
+        deleteButton.setToolTipText ("Removes manager from SQL table");
+        updateButton.setToolTipText ("Updates manager in the SQL table");
+        showButton.setToolTipText ("Shows all managers in the SQL table");
 
         //adjust size and set layout
         setPreferredSize (new Dimension (736, 523));
@@ -49,19 +49,19 @@ public class ChooseMenuRoom extends JPanel {
 
         //set component bounds (only needed by Absolute Positioning)
         titleLabel.setBounds (215, 65, 300, 30);
-        insertButton.setBounds (305, 110, 150, 25);
-        deleteButton.setBounds (305, 150, 150, 25);
-        updateButton.setBounds (305, 190, 150, 25);
-        showButton.setBounds (305, 230, 150, 25);
+        insertButton.setBounds (305, 110, 170, 25);
+        deleteButton.setBounds (305, 150, 170, 25);
+        updateButton.setBounds (305, 190, 170, 25);
+        showButton.setBounds (305, 230, 170, 25);
         backButton.setBounds (485, 345, 180, 25);
 
         // on clicking the insertButton
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Room");
+                JFrame frame = new JFrame ("Insert Service");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertRoom(controller));
+                frame.getContentPane().add (new InsertManager(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -73,7 +73,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Update Prompt");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptRoom(controller));
+                frame.getContentPane().add (new UpdatePromptManager(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -83,9 +83,9 @@ public class ChooseMenuRoom extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Room");
+                JFrame frame = new JFrame ("Delete Service");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteRoom(controller));
+                frame.getContentPane().add (new DeleteManager(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -95,9 +95,9 @@ public class ChooseMenuRoom extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all rooms");
+                JFrame frame = new JFrame ("Show all services");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllRooms(controller));
+                frame.getContentPane().add (new ShowAllManagers(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

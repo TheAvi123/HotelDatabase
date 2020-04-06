@@ -1,7 +1,7 @@
 package userInterface;
 
 import controller.HotelController;
-import delegates.TransactionsHandlerDelegate;
+
 import javax.swing.*;
 
 /**

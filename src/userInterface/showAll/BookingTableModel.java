@@ -6,14 +6,14 @@ import org.json.JSONObject;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class RoomTableModel extends AbstractTableModel {
-    private ArrayList<JSONObject> rooms;
+public class BookingTableModel extends AbstractTableModel {
+    private ArrayList<JSONObject> bookings;
     private String[] columns;
 
-    public RoomTableModel(ArrayList<JSONObject> roomArr){
+    public BookingTableModel(ArrayList<JSONObject> bookingArr){
         super();
-        rooms = roomArr;
-        columns = new String[]{"Room No.", "Room Floor", "Room Type", "No. Of Beds", "Hotel Address"};
+        bookings = bookingArr;
+        columns = new String[]{"Booking ID", "Start Date", "End Date", "Room Floor", "Room Number", "Customer ID"};
     }
 
     // Number of column of your table
@@ -23,40 +23,46 @@ public class RoomTableModel extends AbstractTableModel {
 
     // Number of row of your table
     public int getRowCount() {
-        return rooms.size();
+        return bookings.size();
     }
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        JSONObject room = rooms.get(row);
+        JSONObject booking = bookings.get(row);
         switch(col) {
             case 0:
                 try {
-                    return room.get("roomNumber");
+                    return booking.get("bookingID");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 1:
                 try {
-                    return room.get("roomFloor");
+                    return booking.get("startDate");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 2:
                 try {
-                    return room.get("roomType");
+                    return booking.get("endDate");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 3:
                 try {
-                    return room.get("numberOfBeds");
+                    return booking.get("roomNumber");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 4:
                 try {
-                    return room.get("hotelAddress");
+                    return booking.get("roomFloor");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            case 5:
+                try {
+                    return booking.get("customerID");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

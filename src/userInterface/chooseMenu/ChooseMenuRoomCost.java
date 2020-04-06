@@ -2,38 +2,44 @@ package userInterface.chooseMenu;
 
 import controller.HotelController;
 import userInterface.WelcomeScreen;
-import userInterface.delete.DeleteRoom;
-import userInterface.insert.InsertRoom;
-import userInterface.showAll.ShowAllRooms;
-import userInterface.updatePrompt.UpdatePromptRoom;
+import userInterface.aggregationQuery.AggregationQuery;
+import userInterface.delete.DeleteRoomCost;
+import userInterface.insert.InsertRoomCost;
+import userInterface.projectionQuery.ProjectionQuery;
+import userInterface.showAll.ShowAllRoomCosts;
+import userInterface.updatePrompt.UpdatePromptRoomCost;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChooseMenuRoom extends JPanel {
+public class ChooseMenuRoomCost extends JPanel {
     private JLabel titleLabel;
     private JButton insertButton;
     private JButton deleteButton;
     private JButton updateButton;
     private JButton showButton;
     private JButton backButton;
+    private JButton projectionButton;
+    private JButton aggregationButton;
 
-    public ChooseMenuRoom(HotelController controller) {
+    public ChooseMenuRoomCost(HotelController controller) {
         //construct components
-        titleLabel = new JLabel ("What do you want to do with ROOM?");
-        insertButton = new JButton ("Insert Room");
-        deleteButton = new JButton ("Delete Room");
-        updateButton = new JButton ("Update Room");
-        showButton = new JButton ("Show Rooms");
+        titleLabel = new JLabel ("What do you want to do with HOTEL?");
+        insertButton = new JButton ("Insert");
+        deleteButton = new JButton ("Delete");
+        updateButton = new JButton ("Update");
+        showButton = new JButton ("Show");
         backButton = new JButton ("Back to Welcome Screen");
+        projectionButton = new JButton ("Projection");
+        aggregationButton = new JButton ("Aggregation");
 
         //set components properties
-        insertButton.setToolTipText ("Inserts room into SQL table");
-        deleteButton.setToolTipText ("Removes room from SQL table");
-        updateButton.setToolTipText ("Updates room in the SQL table");
-        showButton.setToolTipText ("Shows all rooms in the SQL table");
+        insertButton.setToolTipText ("Inserts new tuple into SQL table");
+        deleteButton.setToolTipText ("Removes tuple from SQL table");
+        updateButton.setToolTipText ("Updates a tuple in SQL table");
+        showButton.setToolTipText ("Shows all tuples in the SQL table");
 
         //adjust size and set layout
         setPreferredSize (new Dimension (736, 523));
@@ -46,22 +52,26 @@ public class ChooseMenuRoom extends JPanel {
         add (updateButton);
         add (showButton);
         add (backButton);
+        add (projectionButton);
+        add (aggregationButton);
 
         //set component bounds (only needed by Absolute Positioning)
-        titleLabel.setBounds (215, 65, 300, 30);
-        insertButton.setBounds (305, 110, 150, 25);
-        deleteButton.setBounds (305, 150, 150, 25);
-        updateButton.setBounds (305, 190, 150, 25);
-        showButton.setBounds (305, 230, 150, 25);
+        titleLabel.setBounds (255, 65, 300, 30);
+        insertButton.setBounds (305, 110, 103, 25);
+        deleteButton.setBounds (305, 150, 103, 25);
+        updateButton.setBounds (305, 190, 103, 25);
+        showButton.setBounds (305, 230, 103, 25);
         backButton.setBounds (485, 345, 180, 25);
+        projectionButton.setBounds (305, 270, 103, 25);
+        aggregationButton.setBounds (305, 310, 103, 25);
 
         // on clicking the insertButton
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Insert Room");
+                JFrame frame = new JFrame ("Insert Hotel");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new InsertRoom(controller));
+                frame.getContentPane().add (new InsertRoomCost(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -73,7 +83,7 @@ public class ChooseMenuRoom extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Update Prompt");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdatePromptRoom(controller));
+                frame.getContentPane().add (new UpdatePromptRoomCost(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -83,9 +93,9 @@ public class ChooseMenuRoom extends JPanel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Delete Room");
+                JFrame frame = new JFrame ("Delete Hotel");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new DeleteRoom(controller));
+                frame.getContentPane().add (new DeleteRoomCost(controller));
                 frame.pack();
                 frame.setVisible (true);
             }
@@ -95,9 +105,33 @@ public class ChooseMenuRoom extends JPanel {
         showButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame ("Show all rooms");
+                JFrame frame = new JFrame ("Show all hotels");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ShowAllRooms(controller));
+                frame.getContentPane().add (new ShowAllRoomCosts(controller));
+                frame.pack();
+                frame.setVisible (true);
+            }
+        });
+
+        // on clicking the projectionButton
+        projectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame ("Selection Query");
+                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+                frame.getContentPane().add (new ProjectionQuery(controller));
+                frame.pack();
+                frame.setVisible (true);
+            }
+        });
+
+        // on clicking the aggregationButton
+        aggregationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame ("Aggregation Query");
+                frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+                frame.getContentPane().add (new AggregationQuery(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

@@ -3,7 +3,7 @@ package userInterface.showAll;
 import controller.HotelController;
 import database.DatabaseConnectionHandler;
 import org.json.JSONObject;
-import userInterface.chooseMenu.ChooseMenuRoom;
+import userInterface.chooseMenu.ChooseMenuRoomCost;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -12,23 +12,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ShowAllRooms extends JPanel {
-    private JLabel showRoomsLabel;
+public class ShowAllRoomCosts extends JPanel {
+    private JLabel showRoomCostsLabel;
     private DatabaseConnectionHandler dbHandler;
-    ArrayList<JSONObject> rooms;
+    ArrayList<JSONObject> roomCosts;
     TableModel model;
     JTable table;
 
     private JButton backButton;
 
-    public ShowAllRooms(HotelController controller) {
+    public ShowAllRoomCosts(HotelController controller) {
 
         dbHandler = new DatabaseConnectionHandler();
-        rooms = dbHandler.getTableTuples("room");
-        model = new RoomTableModel(rooms);
+        roomCosts = dbHandler.getTableTuples("roomCost");
+        model = new RoomCostTableModel(roomCosts);
 
         //construct components
-        showRoomsLabel = new JLabel ("Showing All Rooms");
+        showRoomCostsLabel = new JLabel ("Showing All Rooms");
         table = new JTable(model);
         backButton = new JButton ("Back");
 
@@ -37,11 +37,11 @@ public class ShowAllRooms extends JPanel {
         setLayout (null);
 
         //add components
-        add (showRoomsLabel);
+        add (showRoomCostsLabel);
         add (table);
         add (backButton);
         //set component bounds (only needed by Absolute Positioning)
-        showRoomsLabel.setBounds (55, 55, 130, 15);
+        showRoomCostsLabel.setBounds (55, 55, 130, 15);
         table.setBounds (55, 95, 300, 145);
         backButton.setBounds (55, 260, 100, 25);
 
@@ -51,7 +51,7 @@ public class ShowAllRooms extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame ("Welcome Screen");
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new ChooseMenuRoom(controller));
+                frame.getContentPane().add (new ChooseMenuRoomCost(controller));
                 frame.pack();
                 frame.setVisible (true);
             }

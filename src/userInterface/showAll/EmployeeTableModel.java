@@ -6,57 +6,63 @@ import org.json.JSONObject;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class RoomTableModel extends AbstractTableModel {
-    private ArrayList<JSONObject> rooms;
-    private String[] columns;
+public class EmployeeTableModel extends AbstractTableModel {
+    private ArrayList<JSONObject> employees;
+    private String[] columns ;
 
-    public RoomTableModel(ArrayList<JSONObject> roomArr){
+    public EmployeeTableModel(ArrayList<JSONObject> employeeArr){
         super();
-        rooms = roomArr;
-        columns = new String[]{"Room No.", "Room Floor", "Room Type", "No. Of Beds", "Hotel Address"};
+        employees = employeeArr ;
+        columns = new String[]{"employeeStaffID", "employeeName", "payrollAccountNumber", "salary", "workShift", "managerStaffID"};
     }
 
     // Number of column of your table
     public int getColumnCount() {
-        return columns.length;
+        return columns.length ;
     }
 
     // Number of row of your table
     public int getRowCount() {
-        return rooms.size();
+        return employees.size();
     }
 
     // The object to render in a cell
     public Object getValueAt(int row, int col) {
-        JSONObject room = rooms.get(row);
+        JSONObject employee = employees.get(row);
         switch(col) {
             case 0:
                 try {
-                    return room.get("roomNumber");
+                    return employee.get("employeeStaffID");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 1:
                 try {
-                    return room.get("roomFloor");
+                    return employee.get("employeeName");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 2:
                 try {
-                    return room.get("roomType");
+                    return employee.get("payrollAccountNumber");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 3:
                 try {
-                    return room.get("numberOfBeds");
+                    return employee.get("salary");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             case 4:
                 try {
-                    return room.get("hotelAddress");
+                    return employee.get("workShift");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            case 5:
+                try {
+                    return employee.get("managerStaffID");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -17,11 +17,10 @@ import java.util.ArrayList;
  */
 public interface TransactionsHandlerDelegate {
 	//Transactions Functions
-	public void setupDatabase();
 	public void transactionsComplete();
 	//SQL DDL Functions
 	public void insertTuple(Table table);
 	public void deleteTuple(TableHelper table, JSONObject primaryKey);
 	public void updateTuples(TableHelper tableHelper, JSONObject setKeys, JSONObject whereKeys);
-	public ArrayList<Table> getTuples(String tableName);
+	public ArrayList<JSONObject> getTuples(String tableName);
 }
