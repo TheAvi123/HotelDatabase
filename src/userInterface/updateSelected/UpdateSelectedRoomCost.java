@@ -1,6 +1,7 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoomCost;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class UpdateSelectedRoomCost extends JPanel {
     private JTextField roomCostField;
     private JButton submitButton;
 
-    public UpdateSelectedRoomCost(HotelController controller) {
+    public UpdateSelectedRoomCost(HotelController controller, JSONObject whereKeys) {
         //construct components
         updateRoomLabel = new JLabel ("Update the selected ROOM COST");
         cancelButton = new JButton ("Cancel");

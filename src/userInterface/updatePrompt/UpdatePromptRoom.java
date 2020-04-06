@@ -1,6 +1,8 @@
 package userInterface.updatePrompt;
 
 import controller.HotelController;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 import userInterface.updateSelected.UpdateSelectedRoom;
 
@@ -65,10 +67,19 @@ public class UpdatePromptRoom extends JPanel {
                 int roomNumberToUpdate = Integer.parseInt(roomNumberField.getText());
                 int roomFloorToUpdate = Integer.parseInt(roomFloorField.getText());
 
+                JSONObject wherKeys = new JSONObject();
+                try {
+                    wherKeys.put("roomNumber", roomNumberToUpdate);
+                    wherKeys.put("roomFloor", roomFloorToUpdate);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+
                 // open the update room screen
                 JFrame frame = new JFrame ("Update Room" + roomNumberToUpdate + " on floor " + roomFloorToUpdate);
                 frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-                frame.getContentPane().add (new UpdateSelectedRoom(controller));
+                frame.getContentPane().add (new UpdateSelectedRoom(controller, wherKeys));
                 frame.pack();
                 frame.setVisible (true);
             }

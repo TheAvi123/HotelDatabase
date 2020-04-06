@@ -1,6 +1,7 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuService;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class UpdateSelectedService extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedService(HotelController controller) {
+    public UpdateSelectedService(HotelController controller, JSONObject whereKeys) {
         //construct preComponents
 
         //construct components

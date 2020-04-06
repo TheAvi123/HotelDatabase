@@ -19,6 +19,7 @@ public class WelcomeScreen extends JPanel {
     private JComboBox queryChooserField;
 
     public WelcomeScreen(HotelController controller) {
+
         //construct preComponents
         String[] entityChooserItems = {"Query - Select 1 Below", "Booking", "Customer", "Employee", "Hotel", "Manager", "Room", "RoomCost", "Service"};
         String[] queryChooserFieldItems = {"Join Query", "Division Query"};
@@ -104,23 +105,23 @@ public class WelcomeScreen extends JPanel {
                     frame.getContentPane().add (new ChooseMenuService(controller));
                     frame.pack();
                     frame.setVisible (true);
-                }
-
-                String selectedQuery = String.valueOf(queryChooserField.getSelectedItem());
-                // TODO: add functionality for other entities once they're implemented in the backend
-                if (selectedQuery.equals("Join Query")) {
-                    JFrame frame = new JFrame ("Join Query");
-                    frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
-                    frame.getContentPane().add (new JoinQuery(controller));
-                    frame.pack();
-                    frame.setVisible (true);
-                } else if (selectedQuery.equals("Division Query")) {
-                    JFrame frame = new JFrame("Division Query");
-                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.getContentPane().add(new DivisionQuery(controller));
-                    frame.pack();
-                    frame.setVisible(true);
-                    setVisible(false);
+                } else {
+                    String selectedQuery = String.valueOf(queryChooserField.getSelectedItem());
+                    // TODO: add functionality for other entities once they're implemented in the backend
+                    if (selectedQuery.equals("Join Query")) {
+                        JFrame frame = new JFrame ("Join Query");
+                        frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+                        frame.getContentPane().add (new JoinQuery(controller));
+                        frame.pack();
+                        frame.setVisible (true);
+                    } else if (selectedQuery.equals("Division Query")) {
+                        JFrame frame = new JFrame("Division Query");
+                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        frame.getContentPane().add(new DivisionQuery(controller));
+                        frame.pack();
+                        frame.setVisible(true);
+                        setVisible(false);
+                    }
                 }
             }
         });

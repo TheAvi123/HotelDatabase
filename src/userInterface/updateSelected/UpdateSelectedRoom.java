@@ -1,6 +1,10 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import model.TableHelper;
+import model.tableHelpers.RoomHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
 import javax.swing.*;
@@ -23,7 +27,7 @@ public class UpdateSelectedRoom extends JPanel {
     private JTextField hotelAddressField;
     private JButton submitButton;
 
-    public UpdateSelectedRoom(HotelController controller) {
+    public UpdateSelectedRoom(HotelController controller, JSONObject whereKeys) {
         //construct preComponents
         String[] needsCleaningFieldItems = {"True", "False"};
 
@@ -90,11 +94,22 @@ public class UpdateSelectedRoom extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // saving the fields for the room to update
-                int newRoomNumber = Integer.parseInt(roomNumberField.getText());
-                int newRoomFloor = Integer.parseInt(roomFloorField.getText());
+                //int newRoomNumber = Integer.parseInt(roomNumberField.getText());
+                //int newRoomFloor = Integer.parseInt(roomFloorField.getText());
                 String newRoomType = String.valueOf(roomTypeField.getText());
                 int newNumberOfBeds = Integer.parseInt(numberOfBedsField.getText());
                 String newHotelAddress = String.valueOf(hotelAddressField.getText());
+                RoomHelper helper = new RoomHelper();
+                JSONObject setKeys = new JSONObject();
+                try {
+                    setKeys.put("roomType", newRoomType);
+                    setKeys.put("numberOfBeds", newNumberOfBeds);
+                    setKeys.put("hotelAddress", newHotelAddress);
+                } catch (JSONException error) {
+                    System.out.println(error.getMessage());
+                    error.printStackTrace();
+                }
+                controller.updateTuples(helper, setKeys, whereKeys);
             }
         });
 

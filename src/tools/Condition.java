@@ -10,6 +10,7 @@ public class Condition {
         this.attributeName = attributeName;
         this.comparator = comparator;
         this.value = value;
+
     }
 
     public String getAttributeName() {

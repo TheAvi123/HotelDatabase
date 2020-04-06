@@ -15,8 +15,8 @@ public class Booking extends Table {
 	private final String bookingID;
 	private final Date startDate;
 	private final Date endDate;
-	private final int roomFloor;
 	private final int roomNumber;
+	private final int roomFloor;
 	private final String customerID;
 
 	public Booking(String bookingID, Date startDate, Date endDate, int roomFloor, int roomNumber, String customerID) {

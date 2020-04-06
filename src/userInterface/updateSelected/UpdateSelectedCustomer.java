@@ -1,6 +1,7 @@
 package userInterface.updateSelected;
 
 import controller.HotelController;
+import org.json.JSONObject;
 import userInterface.chooseMenu.ChooseMenuRoom;
 
 import javax.swing.*;
@@ -23,7 +24,7 @@ public class UpdateSelectedCustomer extends JPanel {
     private JTextField phoneNumberField;
     private JButton submitButton;
 
-    public UpdateSelectedCustomer(HotelController controller) {
+    public UpdateSelectedCustomer(HotelController controller, JSONObject whereKeys) {
 
         //construct components
         updateCustomerLabel = new JLabel ("Update the selected Customer");

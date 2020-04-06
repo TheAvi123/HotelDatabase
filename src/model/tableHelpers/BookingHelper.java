@@ -22,8 +22,8 @@ public class BookingHelper extends TableHelper {
 		return new String[] {"bookingID",
 				"startDate",
 				"endDate",
-				"roomFloor",
 				"roomNumber",
+				"roomFloor",
 				"customerID"};
 	}
 
@@ -48,11 +48,11 @@ public class BookingHelper extends TableHelper {
 					java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
 					ps.setDate(index, sqlEndDate);
 					break;
-				case "roomFloor":
-					ps.setInt(index, keyValuePairs.getInt("roomFloor"));
-					break;
 				case "roomNumber":
 					ps.setInt(index, keyValuePairs.getInt("roomNumber"));
+					break;
+				case "roomFloor":
+					ps.setInt(index, keyValuePairs.getInt("roomFloor"));
 					break;
 				case "customerID":
 					ps.setString(index, keyValuePairs.getString("customerID"));

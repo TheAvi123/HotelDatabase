@@ -38,8 +38,8 @@ public class InsertBooking extends JPanel {
         startDateField = new JTextField (1);
         endDateLabel = new JLabel ("End Date (yyyy-MM-dd)");
         endDateField = new JTextField (1);
-        roomFloorLabel = new JLabel ("Room Floor *");
-        roomNumberLabel = new JLabel ("Room Number *");
+        roomFloorLabel = new JLabel ("Room Number");
+        roomNumberLabel = new JLabel ("Room ");
         roomNumberField = new JTextField (1);
         customerIDLabel = new JLabel ("Customer ID");
         customerIDField = new JTextField (1);
