@@ -18,7 +18,7 @@ public class HotelController implements LoginWindowDelegate, TransactionsHandler
 	private LoginWindow loginWindow = null;
 
 	public HotelController() {
-		dbHandler = new DatabaseConnectionHandler(controller);
+		dbHandler = new DatabaseConnectionHandler(this);
 	}
 
 	// Entry Point To The Program
